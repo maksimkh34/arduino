@@ -17,10 +17,15 @@ function generateSidebar() {
     return [];
   }
 
-  let sectionNames = {};
+  let sectionMap = {};
   if (fs.existsSync(sectionNamesPath)) {
     try {
-      sectionNames = JSON.parse(fs.readFileSync(sectionNamesPath, 'utf8'));
+      const data = JSON.parse(fs.readFileSync(sectionNamesPath, 'utf8'));
+      if (data.sections && Array.isArray(data.sections)) {
+        data.sections.forEach(sec => {
+          sectionMap[sec.number] = `Раздел ${sec.roman}. ${sec.title}`;
+        });
+      }
     } catch (e) {
       console.error('Error reading section-names.json:', e);
     }
@@ -42,8 +47,10 @@ function generateSidebar() {
       const docId = file.replace(/\.md$/, '');
 
       if (!sections[sectionNum]) {
-        // Look up by exact string (e.g. "01") or numeric string (e.g. "1")
-        const customName = sectionNames[sectionPrefix] || sectionNames[sectionNum.toString()];
+        let customName = sectionMap[sectionNum];
+        if (!customName && sectionNum === 0) {
+          customName = 'Введение';
+        }
         
         sections[sectionNum] = {
           type: 'category',
