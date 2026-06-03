@@ -77,5 +77,13 @@ Get-Item "E:\arduino\chapters\NN-MM-title.md" | Select-Object Name, Length
 ### Шаг 5: Обнови GLOSSARY.md (если нужно)
 Добавь новые термины.
 
-### Шаг 6: Выведи отчет
+### Шаг 6: Git commit и push
+После завершения главы:
+```bash
+git add chapters/NN-MM-title.md STATE.md GLOSSARY.md
+git commit -m "Добавлена глава N.M: Название главы"
+git push
+```
+
+### Шаг 7: Выведи отчет
 Краткий отчет по шаблону из `WRITER_LAUNCH_PROMPT.md`.
