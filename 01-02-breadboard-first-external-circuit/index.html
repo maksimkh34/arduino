@@ -1,0 +1,1116 @@
+<!doctype html>
+<html lang="ru" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-01-02-breadboard-first-external-circuit" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.1">
+<title data-rh="true">Breadboard и первая внешняя схема | Arduino Mega 2560 R3: Учебник</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://maksimkh34.github.io/arduino/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://maksimkh34.github.io/arduino/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://maksimkh34.github.io/arduino/01-02-breadboard-first-external-circuit"><meta data-rh="true" property="og:locale" content="ru"><meta data-rh="true" name="docusaurus_locale" content="ru"><meta data-rh="true" name="docsearch:language" content="ru"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Breadboard и первая внешняя схема | Arduino Mega 2560 R3: Учебник"><meta data-rh="true" name="description" content="Зачем нужна эта глава"><meta data-rh="true" property="og:description" content="Зачем нужна эта глава"><link data-rh="true" rel="icon" href="/arduino/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://maksimkh34.github.io/arduino/01-02-breadboard-first-external-circuit"><link data-rh="true" rel="alternate" href="https://maksimkh34.github.io/arduino/01-02-breadboard-first-external-circuit" hreflang="ru"><link data-rh="true" rel="alternate" href="https://maksimkh34.github.io/arduino/01-02-breadboard-first-external-circuit" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Breadboard и первая внешняя схема","item":"https://maksimkh34.github.io/arduino/01-02-breadboard-first-external-circuit"}]}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/arduino/assets/css/styles.75f65cb6.css">
+<script src="/arduino/assets/js/runtime~main.4a0ae35b.js" defer="defer"></script>
+<script src="/arduino/assets/js/main.0fe16ece.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/arduino/img/logo.svg"><div role="region" aria-label="Перейти к основному содержимому"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Перейти к основному содержимому</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Переключить навигационную панель" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/arduino/"><div class="navbar__logo"><img src="/arduino/img/logo.svg" alt="Arduino Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/arduino/img/logo.svg" alt="Arduino Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Arduino Mega 2560 R3</b></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/maksimkh34/arduino" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Переключение между темным и светлым режимом (сейчас используется system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Прокрутка к началу" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/arduino/01-01-arduino-mega-first-contact"><span title="Раздел 1" class="categoryLinkLabel_W154">Раздел 1</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/arduino/01-01-arduino-mega-first-contact"><span title="Первый контакт: знакомство с Arduino Mega 2560 R3" class="linkLabel_WmDU">Первый контакт: знакомство с Arduino Mega 2560 R3</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/arduino/01-02-breadboard-first-external-circuit"><span title="Breadboard и первая внешняя схема" class="linkLabel_WmDU">Breadboard и первая внешняя схема</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/arduino/01-03-electricity-for-programmers"><span title="Электричество для программистов: напряжение, ток и закон Ома" class="linkLabel_WmDU">Электричество для программистов: напряжение, ток и закон Ома</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Навигационная цепочка текущей страницы"><ul class="breadcrumbs"><li class="breadcrumbs__item"><span class="breadcrumbs__link">Раздел 1</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Breadboard и первая внешняя схема</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">Содержание этой страницы</button></div><div class="theme-doc-markdown markdown"><header><h1>Глава 1.2. Breadboard и первая внешняя схема</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="зачем-нужна-эта-глава">Зачем нужна эта глава<a href="#зачем-нужна-эта-глава" class="hash-link" aria-label="Прямая ссылка на Зачем нужна эта глава" title="Прямая ссылка на Зачем нужна эта глава" translate="no">​</a></h2>
+<p>В прошлой главе мы управляли встроенным LED на пине D13. Это было безопасно и просто: плата защищена резистором, код короткий, результат виден сразу. Но встроенный светодиод — это единственный компонент, который у нас есть прямо на плате. Чтобы двигаться дальше — к кнопкам, датчикам, дисплеям, моторам — нужно научиться подключать внешние компоненты.</p>
+<p>Здесь возникает проблема: как физически соединить Arduino с резистором, светодиодом, кнопкой? Паять каждый раз новую схему неудобно. Использовать провода, просто скручивая их, ненадежно и опасно.</p>
+<p>Решение — <strong>breadboard</strong> (макетная плата). Это инженерный инструмент для быстрого прототипирования: компоненты вставляются в отверстия, внутри платы есть скрытые соединения, схему можно собрать за минуту и так же быстро изменить.</p>
+<p>Breadboard — это не игрушка. Это стандартный инструмент инженера-электронщика, используемый в лабораториях, стартапах, университетах. После этой главы ты сможешь собирать произвольные схемы, понимать, какие отверстия соединены, избегать коротких замыканий и уверенно двигаться к более сложным проектам.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-мы-соберем-к-концу-главы">Что мы соберем к концу главы<a href="#что-мы-соберем-к-концу-главы" class="hash-link" aria-label="Прямая ссылка на Что мы соберем к концу главы" title="Прямая ссылка на Что мы соберем к концу главы" translate="no">​</a></h2>
+<p>К концу главы ты соберешь три рабочих проекта:</p>
+<ol>
+<li class=""><strong>Один внешний светодиод на пине D9</strong>, управляемый программно.</li>
+<li class=""><strong>Два светодиода на разных пинах</strong> (D9 и D8), мигающих с разными частотами.</li>
+<li class=""><strong>Безопасный эксперимент</strong>: проверка, что происходит, если забыть резистор (без реального подключения — через расчет и объяснение).</li>
+</ol>
+<p>Все проекты будут собраны на breadboard, с использованием координат макетной платы, резисторов и понимания полярности светодиодов.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-ты-узнаешь-и-чему-научишься">Что ты узнаешь и чему научишься<a href="#что-ты-узнаешь-и-чему-научишься" class="hash-link" aria-label="Прямая ссылка на Что ты узнаешь и чему научишься" title="Прямая ссылка на Что ты узнаешь и чему научишься" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="знания">Знания<a href="#знания" class="hash-link" aria-label="Прямая ссылка на Знания" title="Прямая ссылка на Знания" translate="no">​</a></h3>
+<ul>
+<li class="">Устройство breadboard: внутренние соединения, контактные группы <code>a-e</code> и <code>f-j</code>, центральный разрыв.</li>
+<li class="">Координатная система макетной платы: строки <code>1-63</code>, столбцы <code>a-j</code>.</li>
+<li class="">Шины питания: как их использовать, почему они бывают разделены.</li>
+<li class="">Полярность светодиода: анод, катод, как их различить визуально.</li>
+<li class="">Роль резистора в цепи светодиода (вводно, подробнее — в главе 1.3).</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="навыки">Навыки<a href="#навыки" class="hash-link" aria-label="Прямая ссылка на Навыки" title="Прямая ссылка на Навыки" translate="no">​</a></h3>
+<ul>
+<li class="">Читать текстовое описание схемы и собирать её на breadboard.</li>
+<li class="">Использовать таблицу соединений как чертеж схемы.</li>
+<li class="">Безопасно вставлять компоненты, избегать коротких замыканий.</li>
+<li class="">Управлять внешними компонентами через цифровые пины Arduino.</li>
+<li class="">Диагностировать типичные ошибки сборки: перепутанная полярность, забытый резистор, неправильная строка макетки.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="карта-путешествия">Карта путешествия<a href="#карта-путешествия" class="hash-link" aria-label="Прямая ссылка на Карта путешествия" title="Прямая ссылка на Карта путешествия" translate="no">​</a></h2>
+<ol>
+<li class=""><strong>Теория breadboard:</strong> Устройство макетной платы, внутренние соединения, координаты.</li>
+<li class=""><strong>Теория светодиода:</strong> Полярность, анод, катод, роль резистора (кратко).</li>
+<li class=""><strong>Проект 1:</strong> Один внешний LED на D9.</li>
+<li class=""><strong>Проект 2:</strong> Два LED на разных пинах с разными частотами мигания.</li>
+<li class=""><strong>Проект 3 (безопасный эксперимент):</strong> Что произойдет без резистора.</li>
+<li class=""><strong>Эксперименты:</strong> Изменение номинала резистора, изменение пинов.</li>
+<li class=""><strong>Частые ошибки:</strong> Перепутанная полярность, короткое замыкание, неправильные координаты.</li>
+<li class=""><strong>Проверь себя:</strong> Вопросы на понимание устройства breadboard.</li>
+<li class=""><strong>Что мы теперь умеем и как это пригодится дальше.</strong></li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="ключевые-термины">Ключевые термины<a href="#ключевые-термины" class="hash-link" aria-label="Прямая ссылка на Ключевые термины" title="Прямая ссылка на Ключевые термины" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Breadboard (макетная плата):</strong> Доска с отверстиями для быстрого прототипирования схем без пайки.</li>
+<li class=""><strong>Контактная группа:</strong> Набор отверстий, электрически соединенных внутри макетки (обычно <code>a-e</code> в одной строке, <code>f-j</code> в одной строке).</li>
+<li class=""><strong>Центральный разрыв (central gap):</strong> Разрыв между столбцами <code>e</code> и <code>f</code>, не проводящий ток. Нужен для установки микросхем.</li>
+<li class=""><strong>Шина питания (power rail):</strong> Длинная вертикальная полоса отверстий по краям breadboard, обычно обозначенная красной (<code>+</code>) и синей/черной (<code>-</code>) линиями. Используется для распределения <code>VCC</code> и <code>GND</code>.</li>
+<li class=""><strong>Джампер (jumper wire):</strong> Соединительный провод для макетной платы. Бывают папа-папа, папа-мама, мама-мама.</li>
+<li class=""><strong>Полярность:</strong> Направленность компонента. Светодиод имеет полярность: ток должен течь от анода к катоду.</li>
+<li class=""><strong>Анод (anode):</strong> Положительный вывод светодиода (длинная ножка).</li>
+<li class=""><strong>Катод (cathode):</strong> Отрицательный вывод светодиода (короткая ножка, часто с плоским срезом корпуса).</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="практическая-задача-главы">Практическая задача главы<a href="#практическая-задача-главы" class="hash-link" aria-label="Прямая ссылка на Практическая задача главы" title="Прямая ссылка на Практическая задача главы" translate="no">​</a></h2>
+<p><strong>Задача:</strong> Подключить внешний светодиод к Arduino Mega через breadboard и управлять им программно.</p>
+<p><strong>Почему это нетривиально:</strong></p>
+<ul>
+<li class="">Нужно понять, как устроена макетная плата: какие отверстия соединены, какие нет.</li>
+<li class="">Нужно правильно вставить светодиод: перепутанная полярность — и схема не работает.</li>
+<li class="">Нужно не забыть резистор: без него светодиод или пин Arduino могут выйти из строя.</li>
+<li class="">Нужно использовать координаты макетки, чтобы схема была воспроизводима.</li>
+</ul>
+<p>Эта задача закладывает фундамент: все будущие проекты будут собираться на breadboard. Если ты разберешься с макеткой сейчас, дальше сборка схем станет рутинной операцией.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="теория-которая-нужна-для-решения-задачи">Теория, которая нужна для решения задачи<a href="#теория-которая-нужна-для-решения-задачи" class="hash-link" aria-label="Прямая ссылка на Теория, которая нужна для решения задачи" title="Прямая ссылка на Теория, которая нужна для решения задачи" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-такое-breadboard-и-зачем-он-нужен">Что такое breadboard и зачем он нужен<a href="#что-такое-breadboard-и-зачем-он-нужен" class="hash-link" aria-label="Прямая ссылка на Что такое breadboard и зачем он нужен" title="Прямая ссылка на Что такое breadboard и зачем он нужен" translate="no">​</a></h3>
+<p>Breadboard (макетная плата, беспаечная плата) — это пластиковая доска с сеткой отверстий. Внутри платы скрыты металлические контакты, соединяющие определенные группы отверстий. Вставляя компонент в отверстия, ты замыкаешь его выводы через эти контакты.</p>
+<p>Главное преимущество breadboard:</p>
+<ul>
+<li class=""><strong>Быстрота:</strong> Собрать схему можно за минуту.</li>
+<li class=""><strong>Гибкость:</strong> Изменить схему можно мгновенно, просто вынув компонент и вставив его в другое место.</li>
+<li class=""><strong>Многократное использование:</strong> Компоненты не портятся, макетку можно использовать тысячи раз.</li>
+</ul>
+<p>Breadboard бывают разных размеров. Стандартный размер — 830 точек (отверстий). Наша макетка имеет:</p>
+<ul>
+<li class=""><strong>63 строки</strong> (горизонтальные ряды, пронумерованные <code>1-63</code>).</li>
+<li class=""><strong>10 столбцов</strong> в центральной области: <code>a, b, c, d, e</code> и <code>f, g, h, i, j</code>.</li>
+<li class=""><strong>Две шины питания</strong> по краям (вертикальные полосы, обозначенные <code>+</code> и <code>-</code>).</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="внутреннее-устройство-контактные-группы">Внутреннее устройство: контактные группы<a href="#внутреннее-устройство-контактные-группы" class="hash-link" aria-label="Прямая ссылка на Внутреннее устройство: контактные группы" title="Прямая ссылка на Внутреннее устройство: контактные группы" translate="no">​</a></h3>
+<p>Ключевой принцип breadboard: <strong>внутри платы есть скрытые металлические полоски, соединяющие отверстия</strong>.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="центральная-область-строки-a-e-и-f-j">Центральная область (строки <code>a-e</code> и <code>f-j</code>)<a href="#центральная-область-строки-a-e-и-f-j" class="hash-link" aria-label="Прямая ссылка на центральная-область-строки-a-e-и-f-j" title="Прямая ссылка на центральная-область-строки-a-e-и-f-j" translate="no">​</a></h4>
+<p>В каждой строке:</p>
+<ul>
+<li class="">Отверстия <code>a1, b1, c1, d1, e1</code> <strong>электрически соединены</strong> между собой горизонтальной металлической полоской.</li>
+<li class="">Отверстия <code>f1, g1, h1, i1, j1</code> <strong>электрически соединены</strong> между собой другой полоской.</li>
+<li class="">Между <code>e1</code> и <code>f1</code> есть <strong>центральный разрыв</strong> (gap) — эти отверстия <strong>не соединены</strong>.</li>
+</ul>
+<p>Это верно для каждой строки <code>1-63</code>.</p>
+<p><strong>Интуиция:</strong></p>
+<blockquote>
+<p>Представь, что каждая строка — это две короткие горизонтальные проводящие дорожки, разделенные посередине. Левая половина (<code>a-e</code>) — одна дорожка, правая (<code>f-j</code>) — другая. Между ними — изолятор.</p>
+</blockquote>
+<p><strong>Зачем центральный разрыв?</strong></p>
+<p>Это сделано для установки микросхем (DIP-корпуса). У микросхемы выводы расположены по обе стороны корпуса. Если вставить микросхему так, чтобы она &quot;перекрывала&quot; центральный разрыв, выводы левой стороны окажутся в группе <code>a-e</code>, выводы правой — в группе <code>f-j</code>, и они не замкнутся между собой.</p>
+<p>Для простых схем это означает: <strong>если хочешь соединить что-то из группы <code>a-e</code> с группой <code>f-j</code>, нужен провод (джампер).</strong></p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="шины-питания-power-rails">Шины питания (power rails)<a href="#шины-питания-power-rails" class="hash-link" aria-label="Прямая ссылка на Шины питания (power rails)" title="Прямая ссылка на Шины питания (power rails)" translate="no">​</a></h4>
+<p>По краям breadboard идут две длинные вертикальные полосы:</p>
+<ul>
+<li class=""><strong>Красная линия (<code>+</code>)</strong> — обычно используется для подачи <code>+5V</code> (или <code>+3.3V</code>).</li>
+<li class=""><strong>Синяя или черная линия (<code>-</code>)</strong> — используется для <code>GND</code>.</li>
+</ul>
+<p>Внутри каждой шины все отверстия вдоль вертикали <strong>соединены между собой</strong>. Это позволяет:</p>
+<ul>
+<li class="">Подключить <code>GND</code> от Arduino к одной точке шины, и использовать <code>GND</code> из любой другой точки этой шины.</li>
+<li class="">Подключить <code>5V</code> от Arduino к шине <code>+</code>, и брать питание из любого отверстия этой шины.</li>
+</ul>
+<p><strong>Важно:</strong></p>
+<blockquote>
+<p><strong>Важно</strong></p>
+<p>На некоторых breadboard шины питания разделены посередине (имеют разрыв). Если твоя макетка длинная (830 точек), проверь, нет ли разрыва в шинах. Если разрыв есть, нужно соединить две половины шины джампером.</p>
+</blockquote>
+<p>В наших проектах мы будем явно указывать, откуда берется <code>GND</code> и <code>5V</code>, чтобы избежать неопределенности.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="координатная-система-макетной-платы">Координатная система макетной платы<a href="#координатная-система-макетной-платы" class="hash-link" aria-label="Прямая ссылка на Координатная система макетной платы" title="Прямая ссылка на Координатная система макетной платы" translate="no">​</a></h3>
+<p>Чтобы схему можно было воспроизвести, используется система координат:</p>
+<ul>
+<li class=""><strong>Строка:</strong> число от <code>1</code> до <code>63</code>.</li>
+<li class=""><strong>Столбец:</strong> буква от <code>a</code> до <code>j</code>.</li>
+</ul>
+<p>Координата записывается как <code>&lt;столбец&gt;&lt;строка&gt;</code>: <code>a5</code>, <code>e12</code>, <code>f30</code>, <code>j63</code>.</p>
+<p>Эта система похожа на координаты в игре &quot;морской бой&quot; или на шахматной доске.</p>
+<p><strong>Пример:</strong></p>
+<ul>
+<li class=""><code>a10</code> — отверстие в столбце <code>a</code>, строке <code>10</code>.</li>
+<li class=""><code>e10</code> — отверстие в столбце <code>e</code>, строке <code>10</code>.</li>
+<li class=""><code>a10</code> и <code>e10</code> <strong>соединены</strong> (одна контактная группа).</li>
+<li class=""><code>f10</code> и <code>j10</code> <strong>соединены</strong> (другая контактная группа).</li>
+<li class=""><code>e10</code> и <code>f10</code> <strong>не соединены</strong> (центральный разрыв).</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-читать-схему-для-breadboard">Как читать схему для breadboard<a href="#как-читать-схему-для-breadboard" class="hash-link" aria-label="Прямая ссылка на Как читать схему для breadboard" title="Прямая ссылка на Как читать схему для breadboard" translate="no">​</a></h3>
+<p>В этом учебнике схемы будут описаны текстом и таблицей соединений. Таблица содержит:</p>
+<ul>
+<li class=""><strong>Компонент:</strong> Что подключаем (резистор, LED, провод).</li>
+<li class=""><strong>Контакт компонента:</strong> Какой вывод компонента (анод, катод, первый вывод резистора).</li>
+<li class=""><strong>Куда подключить:</strong> Координата на breadboard или пин Arduino.</li>
+<li class=""><strong>Комментарий:</strong> Пояснение, зачем это соединение.</li>
+</ul>
+<p>Такой формат точен, воспроизводим и не зависит от наличия иллюстраций.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="полярность-светодиода-анод-и-катод">Полярность светодиода: анод и катод<a href="#полярность-светодиода-анод-и-катод" class="hash-link" aria-label="Прямая ссылка на Полярность светодиода: анод и катод" title="Прямая ссылка на Полярность светодиода: анод и катод" translate="no">​</a></h3>
+<p>Светодиод (LED, Light Emitting Diode) — это диод, который излучает свет при прохождении тока. Ключевое слово — <strong>диод</strong>: ток может течь только в одном направлении.</p>
+<p><strong>Полярность светодиода:</strong></p>
+<ul>
+<li class=""><strong>Анод (anode):</strong> Положительный вывод. Ток должен входить через анод.</li>
+<li class=""><strong>Катод (cathode):</strong> Отрицательный вывод. Ток должен выходить через катод.</li>
+</ul>
+<p>Если подключить светодиод наоборот (анод к <code>GND</code>, катод к <code>+</code>), он не будет светить. Это не опасно для светодиода, но схема не работает.</p>
+<p><strong>Как различить анод и катод визуально:</strong></p>
+<ol>
+<li class="">
+<p><strong>Длина ножек (для нового светодиода):</strong></p>
+<ul>
+<li class=""><strong>Длинная ножка</strong> — анод (<code>+</code>).</li>
+<li class=""><strong>Короткая ножка</strong> — катод (<code>-</code>).</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Плоский срез на корпусе:</strong></p>
+<ul>
+<li class="">На пластиковом корпусе светодиода часто есть небольшой плоский срез с одной стороны. Этот срез обычно указывает на <strong>катод</strong>.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Внутренняя структура (если корпус прозрачный):</strong></p>
+<ul>
+<li class="">Внутри светодиода виден маленький кристалл и два электрода. Больший электрод (пластина) обычно — катод, меньший — анод. Этот метод менее надежен для новичков.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Правило подключения:</strong></p>
+<p>Анод → резистор → цифровой пин Arduino (например, D9).<br>
+Катод → <code>GND</code>.</p>
+<p>Или наоборот (резистор можно ставить с любой стороны):</p>
+<p>Цифровой пин → резистор → анод светодиода.<br>
+Катод → <code>GND</code>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="роль-резистора-вводно">Роль резистора (вводно)<a href="#роль-резистора-вводно" class="hash-link" aria-label="Прямая ссылка на Роль резистора (вводно)" title="Прямая ссылка на Роль резистора (вводно)" translate="no">​</a></h3>
+<p>Светодиод нельзя подключать напрямую к пину Arduino без резистора. Почему?</p>
+<p><strong>Краткий ответ:</strong> Светодиод имеет очень низкое сопротивление, когда открыт. Если подключить его напрямую к <code>5V</code>, через него пойдет слишком большой ток, который может:</p>
+<ul>
+<li class="">Повредить светодиод (перегрев, выгорание кристалла).</li>
+<li class="">Повредить пин Arduino (пины ограничены по току: обычно <code>20-40 мА</code> максимум, рекомендуется не более <code>20 мА</code>).</li>
+</ul>
+<p>Резистор <strong>ограничивает ток</strong> до безопасного значения (обычно <code>5-20 мА</code> для стандартного LED).</p>
+<p><strong>Подробнее о законе Ома и расчете резистора</strong> мы поговорим в главе 1.3. Сейчас запомни:</p>
+<blockquote>
+<p><strong>Важно</strong></p>
+<p>Всегда используй резистор последовательно со светодиодом. Стандартный номинал для <code>5V</code> и обычного LED — <code>220 Ом</code> или <code>330 Ом</code>. Это безопасно и светодиод будет светить ярко.</p>
+</blockquote>
+<blockquote>
+<p><strong>Ошибка новичка</strong></p>
+<p>Забыть резистор и подключить светодиод напрямую к пину Arduino. Это может привести к тому, что:</p>
+<ul>
+<li class="">Светодиод сгорит (выйдет из строя).</li>
+<li class="">Пин Arduino перегрузится и может повредиться.</li>
+<li class="">В лучшем случае Arduino просто ограничит ток внутренней защитой, но это ненадежное поведение.</li>
+</ul>
+<p><strong>Правило:</strong> Если в схеме есть светодиод, там должен быть резистор (обычно <code>220 Ом</code> или <code>330 Ом</code>).</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-вставлять-компоненты-в-breadboard">Как вставлять компоненты в breadboard<a href="#как-вставлять-компоненты-в-breadboard" class="hash-link" aria-label="Прямая ссылка на Как вставлять компоненты в breadboard" title="Прямая ссылка на Как вставлять компоненты в breadboard" translate="no">​</a></h3>
+<p><strong>Общие правила:</strong></p>
+<ol>
+<li class="">
+<p><strong>Не прилагай чрезмерную силу.</strong> Отверстия breadboard рассчитаны на стандартные выводы компонентов и провода <code>22-24 AWG</code>. Если компонент не входит, не дави — проверь, правильно ли ты выбрал отверстие.</p>
+</li>
+<li class="">
+<p><strong>Вставляй компонент до упора, но не сгибай выводы.</strong> Вывод должен войти в отверстие на <code>5-7 мм</code>, чтобы коснуться металлического контакта внутри.</p>
+</li>
+<li class="">
+<p><strong>Не вставляй компоненты слишком плотно друг к другу.</strong> Оставляй пространство для возможных изменений схемы.</p>
+</li>
+<li class="">
+<p><strong>Проверяй полярность</strong> (для светодиодов, электролитических конденсаторов и других полярных компонентов) перед вставкой.</p>
+</li>
+<li class="">
+<p><strong>Проверяй схему визуально перед подачей питания.</strong> Убедись, что нет коротких замыканий (<code>5V</code> напрямую соединен с <code>GND</code>), что резисторы на месте, что светодиоды подключены правильной стороной.</p>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проект-1-один-внешний-светодиод-на-пине-d9">Проект 1. Один внешний светодиод на пине D9<a href="#проект-1-один-внешний-светодиод-на-пине-d9" class="hash-link" aria-label="Прямая ссылка на Проект 1. Один внешний светодиод на пине D9" title="Прямая ссылка на Проект 1. Один внешний светодиод на пине D9" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идея-проекта">Идея проекта<a href="#идея-проекта" class="hash-link" aria-label="Прямая ссылка на Идея проекта" title="Прямая ссылка на Идея проекта" translate="no">​</a></h3>
+<p>Подключить светодиод к Arduino через breadboard и управлять им с помощью цифрового пина D9. Светодиод будет мигать с периодом 1 секунда (0.5 сек включен, 0.5 сек выключен).</p>
+<p>Это первый раз, когда мы подключаем внешний компонент. Схема проста, но требует понимания устройства breadboard, полярности светодиода и роли резистора.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="чему-учит-этот-проект">Чему учит этот проект<a href="#чему-учит-этот-проект" class="hash-link" aria-label="Прямая ссылка на Чему учит этот проект" title="Прямая ссылка на Чему учит этот проект" translate="no">​</a></h3>
+<ul>
+<li class="">Работать с breadboard: использовать координаты, понимать контактные группы.</li>
+<li class="">Различать анод и катод светодиода.</li>
+<li class="">Использовать резистор для ограничения тока.</li>
+<li class="">Управлять внешним компонентом через <code>digitalWrite()</code>.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-понадобится">Что понадобится<a href="#что-понадобится" class="hash-link" aria-label="Прямая ссылка на Что понадобится" title="Прямая ссылка на Что понадобится" translate="no">​</a></h3>
+<ul>
+<li class="">Arduino Mega 2560 R3.</li>
+<li class="">Breadboard (макетная плата).</li>
+<li class="">Светодиод (любой цвет, обычно красный или зеленый).</li>
+<li class="">Резистор <code>220 Ом</code> (цветовая маркировка: красный-красный-коричневый).</li>
+<li class="">2 провода папа-папа (джамперы):
+<ul>
+<li class="">Один для соединения пина D9 с breadboard.</li>
+<li class="">Один для соединения <code>GND</code> Arduino с breadboard.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="схема-подключения">Схема подключения<a href="#схема-подключения" class="hash-link" aria-label="Прямая ссылка на Схема подключения" title="Прямая ссылка на Схема подключения" translate="no">​</a></h3>
+<p><strong>Пошаговое описание:</strong></p>
+<ol>
+<li class="">
+<p><strong>Размести Arduino и breadboard рядом.</strong> USB-кабель подключен к Arduino, компьютер готов загрузить код.</p>
+</li>
+<li class="">
+<p><strong>Вставь светодиод в breadboard:</strong></p>
+<ul>
+<li class=""><strong>Анод (длинная ножка)</strong> светодиода — в отверстие <code>e10</code>.</li>
+<li class=""><strong>Катод (короткая ножка)</strong> светодиода — в отверстие <code>e11</code>.</li>
+<li class="">Светодиод стоит вертикально, ножки входят в соседние строки.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Вставь резистор <code>220 Ом</code>:</strong></p>
+<ul>
+<li class="">Один вывод резистора — в отверстие <code>a10</code> (та же строка, что и анод светодиода).</li>
+<li class="">Второй вывод резистора — в отверстие <code>a8</code> (выше, чтобы было место для провода).</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Подключи провод от пина D9 Arduino к резистору:</strong></p>
+<ul>
+<li class="">Один конец провода — в пин <strong>D9</strong> на Arduino.</li>
+<li class="">Другой конец провода — в отверстие <code>b8</code> (та же контактная группа, что и второй вывод резистора).</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Подключи провод от катода светодиода к <code>GND</code> Arduino:</strong></p>
+<ul>
+<li class="">Один конец провода — в отверстие <code>a11</code> (та же строка, что и катод светодиода).</li>
+<li class="">Другой конец провода — в пин <strong>GND</strong> на Arduino (любой из доступных GND).</li>
+</ul>
+</li>
+</ol>
+<p><strong>Проверка перед включением:</strong></p>
+<ul>
+<li class="">Анод светодиода (длинная ножка) соединен с D9 через резистор.</li>
+<li class="">Катод светодиода (короткая ножка) соединен с <code>GND</code>.</li>
+<li class="">Резистор находится между D9 и анодом светодиода (последовательно).</li>
+<li class="">Нет замыканий между <code>5V</code> и <code>GND</code>.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="таблица-соединений">Таблица соединений<a href="#таблица-соединений" class="hash-link" aria-label="Прямая ссылка на Таблица соединений" title="Прямая ссылка на Таблица соединений" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Компонент</th><th>Контакт компонента</th><th>Куда подключить</th><th>Комментарий</th></tr></thead><tbody><tr><td>Светодиод</td><td>Анод (длинная ножка)</td><td><code>e10</code></td><td>Положительный вывод светодиода</td></tr><tr><td>Светодиод</td><td>Катод (короткая ножка)</td><td><code>e11</code></td><td>Отрицательный вывод светодиода</td></tr><tr><td>Резистор 220 Ом</td><td>Первый вывод</td><td><code>a10</code></td><td>Та же строка, что анод LED (группа <code>a-e</code> в строке 10 соединена)</td></tr><tr><td>Резистор 220 Ом</td><td>Второй вывод</td><td><code>a8</code></td><td>Выше, для удобства подключения провода</td></tr><tr><td>Провод (джампер)</td><td>Один конец</td><td>Пин D9 (Arduino)</td><td>Цифровой выход</td></tr><tr><td>Провод (джампер)</td><td>Другой конец</td><td><code>b8</code></td><td>Та же группа, что второй вывод резистора</td></tr><tr><td>Провод (джампер)</td><td>Один конец</td><td>Пин GND (Arduino)</td><td>Общая земля</td></tr><tr><td>Провод (джампер)</td><td>Другой конец</td><td><code>a11</code></td><td>Та же группа, что катод LED</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="код-проекта">Код проекта<a href="#код-проекта" class="hash-link" aria-label="Прямая ссылка на Код проекта" title="Прямая ссылка на Код проекта" translate="no">​</a></h3>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Проект 1: Один внешний светодиод на пине D9</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> ledPin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">9</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">// Пин, к которому подключен светодиод</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">// Настраиваем D9 как выход</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">// Включаем светодиод</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">500</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">                 </span><span class="token comment" style="color:#999988;font-style:italic">// Ждем 0.5 секунды</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Выключаем светодиод</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">500</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">                 </span><span class="token comment" style="color:#999988;font-style:italic">// Ждем 0.5 секунды</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-коде">Что происходит в коде<a href="#что-происходит-в-коде" class="hash-link" aria-label="Прямая ссылка на Что происходит в коде" title="Прямая ссылка на Что происходит в коде" translate="no">​</a></h3>
+<p>Код практически идентичен Blink из главы 1.1, но вместо встроенного LED на D13 мы используем внешний светодиод на D9.</p>
+<p><strong>Построчный разбор:</strong></p>
+<ul>
+<li class="">
+<p><code>const int ledPin = 9;</code> — Объявляем константу <code>ledPin</code>, хранящую номер пина (9). Использование константы делает код понятнее: если нужно изменить пин, меняем только одну строку.</p>
+</li>
+<li class="">
+<p><code>void setup()</code> — Функция инициализации, выполняется один раз при старте.</p>
+</li>
+<li class="">
+<p><code>pinMode(ledPin, OUTPUT);</code> — Настраиваем пин D9 как цифровой выход. Это означает, что микроконтроллер может устанавливать напряжение на этом пине программно (<code>HIGH</code> или <code>LOW</code>).</p>
+</li>
+<li class="">
+<p><code>void loop()</code> — Бесконечный цикл, выполняется постоянно.</p>
+</li>
+<li class="">
+<p><code>digitalWrite(ledPin, HIGH);</code> — Устанавливаем пин D9 в состояние <code>HIGH</code> (около <code>5V</code>). Ток начинает течь через резистор и светодиод. Светодиод излучает свет.</p>
+</li>
+<li class="">
+<p><code>delay(500);</code> — Блокирующая задержка на 500 миллисекунд (0.5 секунды). Программа останавливается, светодиод продолжает светить.</p>
+</li>
+<li class="">
+<p><code>digitalWrite(ledPin, LOW);</code> — Устанавливаем пин D9 в состояние <code>LOW</code> (около <code>0V</code>). Ток перестает течь. Светодиод гаснет.</p>
+</li>
+<li class="">
+<p><code>delay(500);</code> — Ждем еще 0.5 секунды. Светодиод не горит.</p>
+</li>
+</ul>
+<p>Цикл повторяется: светодиод мигает с периодом 1 секунда.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-схеме">Что происходит в схеме<a href="#что-происходит-в-схеме" class="hash-link" aria-label="Прямая ссылка на Что происходит в схеме" title="Прямая ссылка на Что происходит в схеме" translate="no">​</a></h3>
+<p><strong>Электрический путь тока:</strong></p>
+<ol>
+<li class="">
+<p><strong>Когда пин D9 в состоянии <code>HIGH</code>:</strong></p>
+<ul>
+<li class="">Напряжение на D9 — около <code>5V</code>.</li>
+<li class="">Ток течет: <strong>D9 → провод → резистор 220 Ом → анод светодиода → катод светодиода → провод → GND Arduino</strong>.</li>
+<li class="">Резистор ограничивает ток до безопасного значения (около <code>10-15 мА</code> для красного LED при <code>5V</code> и резисторе <code>220 Ом</code>).</li>
+<li class="">Светодиод открыт (ток течет от анода к катоду), кристалл излучает фотоны, мы видим свет.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Когда пин D9 в состоянии <code>LOW</code>:</strong></p>
+<ul>
+<li class="">Напряжение на D9 — около <code>0V</code>.</li>
+<li class="">Между D9 и GND нет разности потенциалов.</li>
+<li class="">Ток не течет.</li>
+<li class="">Светодиод закрыт, не светит.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Роль резистора:</strong></p>
+<p>Резистор стоит последовательно со светодиодом. Он &quot;съедает&quot; часть напряжения (<code>5V</code> минус прямое падение напряжения на LED), ограничивая ток. Без резистора ток был бы слишком большим.</p>
+<p><strong>Почему светодиод не горит, если перепутать полярность:</strong></p>
+<p>Светодиод — это диод. Диод пропускает ток только в одном направлении (от анода к катоду). Если подключить светодиод наоборот:</p>
+<ul>
+<li class="">Анод к <code>GND</code>, катод к D9 (<code>HIGH</code>).</li>
+<li class="">Ток пытается течь от катода к аноду — диод заперт, ток не идет, светодиод не светит.</li>
+</ul>
+<p>Это не опасно, но схема не работает. Решение: развернуть светодиод.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-проверить-работу">Как проверить работу<a href="#как-проверить-работу" class="hash-link" aria-label="Прямая ссылка на Как проверить работу" title="Прямая ссылка на Как проверить работу" translate="no">​</a></h3>
+<ol>
+<li class=""><strong>Загрузи код в Arduino</strong> через Arduino IDE.</li>
+<li class=""><strong>Наблюдай за светодиодом:</strong>
+<ul>
+<li class="">Светодиод должен мигать с частотой 1 Гц (период 1 секунда: 0.5 сек горит, 0.5 сек не горит).</li>
+</ul>
+</li>
+<li class=""><strong>Проверь яркость:</strong>
+<ul>
+<li class="">Светодиод должен светить достаточно ярко (резистор <code>220 Ом</code> позволяет току около <code>10-15 мА</code>).</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="если-не-работает">Если не работает<a href="#если-не-работает" class="hash-link" aria-label="Прямая ссылка на Если не работает" title="Прямая ссылка на Если не работает" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Симптом</th><th>Возможная причина</th><th>Решение</th></tr></thead><tbody><tr><td>Светодиод не горит вообще</td><td>Перепутана полярность</td><td>Разверни светодиод: анод (длинная ножка) к резистору, катод к GND</td></tr><tr><td>Светодиод не горит вообще</td><td>Резистор или провод не в той строке breadboard</td><td>Проверь таблицу соединений: контактные группы должны совпадать</td></tr><tr><td>Светодиод не горит вообще</td><td>Код не загружен или загружен на другую плату</td><td>Проверь, что выбрана правильная плата и порт в Arduino IDE</td></tr><tr><td>Светодиод горит постоянно, не мигает</td><td>Ошибка в коде: забыт <code>delay()</code> или <code>digitalWrite(LOW)</code></td><td>Проверь код, убедись, что цикл <code>loop()</code> правильный</td></tr><tr><td>Светодиод очень тусклый или мигает странно</td><td>Плохой контакт в breadboard</td><td>Переставь компоненты, убедись, что выводы вошли глубоко в отверстия</td></tr><tr><td>Arduino перезагружается или ведет себя странно</td><td>Короткое замыкание: <code>5V</code> и <code>GND</code> замкнуты</td><td>Отключи питание, проверь схему визуально, убери лишние соединения</td></tr></tbody></table>
+<blockquote>
+<p><strong>Ошибка новичка</strong></p>
+<p>Вставлять компонент в breadboard неглубоко. Если вывод не касается металлического контакта внутри, электрический контакт не будет установлен, и схема не работает. Решение: вставляй выводы до упора (5-7 мм глубины), но не дави слишком сильно.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идеи-для-развития">Идеи для развития<a href="#идеи-для-развития" class="hash-link" aria-label="Прямая ссылка на Идеи для развития" title="Прямая ссылка на Идеи для развития" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>Измени частоту мигания:</strong></p>
+<ul>
+<li class="">Попробуй <code>delay(100)</code> — быстрое мигание.</li>
+<li class="">Попробуй <code>delay(2000)</code> — медленное мигание.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Измени пин:</strong></p>
+<ul>
+<li class="">Перенеси провод от D9 к другому цифровому пину (например, D8 или D10).</li>
+<li class="">Измени <code>const int ledPin = 9;</code> на <code>const int ledPin = 8;</code>.</li>
+<li class="">Проверь, что работает так же.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Измени резистор:</strong></p>
+<ul>
+<li class="">Попробуй резистор <code>1 кОм</code> вместо <code>220 Ом</code>. Светодиод станет тусклее (меньше тока).</li>
+<li class="">Попробуй резистор <code>100 Ом</code> (если есть). Светодиод станет ярче, но будь осторожен: при слишком маленьком сопротивлении ток может превысить безопасное значение.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проект-2-два-светодиода-на-разных-пинах-с-разными-частотами">Проект 2. Два светодиода на разных пинах с разными частотами<a href="#проект-2-два-светодиода-на-разных-пинах-с-разными-частотами" class="hash-link" aria-label="Прямая ссылка на Проект 2. Два светодиода на разных пинах с разными частотами" title="Прямая ссылка на Проект 2. Два светодиода на разных пинах с разными частотами" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идея-проекта-1">Идея проекта<a href="#идея-проекта-1" class="hash-link" aria-label="Прямая ссылка на Идея проекта" title="Прямая ссылка на Идея проекта" translate="no">​</a></h3>
+<p>Подключить два светодиода к разным цифровым пинам (D9 и D8) и управлять ими независимо: один мигает медленно (период 2 секунды), другой быстро (период 0.4 секунды).</p>
+<p>Этот проект показывает, что:</p>
+<ul>
+<li class="">Arduino может управлять несколькими выходами одновременно.</li>
+<li class="">Каждый пин может иметь своё состояние.</li>
+<li class="">Breadboard позволяет легко масштабировать схемы: добавить компонент — вопрос одной минуты.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="чему-учит-этот-проект-1">Чему учит этот проект<a href="#чему-учит-этот-проект-1" class="hash-link" aria-label="Прямая ссылка на Чему учит этот проект" title="Прямая ссылка на Чему учит этот проект" translate="no">​</a></h3>
+<ul>
+<li class="">Работать с несколькими компонентами на breadboard.</li>
+<li class="">Управлять несколькими пинами одновременно в одном <code>loop()</code>.</li>
+<li class="">Понимать, что <code>delay()</code> блокирует всю программу (оба светодиода управляются синхронно, но с разными интервалами).</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-понадобится-1">Что понадобится<a href="#что-понадобится-1" class="hash-link" aria-label="Прямая ссылка на Что понадобится" title="Прямая ссылка на Что понадобится" translate="no">​</a></h3>
+<ul>
+<li class="">Arduino Mega 2560 R3.</li>
+<li class="">Breadboard.</li>
+<li class="">Два светодиода (можно разных цветов для удобства: красный и зеленый).</li>
+<li class="">Два резистора <code>220 Ом</code>.</li>
+<li class="">3 провода папа-папа:
+<ul>
+<li class="">D9 → резистор первого LED.</li>
+<li class="">D8 → резистор второго LED.</li>
+<li class="">GND → общая земля для обоих LED.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="схема-подключения-1">Схема подключения<a href="#схема-подключения-1" class="hash-link" aria-label="Прямая ссылка на Схема подключения" title="Прямая ссылка на Схема подключения" translate="no">​</a></h3>
+<p><strong>Первый светодиод (на D9):</strong></p>
+<ul>
+<li class="">Анод — <code>e10</code>.</li>
+<li class="">Катод — <code>e11</code>.</li>
+<li class="">Резистор <code>220 Ом</code> — между <code>a10</code> и <code>a8</code>.</li>
+<li class="">Провод от D9 — к <code>b8</code>.</li>
+</ul>
+<p><strong>Второй светодиод (на D8):</strong></p>
+<ul>
+<li class="">Анод — <code>e15</code>.</li>
+<li class="">Катод — <code>e16</code>.</li>
+<li class="">Резистор <code>220 Ом</code> — между <code>a15</code> и <code>a13</code>.</li>
+<li class="">Провод от D8 — к <code>b13</code>.</li>
+</ul>
+<p><strong>Общая земля:</strong></p>
+<ul>
+<li class="">Провод от GND Arduino — к шине питания <code>-</code> (синяя линия) на breadboard.</li>
+<li class="">Провод от <code>a11</code> (катод первого LED) — к шине <code>-</code>.</li>
+<li class="">Провод от <code>a16</code> (катод второго LED) — к шине <code>-</code>.</li>
+</ul>
+<p>Используя шину питания, мы избегаем необходимости тянуть отдельный провод от каждого LED к Arduino GND. Это более аккуратная и масштабируемая схема.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="таблица-соединений-1">Таблица соединений<a href="#таблица-соединений-1" class="hash-link" aria-label="Прямая ссылка на Таблица соединений" title="Прямая ссылка на Таблица соединений" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Компонент</th><th>Контакт компонента</th><th>Куда подключить</th><th>Комментарий</th></tr></thead><tbody><tr><td><strong>Светодиод 1</strong> (красный)</td><td>Анод (длинная ножка)</td><td><code>e10</code></td><td>Первый LED</td></tr><tr><td>Светодиод 1</td><td>Катод (короткая ножка)</td><td><code>e11</code></td><td>К GND через шину</td></tr><tr><td>Резистор 220 Ом (1)</td><td>Первый вывод</td><td><code>a10</code></td><td>Та же группа, что анод LED1</td></tr><tr><td>Резистор 220 Ом (1)</td><td>Второй вывод</td><td><code>a8</code></td><td>Выше для подключения провода</td></tr><tr><td>Провод</td><td>Один конец</td><td>Пин D9 (Arduino)</td><td>Управление LED1</td></tr><tr><td>Провод</td><td>Другой конец</td><td><code>b8</code></td><td>Та же группа, что резистор LED1</td></tr><tr><td><strong>Светодиод 2</strong> (зеленый)</td><td>Анод (длинная ножка)</td><td><code>e15</code></td><td>Второй LED</td></tr><tr><td>Светодиод 2</td><td>Катод (короткая ножка)</td><td><code>e16</code></td><td>К GND через шину</td></tr><tr><td>Резистор 220 Ом (2)</td><td>Первый вывод</td><td><code>a15</code></td><td>Та же группа, что анод LED2</td></tr><tr><td>Резистор 220 Ом (2)</td><td>Второй вывод</td><td><code>a13</code></td><td>Выше для подключения провода</td></tr><tr><td>Провод</td><td>Один конец</td><td>Пин D8 (Arduino)</td><td>Управление LED2</td></tr><tr><td>Провод</td><td>Другой конец</td><td><code>b13</code></td><td>Та же группа, что резистор LED2</td></tr><tr><td>Провод (GND)</td><td>Один конец</td><td>Пин GND (Arduino)</td><td>Общая земля</td></tr><tr><td>Провод (GND)</td><td>Другой конец</td><td>Шина <code>-</code> (любая точка)</td><td>Распределение GND</td></tr><tr><td>Провод</td><td>Один конец</td><td><code>a11</code> (катод LED1)</td><td>Соединение катода LED1 с GND</td></tr><tr><td>Провод</td><td>Другой конец</td><td>Шина <code>-</code></td><td>К общей земле</td></tr><tr><td>Провод</td><td>Один конец</td><td><code>a16</code> (катод LED2)</td><td>Соединение катода LED2 с GND</td></tr><tr><td>Провод</td><td>Другой конец</td><td>Шина <code>-</code></td><td>К общей земле</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="код-проекта-1">Код проекта<a href="#код-проекта-1" class="hash-link" aria-label="Прямая ссылка на Код проекта" title="Прямая ссылка на Код проекта" translate="no">​</a></h3>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Проект 2: Два светодиода с разными частотами мигания</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> led1Pin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">9</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Первый LED на D9 (медленный)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> led2Pin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">8</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Второй LED на D8 (быстрый)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">led1Pin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">// Настраиваем D9 как выход</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">led2Pin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">// Настраиваем D8 как выход</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// LED1: медленное мигание (период 2 секунды)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">led1Pin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">// Горит 1 сек</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">led1Pin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">// Не горит 1 сек</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// LED2: быстрое мигание (период 0.4 секунды)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">led2Pin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">200</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">// Горит 0.2 сек</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">led2Pin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">200</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">// Не горит 0.2 сек</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-коде-1">Что происходит в коде<a href="#что-происходит-в-коде-1" class="hash-link" aria-label="Прямая ссылка на Что происходит в коде" title="Прямая ссылка на Что происходит в коде" translate="no">​</a></h3>
+<p>Этот код показывает ограничение подхода с <code>delay()</code>.</p>
+<p><strong>Построчный разбор:</strong></p>
+<ul>
+<li class="">
+<p><code>const int led1Pin = 9;</code> и <code>const int led2Pin = 8;</code> — Объявляем две константы для двух пинов.</p>
+</li>
+<li class="">
+<p><code>pinMode(led1Pin, OUTPUT);</code> и <code>pinMode(led2Pin, OUTPUT);</code> — Настраиваем оба пина как выходы.</p>
+</li>
+<li class="">
+<p>В <code>loop()</code>:</p>
+<ul>
+<li class="">Сначала включаем <code>led1Pin</code> (D9) на 1 секунду, затем выключаем на 1 секунду.</li>
+<li class="">Затем включаем <code>led2Pin</code> (D8) на 0.2 секунды, затем выключаем на 0.2 секунды.</li>
+<li class="">Цикл повторяется.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Проблема:</strong></p>
+<p>Светодиоды мигают <strong>последовательно</strong>, а не одновременно. Пока LED1 горит 1 секунду, LED2 не может мигать. Это происходит потому, что <code>delay()</code> блокирует выполнение программы.</p>
+<p><strong>Что мы наблюдаем:</strong></p>
+<ul>
+<li class="">LED1 включается на 1 сек → LED1 выключается на 1 сек → LED2 включается на 0.2 сек → LED2 выключается на 0.2 сек → цикл повторяется.</li>
+</ul>
+<p>Это не совсем &quot;два светодиода мигают одновременно&quot;, но это демонстрирует, что Arduino может управлять несколькими пинами. В главе 3.1 (неблокирующие задержки с <code>millis()</code>) мы научимся делать так, чтобы светодиоды мигали действительно независимо.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-схеме-1">Что происходит в схеме<a href="#что-происходит-в-схеме-1" class="hash-link" aria-label="Прямая ссылка на Что происходит в схеме" title="Прямая ссылка на Что происходит в схеме" translate="no">​</a></h3>
+<p><strong>Два независимых пути тока:</strong></p>
+<ol>
+<li class="">
+<p><strong>Путь LED1:</strong></p>
+<ul>
+<li class="">D9 → резистор 220 Ом → анод LED1 → катод LED1 → шина GND → GND Arduino.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Путь LED2:</strong></p>
+<ul>
+<li class="">D8 → резистор 220 Ом → анод LED2 → катод LED2 → шина GND → GND Arduino.</li>
+</ul>
+</li>
+</ol>
+<p>Каждый светодиод имеет свой резистор, свой путь тока, свой управляющий пин. Они электрически независимы. GND общий (это нормально и правильно: земля — это точка отсчета для всех напряжений).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-проверить-работу-1">Как проверить работу<a href="#как-проверить-работу-1" class="hash-link" aria-label="Прямая ссылка на Как проверить работу" title="Прямая ссылка на Как проверить работу" translate="no">​</a></h3>
+<ol>
+<li class="">Загрузи код в Arduino.</li>
+<li class="">Наблюдай за светодиодами:
+<ul>
+<li class="">LED1 (на D9) должен мигать медленно: 1 сек горит, 1 сек не горит.</li>
+<li class="">LED2 (на D8) должен мигать быстро: 0.2 сек горит, 0.2 сек не горит.</li>
+<li class="">Они мигают последовательно (сначала LED1, потом LED2), а не одновременно.</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="если-не-работает-1">Если не работает<a href="#если-не-работает-1" class="hash-link" aria-label="Прямая ссылка на Если не работает" title="Прямая ссылка на Если не работает" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Симптом</th><th>Возможная причина</th><th>Решение</th></tr></thead><tbody><tr><td>Один из светодиодов не горит</td><td>Перепутана полярность этого LED</td><td>Разверни светодиод</td></tr><tr><td>Один из светодиодов не горит</td><td>Провод от пина Arduino не в той группе breadboard</td><td>Проверь таблицу соединений</td></tr><tr><td>Оба светодиода не горят</td><td>GND не подключен или шина <code>-</code> не соединена</td><td>Проверь провод от GND Arduino к шине <code>-</code></td></tr><tr><td>Светодиоды мигают одновременно, а не последовательно</td><td>Ошибка в коде или неправильная интерпретация</td><td>Код в этом проекте действительно управляет LED последовательно. Если хочешь одновременного мигания, нужен другой подход (глава 3.1)</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идеи-для-развития-1">Идеи для развития<a href="#идеи-для-развития-1" class="hash-link" aria-label="Прямая ссылка на Идеи для развития" title="Прямая ссылка на Идеи для развития" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>Измени интервалы:</strong></p>
+<ul>
+<li class="">Попробуй сделать LED1 очень медленным (<code>delay(5000)</code>), LED2 очень быстрым (<code>delay(50)</code>).</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Добавь третий светодиод:</strong></p>
+<ul>
+<li class="">Подключи еще один LED к D7.</li>
+<li class="">Добавь управление им в <code>loop()</code>.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Попробуй синхронное включение:</strong></p>
+<ul>
+<li class="">Включи оба LED одновременно (<code>digitalWrite(led1Pin, HIGH); digitalWrite(led2Pin, HIGH);</code>), подожди, затем выключи оба. Это покажет, что пины можно устанавливать одновременно.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проект-3-безопасный-эксперимент-что-произойдет-без-резистора">Проект 3. Безопасный эксперимент: что произойдет без резистора<a href="#проект-3-безопасный-эксперимент-что-произойдет-без-резистора" class="hash-link" aria-label="Прямая ссылка на Проект 3. Безопасный эксперимент: что произойдет без резистора" title="Прямая ссылка на Проект 3. Безопасный эксперимент: что произойдет без резистора" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идея-проекта-2">Идея проекта<a href="#идея-проекта-2" class="hash-link" aria-label="Прямая ссылка на Идея проекта" title="Прямая ссылка на Идея проекта" translate="no">​</a></h3>
+<p>Этот проект — <strong>теоретический эксперимент</strong>. Мы не будем физически подключать светодиод без резистора (это опасно), но проанализируем, что произошло бы, если бы мы это сделали.</p>
+<p>Цель: понять роль резистора через расчет и рассуждение, а не через разрушение компонентов.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="чему-учит-этот-проект-2">Чему учит этот проект<a href="#чему-учит-этот-проект-2" class="hash-link" aria-label="Прямая ссылка на Чему учит этот проект" title="Прямая ссылка на Чему учит этот проект" translate="no">​</a></h3>
+<ul>
+<li class="">Понимать физическую необходимость резистора.</li>
+<li class="">Учиться анализировать схему до сборки (принцип инженерной безопасности).</li>
+<li class="">Развивать интуицию о токе, напряжении и ограничениях компонентов.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-произошло-бы-если-подключить-светодиод-напрямую-к-d9-без-резистора">Что произошло бы, если подключить светодиод напрямую к D9 (без резистора)<a href="#что-произошло-бы-если-подключить-светодиод-напрямую-к-d9-без-резистора" class="hash-link" aria-label="Прямая ссылка на Что произошло бы, если подключить светодиод напрямую к D9 (без резистора)" title="Прямая ссылка на Что произошло бы, если подключить светодиод напрямую к D9 (без резистора)" translate="no">​</a></h3>
+<p><strong>Схема (опасная, не собирать):</strong></p>
+<p>D9 (<code>HIGH</code>, <code>5V</code>) → анод светодиода → катод светодиода → GND.</p>
+<p><strong>Анализ:</strong></p>
+<ol>
+<li class="">
+<p><strong>Светодиод имеет очень низкое сопротивление в открытом состоянии.</strong></p>
+<ul>
+<li class="">Когда диод открыт (ток течет от анода к катоду), его динамическое сопротивление составляет всего несколько Ом.</li>
+<li class="">Для красного LED прямое падение напряжения (<code>Vf</code>, forward voltage) — около <code>1.8-2.2V</code>.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Без резистора ток ограничен только внутренним сопротивлением пина Arduino и светодиода.</strong></p>
+<ul>
+<li class="">Пин Arduino может выдать до <code>40 мА</code> (абсолютный максимум), рекомендуемый безопасный ток — <code>20 мА</code>.</li>
+<li class="">Светодиод рассчитан на ток <code>20 мА</code> (типовое значение для обычного 5 мм LED).</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Что произойдет:</strong></p>
+<ul>
+<li class="">Ток пойдет через светодиод без ограничения.</li>
+<li class="">Ток может достичь <code>40-60 мА</code> или больше (зависит от внутреннего сопротивления пина).</li>
+<li class=""><strong>Последствия:</strong>
+<ul>
+<li class="">Светодиод перегреется и может выгореть (кристалл разрушится).</li>
+<li class="">Пин Arduino перегрузится, может выйти из строя.</li>
+<li class="">В лучшем случае Arduino ограничит ток внутренней защитой, но это ненадежно.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Вывод:</strong></p>
+<ul>
+<li class="">Без резистора ток слишком большой.</li>
+<li class="">Резистор необходим для ограничения тока до безопасного значения (обычно <code>10-20 мА</code>).</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="расчет-резистора-краткий">Расчет резистора (краткий)<a href="#расчет-резистора-краткий" class="hash-link" aria-label="Прямая ссылка на Расчет резистора (краткий)" title="Прямая ссылка на Расчет резистора (краткий)" translate="no">​</a></h3>
+<p><strong>Формула (упрощенная):</strong></p>
+<p>[
+R = \frac{V_{\text{source}} - V_f}{I_{\text{LED}}}
+]</p>
+<p>Где:</p>
+<ul>
+<li class="">( V_{\text{source}} ) — напряжение источника (5V от пина Arduino).</li>
+<li class="">( V_f ) — прямое падение напряжения на светодиоде (около 2V для красного LED).</li>
+<li class="">( I_{\text{LED}} ) — желаемый ток через светодиод (например, 15 мА = 0.015 А).</li>
+</ul>
+<p><strong>Пример:</strong></p>
+<p>[
+R = \frac{5V - 2V}{0.015A} = \frac{3V}{0.015A} = 200 , \Omega
+]</p>
+<p>Ближайший стандартный номинал — <code>220 Ом</code>. Этот резистор ограничит ток до безопасного значения.</p>
+<p><strong>Подробнее о законе Ома</strong> и расчетах — в главе 1.3.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-проверить-понимание-без-физической-сборки">Как проверить понимание (без физической сборки)<a href="#как-проверить-понимание-без-физической-сборки" class="hash-link" aria-label="Прямая ссылка на Как проверить понимание (без физической сборки)" title="Прямая ссылка на Как проверить понимание (без физической сборки)" translate="no">​</a></h3>
+<p><strong>Вопрос:</strong> Если подключить светодиод напрямую к D9 (без резистора), что произойдет?</p>
+<p><strong>Ответ:</strong> Ток через светодиод станет слишком большим (может достичь 40-60 мА). Светодиод перегреется и может выгореть. Пин Arduino перегрузится и может повредиться.</p>
+<p><strong>Вопрос:</strong> Почему резистор <code>220 Ом</code> безопасен?</p>
+<p><strong>Ответ:</strong> Резистор ограничивает ток до ~13-15 мА (в зависимости от цвета LED и точного <code>Vf</code>). Это меньше максимального безопасного тока пина Arduino (20 мА) и светодиода (20 мА).</p>
+<blockquote>
+<p><strong>Инженерная заметка</strong></p>
+<p>Хороший инженер проектирует схему так, чтобы компоненты работали с запасом прочности. Если максимальный ток пина — 40 мА, а рекомендованный — 20 мА, целевой ток в схеме должен быть около 10-15 мА. Это обеспечивает долговечность и надежность.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идеи-для-эксперимента-безопасные">Идеи для эксперимента (безопасные)<a href="#идеи-для-эксперимента-безопасные" class="hash-link" aria-label="Прямая ссылка на Идеи для эксперимента (безопасные)" title="Прямая ссылка на Идеи для эксперимента (безопасные)" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>Измени номинал резистора:</strong></p>
+<ul>
+<li class="">Попробуй <code>1 кОм</code> вместо <code>220 Ом</code>. Светодиод станет тусклее, но схема останется безопасной.</li>
+<li class="">Попробуй <code>100 Ом</code> (если есть). Светодиод станет ярче. Рассчитай ток: ( I = \frac{5V - 2V}{100 \Omega} = 0.03A = 30 , mA ). Это близко к максимуму — работает, но не рекомендуется для длительной эксплуатации.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Измени цвет светодиода:</strong></p>
+<ul>
+<li class="">Разные цвета имеют разное <code>Vf</code>:
+<ul>
+<li class="">Красный: ~2V.</li>
+<li class="">Зеленый: ~2.2V.</li>
+<li class="">Синий/Белый: ~3.2V.</li>
+</ul>
+</li>
+<li class="">При одном и том же резисторе (<code>220 Ом</code>) синий LED будет чуть тусклее (меньше ток из-за большего <code>Vf</code>).</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="эксперименты">Эксперименты<a href="#эксперименты" class="hash-link" aria-label="Прямая ссылка на Эксперименты" title="Прямая ссылка на Эксперименты" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="эксперимент-1-изменение-номинала-резистора">Эксперимент 1: Изменение номинала резистора<a href="#эксперимент-1-изменение-номинала-резистора" class="hash-link" aria-label="Прямая ссылка на Эксперимент 1: Изменение номинала резистора" title="Прямая ссылка на Эксперимент 1: Изменение номинала резистора" translate="no">​</a></h3>
+<p><strong>Цель:</strong> Понять, как резистор влияет на яркость светодиода.</p>
+<p><strong>Что делать:</strong></p>
+<ol>
+<li class="">Собери схему с LED и резистором <code>220 Ом</code> (как в проекте 1).</li>
+<li class="">Наблюдай яркость светодиода.</li>
+<li class="">Замени резистор на <code>1 кОм</code>.</li>
+<li class="">Наблюдай яркость — светодиод станет тусклее.</li>
+<li class="">Замени резистор на <code>100 Ом</code> (если есть).</li>
+<li class="">Наблюдай яркость — светодиод станет ярче.</li>
+</ol>
+<p><strong>Вывод:</strong> Чем больше сопротивление, тем меньше ток, тем тусклее светодиод. Чем меньше сопротивление, тем больше ток, тем ярче светодиод (но есть риск перегрузки).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="эксперимент-2-разные-пины-arduino">Эксперимент 2: Разные пины Arduino<a href="#эксперимент-2-разные-пины-arduino" class="hash-link" aria-label="Прямая ссылка на Эксперимент 2: Разные пины Arduino" title="Прямая ссылка на Эксперимент 2: Разные пины Arduino" translate="no">​</a></h3>
+<p><strong>Цель:</strong> Убедиться, что все цифровые пины работают одинаково.</p>
+<p><strong>Что делать:</strong></p>
+<ol>
+<li class="">Собери схему с LED на D9.</li>
+<li class="">Переключи провод от D9 к D7 (или любому другому цифровому пину).</li>
+<li class="">Измени код: <code>const int ledPin = 7;</code>.</li>
+<li class="">Загрузи код.</li>
+<li class="">Убедись, что светодиод мигает так же.</li>
+</ol>
+<p><strong>Вывод:</strong> Все цифровые пины Arduino Mega (D0-D53, кроме зарезервированных для Serial) работают одинаково для <code>digitalWrite()</code>.</p>
+<blockquote>
+<p><strong>Глубже</strong></p>
+<p>На самом деле не все пины абсолютно одинаковы. Пины с PWM (например, D2-D13) могут выдавать не только <code>HIGH</code>/<code>LOW</code>, но и промежуточные уровни через <code>analogWrite()</code> (это ШИМ, мы изучим в главе 2.1). Но для простого <code>digitalWrite()</code> все пины ведут себя одинаково.</p>
+</blockquote>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="частые-ошибки-главы">Частые ошибки главы<a href="#частые-ошибки-главы" class="hash-link" aria-label="Прямая ссылка на Частые ошибки главы" title="Прямая ссылка на Частые ошибки главы" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-1-перепутана-полярность-светодиода">Ошибка 1: Перепутана полярность светодиода<a href="#ошибка-1-перепутана-полярность-светодиода" class="hash-link" aria-label="Прямая ссылка на Ошибка 1: Перепутана полярность светодиода" title="Прямая ссылка на Ошибка 1: Перепутана полярность светодиода" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Светодиод не горит, хотя схема правильная.</p>
+<p><strong>Причина:</strong> Анод и катод перепутаны. Ток пытается течь от катода к аноду — диод заперт.</p>
+<p><strong>Решение:</strong> Разверни светодиод. Помни: длинная ножка — анод (<code>+</code>), короткая — катод (<code>-</code>).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-2-забыт-резистор">Ошибка 2: Забыт резистор<a href="#ошибка-2-забыт-резистор" class="hash-link" aria-label="Прямая ссылка на Ошибка 2: Забыт резистор" title="Прямая ссылка на Ошибка 2: Забыт резистор" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Светодиод горит очень ярко (если вообще успел загореться до выгорания). Arduino может вести себя странно.</p>
+<p><strong>Причина:</strong> Слишком большой ток через LED и пин.</p>
+<p><strong>Решение:</strong> Никогда не подключай светодиод напрямую к пину. Всегда используй резистор (<code>220 Ом</code> или <code>330 Ом</code>).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-3-компонент-не-в-той-контактной-группе">Ошибка 3: Компонент не в той контактной группе<a href="#ошибка-3-компонент-не-в-той-контактной-группе" class="hash-link" aria-label="Прямая ссылка на Ошибка 3: Компонент не в той контактной группе" title="Прямая ссылка на Ошибка 3: Компонент не в той контактной группе" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Схема не работает, хотя визуально все правильно.</p>
+<p><strong>Причина:</strong> Вывод резистора вставлен в <code>e10</code>, провод — в <code>f10</code>. Между ними центральный разрыв, они не соединены.</p>
+<p><strong>Решение:</strong> Проверь контактные группы. Помни: <code>a-e</code> в одной строке соединены, <code>f-j</code> в одной строке соединены, но <code>e</code> и <code>f</code> не соединены.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-4-короткое-замыкание-5v-и-gnd">Ошибка 4: Короткое замыкание <code>5V</code> и <code>GND</code><a href="#ошибка-4-короткое-замыкание-5v-и-gnd" class="hash-link" aria-label="Прямая ссылка на ошибка-4-короткое-замыкание-5v-и-gnd" title="Прямая ссылка на ошибка-4-короткое-замыкание-5v-и-gnd" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Arduino перезагружается, греется, может отключиться USB.</p>
+<p><strong>Причина:</strong> Провод или компонент случайно замкнул <code>5V</code> и <code>GND</code> напрямую.</p>
+<p><strong>Решение:</strong> Отключи питание. Визуально проверь схему. Убери лишние провода. Убедись, что <code>5V</code> и <code>GND</code> не соединены напрямую.</p>
+<blockquote>
+<p><strong>Важно</strong></p>
+<p>Короткое замыкание опасно. Оно может повредить Arduino, USB-порт компьютера или источник питания. Всегда проверяй схему визуально перед подачей питания.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-5-плохой-контакт-в-breadboard">Ошибка 5: Плохой контакт в breadboard<a href="#ошибка-5-плохой-контакт-в-breadboard" class="hash-link" aria-label="Прямая ссылка на Ошибка 5: Плохой контакт в breadboard" title="Прямая ссылка на Ошибка 5: Плохой контакт в breadboard" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Схема работает нестабильно: светодиод мигает странно, то загорается, то нет.</p>
+<p><strong>Причина:</strong> Вывод компонента вставлен неглубоко или отверстие breadboard изношено.</p>
+<p><strong>Решение:</strong> Переставь компонент, убедись, что выводы входят глубоко. Попробуй соседнюю строку breadboard.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проверь-себя">Проверь себя<a href="#проверь-себя" class="hash-link" aria-label="Прямая ссылка на Проверь себя" title="Прямая ссылка на Проверь себя" translate="no">​</a></h2>
+<ol>
+<li class="">
+<p><strong>Какие отверстия на breadboard электрически соединены?</strong></p>
+<ul>
+<li class="">Ответ: В каждой строке отверстия <code>a-e</code> соединены между собой, отверстия <code>f-j</code> соединены между собой. Между <code>e</code> и <code>f</code> — разрыв. Шины питания по краям соединены вертикально.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Как визуально различить анод и катод светодиода?</strong></p>
+<ul>
+<li class="">Ответ: Анод — длинная ножка. Катод — короткая ножка, часто с плоским срезом на корпусе.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Зачем нужен резистор последовательно со светодиодом?</strong></p>
+<ul>
+<li class="">Ответ: Резистор ограничивает ток до безопасного значения (обычно 10-20 мА). Без резистора ток слишком большой — светодиод и пин Arduino могут выйти из строя.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Что произойдет, если перепутать полярность светодиода?</strong></p>
+<ul>
+<li class="">Ответ: Светодиод не будет светить (диод заперт, ток не течет). Это не опасно, но схема не работает. Нужно развернуть светодиод.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Почему в схеме с двумя светодиодами использовалась шина питания <code>-</code> для GND?</strong></p>
+<ul>
+<li class="">Ответ: Шина позволяет распределить GND ко всем компонентам без множества проводов к Arduino. Это удобнее и аккуратнее.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Можно ли управлять несколькими светодиодами одновременно?</strong></p>
+<ul>
+<li class="">Ответ: Да. В этой главе мы управляли последовательно (из-за <code>delay()</code>), но в будущем (глава 3.1) научимся управлять одновременно с помощью <code>millis()</code>.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проекты">Мини-проекты<a href="#мини-проекты" class="hash-link" aria-label="Прямая ссылка на Мини-проекты" title="Прямая ссылка на Мини-проекты" translate="no">​</a></h2>
+<p>Эти проекты можно выполнить самостоятельно, опираясь на знания главы.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проект-1-светофор-на-трех-светодиодах">Мини-проект 1: Светофор на трех светодиодах<a href="#мини-проект-1-светофор-на-трех-светодиодах" class="hash-link" aria-label="Прямая ссылка на Мини-проект 1: Светофор на трех светодиодах" title="Прямая ссылка на Мини-проект 1: Светофор на трех светодиодах" translate="no">​</a></h3>
+<p><strong>Задача:</strong> Собери три светодиода (красный, желтый, зеленый) на пинах D9, D8, D7. Напиши код, который имитирует светофор:</p>
+<ul>
+<li class="">Красный горит 3 секунды.</li>
+<li class="">Желтый горит 1 секунду.</li>
+<li class="">Зеленый горит 3 секунды.</li>
+<li class="">Цикл повторяется.</li>
+</ul>
+<p><strong>Подсказка:</strong> Используй три <code>digitalWrite()</code> для управления каждым светодиодом. Включай только один светодиод за раз, остальные выключай.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проект-2-бегущий-огонь">Мини-проект 2: Бегущий огонь<a href="#мини-проект-2-бегущий-огонь" class="hash-link" aria-label="Прямая ссылка на Мини-проект 2: Бегущий огонь" title="Прямая ссылка на Мини-проект 2: Бегущий огонь" translate="no">​</a></h3>
+<p><strong>Задача:</strong> Собери пять светодиодов подряд (например, на пинах D9, D8, D7, D6, D5). Напиши код, чтобы светодиоды загорались по очереди слева направо, затем справа налево (эффект &quot;бегущего огня&quot;).</p>
+<p><strong>Подсказка:</strong> Используй массив пинов и цикл <code>for</code> для управления светодиодами.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проект-3-мигание-с-переменной-частотой">Мини-проект 3: Мигание с переменной частотой<a href="#мини-проект-3-мигание-с-переменной-частотой" class="hash-link" aria-label="Прямая ссылка на Мини-проект 3: Мигание с переменной частотой" title="Прямая ссылка на Мини-проект 3: Мигание с переменной частотой" translate="no">​</a></h3>
+<p><strong>Задача:</strong> Собери один светодиод. Напиши код, чтобы светодиод мигал с увеличивающейся частотой: сначала медленно (1 сек), затем быстрее (0.5 сек), затем очень быстро (0.1 сек), затем снова медленно. Цикл повторяется.</p>
+<p><strong>Подсказка:</strong> Используй переменную для хранения текущего интервала <code>delay()</code>, изменяй её в <code>loop()</code>.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-мы-теперь-умеем">Что мы теперь умеем<a href="#что-мы-теперь-умеем" class="hash-link" aria-label="Прямая ссылка на Что мы теперь умеем" title="Прямая ссылка на Что мы теперь умеем" translate="no">​</a></h2>
+<p>После этой главы ты умеешь:</p>
+<ol>
+<li class="">
+<p><strong>Понимать устройство breadboard:</strong></p>
+<ul>
+<li class="">Знаешь, какие отверстия соединены внутри макетной платы.</li>
+<li class="">Понимаешь координатную систему (<code>a-j</code>, <code>1-63</code>).</li>
+<li class="">Понимаешь роль центрального разрыва и шин питания.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Собирать схемы на breadboard:</strong></p>
+<ul>
+<li class="">Читать таблицу соединений и воспроизводить схему.</li>
+<li class="">Использовать джамперы для соединения Arduino с breadboard.</li>
+<li class="">Использовать шины питания для распределения <code>GND</code> и <code>VCC</code>.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Работать со светодиодами:</strong></p>
+<ul>
+<li class="">Различать анод и катод визуально.</li>
+<li class="">Понимать, почему светодиод не горит, если перепутать полярность.</li>
+<li class="">Использовать резистор для ограничения тока (хотя точный расчет будет в главе 1.3).</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Управлять внешними компонентами:</strong></p>
+<ul>
+<li class="">Подключать внешние компоненты к цифровым пинам Arduino.</li>
+<li class="">Управлять несколькими компонентами одновременно (последовательно в этой главе, одновременно — позже).</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Диагностировать типичные ошибки:</strong></p>
+<ul>
+<li class="">Перепутанная полярность.</li>
+<li class="">Забытый резистор.</li>
+<li class="">Неправильная контактная группа.</li>
+<li class="">Короткое замыкание.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Думать как инженер:</strong></p>
+<ul>
+<li class="">Анализировать схему перед сборкой.</li>
+<li class="">Оценивать риски (что произойдет без резистора).</li>
+<li class="">Проектировать с запасом прочности.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-это-пригодится-дальше">Как это пригодится дальше<a href="#как-это-пригодится-дальше" class="hash-link" aria-label="Прямая ссылка на Как это пригодится дальше" title="Прямая ссылка на Как это пригодится дальше" translate="no">​</a></h2>
+<p>Breadboard — это основа всех будущих проектов учебника. Каждая схема, каждый датчик, каждый актуатор будет подключаться через макетную плату.</p>
+<p><strong>Что впереди:</strong></p>
+<ul>
+<li class="">
+<p><strong>Глава 1.3 (Электричество для программистов: напряжение, ток и закон Ома):</strong> Мы углубимся в физику: поймем, что такое ток и напряжение, научимся точно рассчитывать резисторы для любого светодиода, разберемся с законом Ома как инженерным инструментом.</p>
+</li>
+<li class="">
+<p><strong>Глава 1.4 (<code>HIGH</code> и <code>LOW</code>: что на самом деле значат логические уровни):</strong> Свяжем программные константы <code>HIGH</code> и <code>LOW</code> с физическими напряжениями <code>5V</code> и <code>0V</code>. Разберемся, как цифровой сигнал представляет булеву логику на железе.</p>
+</li>
+<li class="">
+<p><strong>Раздел 2 (Цифровая логика, состояния и первые инженерные алгоритмы):</strong> Начнем читать цифровые входы (кнопки), обрабатывать события, работать с состояниями устройства.</p>
+</li>
+</ul>
+<p>Без понимания breadboard эти главы были бы невозможны. Теперь у тебя есть фундамент: ты знаешь, как физически соединить Arduino с внешним миром.</p>
+<blockquote>
+<p><strong>Инженерная заметка</strong></p>
+<p>Breadboard — это не только инструмент для обучения. Профессиональные инженеры используют макетные платы для быстрого тестирования идей перед разработкой печатной платы (PCB). Прототипирование на breadboard экономит время и деньги: можно за час собрать схему, проверить концепцию и, если не работает, изменить за минуту. Только когда схема доказала свою работоспособность, её переносят на PCB для производства.</p>
+</blockquote>
+<hr>
+<p><strong>Следующая глава:</strong> <a class="" href="/arduino/01-03-electricity-for-programmers">Глава 1.3. Электричество для программистов: напряжение, ток и закон Ома</a></p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="дополнительные-блоки-для-углубления">Дополнительные блоки для углубления<a href="#дополнительные-блоки-для-углубления" class="hash-link" aria-label="Прямая ссылка на Дополнительные блоки для углубления" title="Прямая ссылка на Дополнительные блоки для углубления" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="глубже-почему-breadboard-называется-breadboard">Глубже: Почему breadboard называется breadboard<a href="#глубже-почему-breadboard-называется-breadboard" class="hash-link" aria-label="Прямая ссылка на Глубже: Почему breadboard называется breadboard" title="Прямая ссылка на Глубже: Почему breadboard называется breadboard" translate="no">​</a></h3>
+<p>Исторически термин &quot;breadboard&quot; (доска для хлеба) пришел из ранней электроники. В 1940-50-х годах радиолюбители использовали деревянные доски (буквально кухонные доски для нарезки хлеба) для монтажа компонентов. Выводы компонентов втыкались в деревянную основу, соединения делались проводами.</p>
+<p>Современная беспаечная макетная плата (solderless breadboard) появилась в 1970-х годах и революционизировала прототипирование. Название сохранилось как дань традиции.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="глубже-как-устроена-breadboard-внутри">Глубже: Как устроена breadboard внутри<a href="#глубже-как-устроена-breadboard-внутри" class="hash-link" aria-label="Прямая ссылка на Глубже: Как устроена breadboard внутри" title="Прямая ссылка на Глубже: Как устроена breadboard внутри" translate="no">​</a></h3>
+<p>Внутри breadboard находятся металлические пружинящие контакты (обычно из фосфористой бронзы или нержавеющей стали). Каждая контактная группа (<code>a-e</code> в одной строке) — это одна длинная тонкая металлическая полоска с пружинящими &quot;лапками&quot;. Когда ты вставляешь вывод компонента в отверстие, пружинящие лапки зажимают его, обеспечивая электрический контакт.</p>
+<p>Качество breadboard зависит от качества этих контактов. Дешевые макетки быстро изнашиваются: пружины ослабевают, контакт становится ненадежным. Качественные макетки (например, от Busboard, 3M) служат годами.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="интуиция-breadboard-как-временная-печатная-плата">Интуиция: Breadboard как временная печатная плата<a href="#интуиция-breadboard-как-временная-печатная-плата" class="hash-link" aria-label="Прямая ссылка на Интуиция: Breadboard как временная печатная плата" title="Прямая ссылка на Интуиция: Breadboard как временная печатная плата" translate="no">​</a></h3>
+<p>Можно думать о breadboard как о &quot;редактируемой печатной плате&quot;. На обычной печатной плате (PCB) дорожки нарисованы медью навсегда. На breadboard &quot;дорожки&quot; — это скрытые контактные группы, которые можно &quot;перерисовать&quot;, вставляя компоненты в разные места.</p>
+<p>Это как разница между написанным текстом на бумаге (PCB) и текстом в текстовом редакторе (breadboard): второе можно менять мгновенно.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="эксперимент-проверь-контактные-группы-мультиметром">Эксперимент: Проверь контактные группы мультиметром<a href="#эксперимент-проверь-контактные-группы-мультиметром" class="hash-link" aria-label="Прямая ссылка на Эксперимент: Проверь контактные группы мультиметром" title="Прямая ссылка на Эксперимент: Проверь контактные группы мультиметром" translate="no">​</a></h3>
+<p>Если у тебя есть мультиметр:</p>
+<ol>
+<li class="">Переключи мультиметр в режим проверки непрерывности (continuity) или измерения сопротивления.</li>
+<li class="">Вставь щупы в два отверстия одной контактной группы (например, <code>a5</code> и <code>e5</code>).</li>
+<li class="">Мультиметр должен показать короткое замыкание (звуковой сигнал) или очень малое сопротивление (~0 Ом).</li>
+<li class="">Вставь щупы в отверстия разных групп (например, <code>e5</code> и <code>f5</code>).</li>
+<li class="">Мультиметр должен показать разрыв (бесконечное сопротивление).</li>
+</ol>
+<p>Это подтверждает внутреннюю структуру breadboard.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="эксперимент-измерь-напряжение-на-светодиоде">Эксперимент: Измерь напряжение на светодиоде<a href="#эксперимент-измерь-напряжение-на-светодиоде" class="hash-link" aria-label="Прямая ссылка на Эксперимент: Измерь напряжение на светодиоде" title="Прямая ссылка на Эксперимент: Измерь напряжение на светодиоде" translate="no">​</a></h3>
+<p>Если у тебя есть мультиметр:</p>
+<ol>
+<li class="">Собери схему с LED и резистором <code>220 Ом</code> (проект 1).</li>
+<li class="">Загрузи код, чтобы LED горел постоянно (например, только <code>digitalWrite(ledPin, HIGH);</code> в <code>setup()</code>, пустой <code>loop()</code>).</li>
+<li class="">Переключи мультиметр в режим измерения постоянного напряжения (DC voltage, диапазон до 20V).</li>
+<li class="">Подключи красный щуп к аноду LED, черный щуп к катоду LED.</li>
+<li class="">Мультиметр покажет прямое падение напряжения на светодиоде (<code>Vf</code>): около <code>1.8-2.2V</code> для красного, <code>3.0-3.4V</code> для синего/белого.</li>
+<li class="">Теперь подключи красный щуп к аноду LED, черный к GND Arduino.</li>
+<li class="">Мультиметр покажет <code>5V</code> минус <code>Vf</code> — это напряжение, которое &quot;съел&quot; резистор.</li>
+</ol>
+<p>Этот эксперимент готовит тебя к главе 1.3, где мы детально разберем закон Ома и расчет резисторов.</p>
+<hr>
+<p><strong>Конец главы 1.2.</strong></p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/maksimkh34/arduino/tree/main/../chapters/01-02-breadboard-first-external-circuit.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Отредактировать эту страницу</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Страница документа"><a class="pagination-nav__link pagination-nav__link--prev" href="/arduino/01-01-arduino-mega-first-contact"><div class="pagination-nav__sublabel">Предыдущая страница</div><div class="pagination-nav__label">Первый контакт: знакомство с Arduino Mega 2560 R3</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/arduino/01-03-electricity-for-programmers"><div class="pagination-nav__sublabel">Следующая страница</div><div class="pagination-nav__label">Электричество для программистов: напряжение, ток и закон Ома</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#зачем-нужна-эта-глава" class="table-of-contents__link toc-highlight">Зачем нужна эта глава</a></li><li><a href="#что-мы-соберем-к-концу-главы" class="table-of-contents__link toc-highlight">Что мы соберем к концу главы</a></li><li><a href="#что-ты-узнаешь-и-чему-научишься" class="table-of-contents__link toc-highlight">Что ты узнаешь и чему научишься</a><ul><li><a href="#знания" class="table-of-contents__link toc-highlight">Знания</a></li><li><a href="#навыки" class="table-of-contents__link toc-highlight">Навыки</a></li></ul></li><li><a href="#карта-путешествия" class="table-of-contents__link toc-highlight">Карта путешествия</a></li><li><a href="#ключевые-термины" class="table-of-contents__link toc-highlight">Ключевые термины</a></li><li><a href="#практическая-задача-главы" class="table-of-contents__link toc-highlight">Практическая задача главы</a></li><li><a href="#теория-которая-нужна-для-решения-задачи" class="table-of-contents__link toc-highlight">Теория, которая нужна для решения задачи</a><ul><li><a href="#что-такое-breadboard-и-зачем-он-нужен" class="table-of-contents__link toc-highlight">Что такое breadboard и зачем он нужен</a></li><li><a href="#внутреннее-устройство-контактные-группы" class="table-of-contents__link toc-highlight">Внутреннее устройство: контактные группы</a></li><li><a href="#координатная-система-макетной-платы" class="table-of-contents__link toc-highlight">Координатная система макетной платы</a></li><li><a href="#как-читать-схему-для-breadboard" class="table-of-contents__link toc-highlight">Как читать схему для breadboard</a></li><li><a href="#полярность-светодиода-анод-и-катод" class="table-of-contents__link toc-highlight">Полярность светодиода: анод и катод</a></li><li><a href="#роль-резистора-вводно" class="table-of-contents__link toc-highlight">Роль резистора (вводно)</a></li><li><a href="#как-вставлять-компоненты-в-breadboard" class="table-of-contents__link toc-highlight">Как вставлять компоненты в breadboard</a></li></ul></li><li><a href="#проект-1-один-внешний-светодиод-на-пине-d9" class="table-of-contents__link toc-highlight">Проект 1. Один внешний светодиод на пине D9</a><ul><li><a href="#идея-проекта" class="table-of-contents__link toc-highlight">Идея проекта</a></li><li><a href="#чему-учит-этот-проект" class="table-of-contents__link toc-highlight">Чему учит этот проект</a></li><li><a href="#что-понадобится" class="table-of-contents__link toc-highlight">Что понадобится</a></li><li><a href="#схема-подключения" class="table-of-contents__link toc-highlight">Схема подключения</a></li><li><a href="#таблица-соединений" class="table-of-contents__link toc-highlight">Таблица соединений</a></li><li><a href="#код-проекта" class="table-of-contents__link toc-highlight">Код проекта</a></li><li><a href="#что-происходит-в-коде" class="table-of-contents__link toc-highlight">Что происходит в коде</a></li><li><a href="#что-происходит-в-схеме" class="table-of-contents__link toc-highlight">Что происходит в схеме</a></li><li><a href="#как-проверить-работу" class="table-of-contents__link toc-highlight">Как проверить работу</a></li><li><a href="#если-не-работает" class="table-of-contents__link toc-highlight">Если не работает</a></li><li><a href="#идеи-для-развития" class="table-of-contents__link toc-highlight">Идеи для развития</a></li></ul></li><li><a href="#проект-2-два-светодиода-на-разных-пинах-с-разными-частотами" class="table-of-contents__link toc-highlight">Проект 2. Два светодиода на разных пинах с разными частотами</a><ul><li><a href="#идея-проекта-1" class="table-of-contents__link toc-highlight">Идея проекта</a></li><li><a href="#чему-учит-этот-проект-1" class="table-of-contents__link toc-highlight">Чему учит этот проект</a></li><li><a href="#что-понадобится-1" class="table-of-contents__link toc-highlight">Что понадобится</a></li><li><a href="#схема-подключения-1" class="table-of-contents__link toc-highlight">Схема подключения</a></li><li><a href="#таблица-соединений-1" class="table-of-contents__link toc-highlight">Таблица соединений</a></li><li><a href="#код-проекта-1" class="table-of-contents__link toc-highlight">Код проекта</a></li><li><a href="#что-происходит-в-коде-1" class="table-of-contents__link toc-highlight">Что происходит в коде</a></li><li><a href="#что-происходит-в-схеме-1" class="table-of-contents__link toc-highlight">Что происходит в схеме</a></li><li><a href="#как-проверить-работу-1" class="table-of-contents__link toc-highlight">Как проверить работу</a></li><li><a href="#если-не-работает-1" class="table-of-contents__link toc-highlight">Если не работает</a></li><li><a href="#идеи-для-развития-1" class="table-of-contents__link toc-highlight">Идеи для развития</a></li></ul></li><li><a href="#проект-3-безопасный-эксперимент-что-произойдет-без-резистора" class="table-of-contents__link toc-highlight">Проект 3. Безопасный эксперимент: что произойдет без резистора</a><ul><li><a href="#идея-проекта-2" class="table-of-contents__link toc-highlight">Идея проекта</a></li><li><a href="#чему-учит-этот-проект-2" class="table-of-contents__link toc-highlight">Чему учит этот проект</a></li><li><a href="#что-произошло-бы-если-подключить-светодиод-напрямую-к-d9-без-резистора" class="table-of-contents__link toc-highlight">Что произошло бы, если подключить светодиод напрямую к D9 (без резистора)</a></li><li><a href="#расчет-резистора-краткий" class="table-of-contents__link toc-highlight">Расчет резистора (краткий)</a></li><li><a href="#как-проверить-понимание-без-физической-сборки" class="table-of-contents__link toc-highlight">Как проверить понимание (без физической сборки)</a></li><li><a href="#идеи-для-эксперимента-безопасные" class="table-of-contents__link toc-highlight">Идеи для эксперимента (безопасные)</a></li></ul></li><li><a href="#эксперименты" class="table-of-contents__link toc-highlight">Эксперименты</a><ul><li><a href="#эксперимент-1-изменение-номинала-резистора" class="table-of-contents__link toc-highlight">Эксперимент 1: Изменение номинала резистора</a></li><li><a href="#эксперимент-2-разные-пины-arduino" class="table-of-contents__link toc-highlight">Эксперимент 2: Разные пины Arduino</a></li></ul></li><li><a href="#частые-ошибки-главы" class="table-of-contents__link toc-highlight">Частые ошибки главы</a><ul><li><a href="#ошибка-1-перепутана-полярность-светодиода" class="table-of-contents__link toc-highlight">Ошибка 1: Перепутана полярность светодиода</a></li><li><a href="#ошибка-2-забыт-резистор" class="table-of-contents__link toc-highlight">Ошибка 2: Забыт резистор</a></li><li><a href="#ошибка-3-компонент-не-в-той-контактной-группе" class="table-of-contents__link toc-highlight">Ошибка 3: Компонент не в той контактной группе</a></li><li><a href="#ошибка-4-короткое-замыкание-5v-и-gnd" class="table-of-contents__link toc-highlight">Ошибка 4: Короткое замыкание <code>5V</code> и <code>GND</code></a></li><li><a href="#ошибка-5-плохой-контакт-в-breadboard" class="table-of-contents__link toc-highlight">Ошибка 5: Плохой контакт в breadboard</a></li></ul></li><li><a href="#проверь-себя" class="table-of-contents__link toc-highlight">Проверь себя</a></li><li><a href="#мини-проекты" class="table-of-contents__link toc-highlight">Мини-проекты</a><ul><li><a href="#мини-проект-1-светофор-на-трех-светодиодах" class="table-of-contents__link toc-highlight">Мини-проект 1: Светофор на трех светодиодах</a></li><li><a href="#мини-проект-2-бегущий-огонь" class="table-of-contents__link toc-highlight">Мини-проект 2: Бегущий огонь</a></li><li><a href="#мини-проект-3-мигание-с-переменной-частотой" class="table-of-contents__link toc-highlight">Мини-проект 3: Мигание с переменной частотой</a></li></ul></li><li><a href="#что-мы-теперь-умеем" class="table-of-contents__link toc-highlight">Что мы теперь умеем</a></li><li><a href="#как-это-пригодится-дальше" class="table-of-contents__link toc-highlight">Как это пригодится дальше</a></li><li><a href="#дополнительные-блоки-для-углубления" class="table-of-contents__link toc-highlight">Дополнительные блоки для углубления</a><ul><li><a href="#глубже-почему-breadboard-называется-breadboard" class="table-of-contents__link toc-highlight">Глубже: Почему breadboard называется breadboard</a></li><li><a href="#глубже-как-устроена-breadboard-внутри" class="table-of-contents__link toc-highlight">Глубже: Как устроена breadboard внутри</a></li><li><a href="#интуиция-breadboard-как-временная-печатная-плата" class="table-of-contents__link toc-highlight">Интуиция: Breadboard как временная печатная плата</a></li><li><a href="#эксперимент-проверь-контактные-группы-мультиметром" class="table-of-contents__link toc-highlight">Эксперимент: Проверь контактные группы мультиметром</a></li><li><a href="#эксперимент-измерь-напряжение-на-светодиоде" class="table-of-contents__link toc-highlight">Эксперимент: Измерь напряжение на светодиоде</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Контент</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/arduino/">Учебник</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Ссылки</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/maksimkh34/arduino" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Arduino Textbook. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

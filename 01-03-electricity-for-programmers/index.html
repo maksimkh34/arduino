@@ -1,0 +1,1453 @@
+<!doctype html>
+<html lang="ru" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-01-03-electricity-for-programmers" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.1">
+<title data-rh="true">Электричество для программистов: напряжение, ток и закон Ома | Arduino Mega 2560 R3: Учебник</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://maksimkh34.github.io/arduino/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://maksimkh34.github.io/arduino/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://maksimkh34.github.io/arduino/01-03-electricity-for-programmers"><meta data-rh="true" property="og:locale" content="ru"><meta data-rh="true" name="docusaurus_locale" content="ru"><meta data-rh="true" name="docsearch:language" content="ru"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Электричество для программистов: напряжение, ток и закон Ома | Arduino Mega 2560 R3: Учебник"><meta data-rh="true" name="description" content="Зачем нужна эта глава"><meta data-rh="true" property="og:description" content="Зачем нужна эта глава"><link data-rh="true" rel="icon" href="/arduino/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://maksimkh34.github.io/arduino/01-03-electricity-for-programmers"><link data-rh="true" rel="alternate" href="https://maksimkh34.github.io/arduino/01-03-electricity-for-programmers" hreflang="ru"><link data-rh="true" rel="alternate" href="https://maksimkh34.github.io/arduino/01-03-electricity-for-programmers" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Электричество для программистов: напряжение, ток и закон Ома","item":"https://maksimkh34.github.io/arduino/01-03-electricity-for-programmers"}]}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/arduino/assets/css/styles.75f65cb6.css">
+<script src="/arduino/assets/js/runtime~main.4a0ae35b.js" defer="defer"></script>
+<script src="/arduino/assets/js/main.0fe16ece.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/arduino/img/logo.svg"><div role="region" aria-label="Перейти к основному содержимому"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Перейти к основному содержимому</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Переключить навигационную панель" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/arduino/"><div class="navbar__logo"><img src="/arduino/img/logo.svg" alt="Arduino Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/arduino/img/logo.svg" alt="Arduino Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Arduino Mega 2560 R3</b></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/maksimkh34/arduino" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Переключение между темным и светлым режимом (сейчас используется system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Прокрутка к началу" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/arduino/01-01-arduino-mega-first-contact"><span title="Раздел 1" class="categoryLinkLabel_W154">Раздел 1</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/arduino/01-01-arduino-mega-first-contact"><span title="Первый контакт: знакомство с Arduino Mega 2560 R3" class="linkLabel_WmDU">Первый контакт: знакомство с Arduino Mega 2560 R3</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/arduino/01-02-breadboard-first-external-circuit"><span title="Breadboard и первая внешняя схема" class="linkLabel_WmDU">Breadboard и первая внешняя схема</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/arduino/01-03-electricity-for-programmers"><span title="Электричество для программистов: напряжение, ток и закон Ома" class="linkLabel_WmDU">Электричество для программистов: напряжение, ток и закон Ома</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Навигационная цепочка текущей страницы"><ul class="breadcrumbs"><li class="breadcrumbs__item"><span class="breadcrumbs__link">Раздел 1</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Электричество для программистов: напряжение, ток и закон Ома</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">Содержание этой страницы</button></div><div class="theme-doc-markdown markdown"><header><h1>Глава 1.3. Электричество для программистов: напряжение, ток и закон Ома</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="зачем-нужна-эта-глава">Зачем нужна эта глава<a href="#зачем-нужна-эта-глава" class="hash-link" aria-label="Прямая ссылка на Зачем нужна эта глава" title="Прямая ссылка на Зачем нужна эта глава" translate="no">​</a></h2>
+<p>В предыдущих главах мы подключали светодиоды и использовали резистор <code>220 Ом</code> без объяснения, почему именно такой номинал. Мы просто следовали инструкции. Но программист не может работать по шаблону, не понимая причин. В коде ты не пишешь <code>malloc(42)</code> потому, что &quot;так в туториале&quot;. Ты понимаешь, сколько байтов нужно и почему.</p>
+<p>Точно так же в схемотехнике. Резистор — не магический компонент &quot;чтобы LED не сгорел&quot;. Резистор — инструмент управления током через формулу, которую можно посчитать. Эта глава даёт математический и физический фундамент для всех будущих схем.</p>
+<p>После этой главы ты будешь понимать:</p>
+<ul>
+<li class="">что такое напряжение, ток и сопротивление на уровне физики и инженерной практики;</li>
+<li class="">почему светодиоду нужен резистор;</li>
+<li class="">как рассчитать резистор для любого LED;</li>
+<li class="">почему нельзя подключать мотор напрямую к пину Arduino;</li>
+<li class="">как читать datasheet компонента и извлекать оттуда параметры для расчета.</li>
+</ul>
+<p>Это первая глава, где мы встречаемся с настоящей инженерной математикой. Не абстрактной, а применимой прямо сейчас.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-мы-соберем-к-концу-главы">Что мы соберем к концу главы<a href="#что-мы-соберем-к-концу-главы" class="hash-link" aria-label="Прямая ссылка на Что мы соберем к концу главы" title="Прямая ссылка на Что мы соберем к концу главы" translate="no">​</a></h2>
+<ol>
+<li class=""><strong>Проект 1:</strong> Красный LED с рассчитанным резистором — ты сам посчитаешь номинал, соберешь схему и убедишься, что расчет работает.</li>
+<li class=""><strong>Проект 2:</strong> Сравнение трех резисторов (<code>220 Ом</code>, <code>330 Ом</code>, <code>1 кОм</code>) на одном LED — увидишь, как ток влияет на яркость.</li>
+<li class=""><strong>Проект 3:</strong> Три LED разных цветов с одинаковыми резисторами — поймешь, почему они светят с разной яркостью.</li>
+<li class=""><strong>Проект 4:</strong> Расчет резистора для синего LED и проверка результата.</li>
+</ol>
+<p>Опционально, если у тебя есть мультиметр, измеришь реальное напряжение на пине Arduino и падение напряжения на LED.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-ты-узнаешь-и-чему-научишься">Что ты узнаешь и чему научишься<a href="#что-ты-узнаешь-и-чему-научишься" class="hash-link" aria-label="Прямая ссылка на Что ты узнаешь и чему научишься" title="Прямая ссылка на Что ты узнаешь и чему научишься" translate="no">​</a></h2>
+<p><strong>Теория:</strong></p>
+<ul>
+<li class="">Что такое напряжение как разность потенциалов и &quot;давление&quot; для зарядов.</li>
+<li class="">Что такое ток как поток электронов и аналогия с водой.</li>
+<li class="">Что такое сопротивление и как оно ограничивает ток.</li>
+<li class="">Закон Ома: <code>U = I × R</code> и его производные.</li>
+<li class="">Прямое падение напряжения LED (<code>Vf</code>) и почему оно зависит от цвета.</li>
+<li class="">Расчет токоограничивающего резистора: <code>R = (Vsource - Vf) / Iled</code>.</li>
+<li class="">Ограничения тока пина Arduino (max 40 мА, рекомендуется 20 мА).</li>
+</ul>
+<p><strong>Практика:</strong></p>
+<ul>
+<li class="">Рассчитывать резистор для LED по формуле.</li>
+<li class="">Читать datasheet LED и извлекать <code>Vf</code> и <code>If</code>.</li>
+<li class="">Измерять напряжение мультиметром (если есть).</li>
+<li class="">Сравнивать теоретический расчет с практическим результатом.</li>
+<li class="">Объяснять, почему LED разных цветов требуют разных резисторов.</li>
+</ul>
+<p><strong>Навыки:</strong></p>
+<ul>
+<li class="">Применять закон Ома в реальных схемах.</li>
+<li class="">Понимать ограничения компонентов (ток пина, мощность резистора).</li>
+<li class="">Делать инженерный выбор номинала из стандартного ряда.</li>
+<li class="">Диагностировать проблемы через измерения и расчет.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="карта-путешествия">Карта путешествия<a href="#карта-путешествия" class="hash-link" aria-label="Прямая ссылка на Карта путешествия" title="Прямая ссылка на Карта путешествия" translate="no">​</a></h2>
+<ol>
+<li class=""><strong>Теория:</strong> Напряжение, ток, сопротивление — физический смысл и аналогии.</li>
+<li class=""><strong>Теория:</strong> Закон Ома и его применение.</li>
+<li class=""><strong>Теория:</strong> Почему LED нужен резистор — прямое падение напряжения.</li>
+<li class=""><strong>Теория:</strong> Расчет токоограничивающего резистора.</li>
+<li class=""><strong>Теория:</strong> Ограничения тока пина Arduino.</li>
+<li class=""><strong>Проект 1:</strong> Расчет и сборка схемы с красным LED.</li>
+<li class=""><strong>Проект 2:</strong> Сравнение резисторов на одном LED.</li>
+<li class=""><strong>Проект 3:</strong> Три LED разных цветов.</li>
+<li class=""><strong>Проект 4:</strong> Расчет для синего LED.</li>
+<li class=""><strong>Эксперименты:</strong> Измерение напряжения, экстремальные номиналы.</li>
+<li class=""><strong>Частые ошибки:</strong> Неправильный расчет, забытый резистор, перегрузка пина.</li>
+<li class=""><strong>Итоги и связь с будущим.</strong></li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="ключевые-термины">Ключевые термины<a href="#ключевые-термины" class="hash-link" aria-label="Прямая ссылка на Ключевые термины" title="Прямая ссылка на Ключевые термины" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Напряжение (Voltage, U, V):</strong> Разность электрических потенциалов между двумя точками. Измеряется в вольтах (В).</li>
+<li class=""><strong>Ток (Current, I):</strong> Поток электрического заряда через проводник. Измеряется в амперах (А) или миллиамперах (мА).</li>
+<li class=""><strong>Сопротивление (Resistance, R):</strong> Свойство материала препятствовать прохождению тока. Измеряется в омах (Ом), килоомах (кОм), мегаомах (МОм).</li>
+<li class=""><strong>Закон Ома:</strong> Фундаментальный закон электротехники: <code>U = I × R</code>.</li>
+<li class=""><strong>Прямое падение напряжения (Forward Voltage, Vf):</strong> Напряжение, которое &quot;теряется&quot; на LED при прохождении тока. Зависит от цвета LED.</li>
+<li class=""><strong>Токоограничивающий резистор (Current-limiting resistor):</strong> Резистор, ограничивающий ток через LED до безопасного значения.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="практическая-задача-главы">Практическая задача главы<a href="#практическая-задача-главы" class="hash-link" aria-label="Прямая ссылка на Практическая задача главы" title="Прямая ссылка на Практическая задача главы" translate="no">​</a></h2>
+<p><strong>Задача:</strong> Рассчитать и выбрать резистор для красного, зеленого и синего светодиодов так, чтобы через них протекал безопасный ток ~15-20 мА.</p>
+<p><strong>Почему это важно:</strong></p>
+<p>В реальных устройствах ток — критический параметр. Превышение тока убивает компонент. Недостаток тока делает устройство тусклым или нерабочим. Инженер должен уметь рассчитать параметры схемы, а не подбирать резистор методом проб и ошибок.</p>
+<p><strong>Что нужно для решения:</strong></p>
+<ul>
+<li class="">Понять, что такое напряжение и ток физически.</li>
+<li class="">Знать закон Ома.</li>
+<li class="">Найти в datasheet LED параметры <code>Vf</code> и <code>If</code>.</li>
+<li class="">Применить формулу расчета резистора.</li>
+<li class="">Выбрать ближайший стандартный номинал.</li>
+<li class="">Собрать схему и проверить результат.</li>
+</ul>
+<p>Эта задача — первая настоящая инженерная задача учебника. Здесь нет готового ответа &quot;возьми 220 Ом&quot;. Ты считаешь сам.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="теория-которая-нужна-для-решения-задачи">Теория, которая нужна для решения задачи<a href="#теория-которая-нужна-для-решения-задачи" class="hash-link" aria-label="Прямая ссылка на Теория, которая нужна для решения задачи" title="Прямая ссылка на Теория, которая нужна для решения задачи" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="напряжение-давление-для-электронов">Напряжение: давление для электронов<a href="#напряжение-давление-для-электронов" class="hash-link" aria-label="Прямая ссылка на Напряжение: давление для электронов" title="Прямая ссылка на Напряжение: давление для электронов" translate="no">​</a></h3>
+<p>Начнем с аналогии. Представь водопровод. Вода течет из точки с высоким давлением в точку с низким. Чем больше разность давлений, тем быстрее поток.</p>
+<p>В электрической цепи роль давления играет <strong>напряжение</strong> (voltage, обозначается <code>U</code> или <code>V</code>). Напряжение — это разность электрических потенциалов между двумя точками. Измеряется в вольтах (В).</p>
+<p>Когда Arduino устанавливает пин в состояние <code>HIGH</code>, на этом пине появляется напряжение около <code>5 В</code> относительно земли (<code>GND</code>, 0 В). Разность потенциалов <code>5 В - 0 В = 5 В</code> — это &quot;давление&quot;, которое толкает электроны через схему.</p>
+<blockquote>
+<p><strong>Интуиция</strong></p>
+<p>Напряжение — это высота водопада. Чем выше падает вода, тем больше энергии она несет. Чем больше напряжение между двумя точками, тем больше &quot;желание&quot; электронов двигаться от одной точки к другой.</p>
+</blockquote>
+<blockquote>
+<p><strong>Глубже</strong></p>
+<p>Напряжение — это работа, необходимая для перемещения единичного заряда между двумя точками. <code>1 В = 1 Дж / 1 Кл</code>. Когда электрон движется от <code>5 В</code> к <code>0 В</code>, он отдаёт энергию — например, в виде света в LED или тепла в резисторе.</p>
+</blockquote>
+<p><strong>Важно:</strong> Напряжение всегда измеряется <strong>между двумя точками</strong>. Нельзя сказать &quot;на этом проводе 5 В&quot; без указания, относительно чего. Обычно подразумевается относительно <code>GND</code> (земли, 0 В).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ток-поток-электронов">Ток: поток электронов<a href="#ток-поток-электронов" class="hash-link" aria-label="Прямая ссылка на Ток: поток электронов" title="Прямая ссылка на Ток: поток электронов" translate="no">​</a></h3>
+<p>Если напряжение — это давление, то <strong>ток</strong> (current, обозначается <code>I</code>) — это сам поток воды.</p>
+<p>Ток — это количество электрического заряда, проходящего через проводник за единицу времени. Измеряется в амперах (А). <code>1 А = 1 Кл / 1 с</code>. В Arduino-проектах чаще используются миллиамперы (мА): <code>1 мА = 0.001 А</code>.</p>
+<p>Когда по проводу течет ток <code>20 мА</code>, это значит, что каждую секунду через поперечное сечение провода проходит заряд <code>0.02 Кл</code> (примерно <code>1.25 × 10^17</code> электронов).</p>
+<blockquote>
+<p><strong>Интуиция</strong></p>
+<p>Ток — это скорость потока воды через трубу. Напряжение создает давление, но сколько воды реально потечет, зависит от ширины трубы (сопротивления). Можно создать огромное давление, но если труба узкая, поток будет маленьким.</p>
+</blockquote>
+<blockquote>
+<p><strong>Физика</strong></p>
+<p>В металлическом проводнике свободные электроны движутся хаотично. Когда прикладывается напряжение, возникает электрическое поле, которое создает направленный дрейф электронов. Скорость дрейфа очень мала (~мм/с), но плотность свободных электронов огромна, поэтому ток может быть значительным.</p>
+</blockquote>
+<p><strong>Важно:</strong> Ток течет <strong>через</strong> компонент, а напряжение приложено <strong>к</strong> компоненту. Ток одинаков во всех точках последовательной цепи (закон сохранения заряда).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="сопротивление-препятствие-потоку">Сопротивление: препятствие потоку<a href="#сопротивление-препятствие-потоку" class="hash-link" aria-label="Прямая ссылка на Сопротивление: препятствие потоку" title="Прямая ссылка на Сопротивление: препятствие потоку" translate="no">​</a></h3>
+<p><strong>Сопротивление</strong> (resistance, обозначается <code>R</code>) — это свойство материала или компонента препятствовать прохождению тока. Измеряется в омах (Ом), килоомах (кОм = 1000 Ом), мегаомах (МОм = 1 000 000 Ом).</p>
+<p>Чем больше сопротивление, тем меньше ток при том же напряжении.</p>
+<blockquote>
+<p><strong>Интуиция</strong></p>
+<p>Сопротивление — это узость трубы. Широкая труба (малое сопротивление) пропускает большой поток при небольшом давлении. Узкая труба (большое сопротивление) пропускает маленький поток даже при большом давлении.</p>
+</blockquote>
+<p>Резистор — компонент с фиксированным сопротивлением. Резистор <code>220 Ом</code> всегда имеет сопротивление <code>220 Ом</code> (с учетом допуска, обычно ±5%).</p>
+<blockquote>
+<p><strong>Глубже</strong></p>
+<p>Сопротивление зависит от материала, длины проводника и площади поперечного сечения: <code>R = ρ × L / S</code>, где <code>ρ</code> — удельное сопротивление материала. Медь имеет низкое <code>ρ</code> (хороший проводник), резистивный углеродный слой в резисторе — высокое <code>ρ</code>.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="закон-ома-связь-напряжения-тока-и-сопротивления">Закон Ома: связь напряжения, тока и сопротивления<a href="#закон-ома-связь-напряжения-тока-и-сопротивления" class="hash-link" aria-label="Прямая ссылка на Закон Ома: связь напряжения, тока и сопротивления" title="Прямая ссылка на Закон Ома: связь напряжения, тока и сопротивления" translate="no">​</a></h3>
+<p>Закон Ома — фундаментальный закон электротехники. Он связывает напряжение, ток и сопротивление:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">U = I × R</span><br></div></code></pre></div></div>
+<p>Где:</p>
+<ul>
+<li class=""><code>U</code> — напряжение (В)</li>
+<li class=""><code>I</code> — ток (А)</li>
+<li class=""><code>R</code> — сопротивление (Ом)</li>
+</ul>
+<p>Из этой формулы можно выразить любую величину:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">I = U / R</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">R = U / I</span><br></div></code></pre></div></div>
+<p><strong>Пример:</strong></p>
+<p>Если на резистор <code>220 Ом</code> подано напряжение <code>5 В</code>, через него потечет ток:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">I = U / R = 5 В / 220 Ом ≈ 0.0227 А ≈ 22.7 мА</span><br></div></code></pre></div></div>
+<p>Если мы хотим ограничить ток до <code>20 мА</code> при напряжении <code>5 В</code>, нужен резистор:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">R = U / I = 5 В / 0.02 А = 250 Ом</span><br></div></code></pre></div></div>
+<p>Ближайший стандартный номинал — <code>220 Ом</code> или <code>270 Ом</code>.</p>
+<blockquote>
+<p><strong>Математика в действии</strong></p>
+<p>Закон Ома — линейная зависимость. График <code>U(I)</code> для резистора — прямая линия с наклоном <code>R</code>. Это идеализация: реальные компоненты могут иметь нелинейное сопротивление (например, LED, термисторы, диоды). Но для резисторов в рабочем диапазоне закон Ома выполняется с высокой точностью.</p>
+</blockquote>
+<blockquote>
+<p><strong>Инженерная заметка</strong></p>
+<p>Закон Ома применим только к <strong>омическим</strong> компонентам (резисторам, проводам). Для LED, диодов, транзисторов нужны другие модели. Но резистор в цепи LED подчиняется закону Ома, и через него можно управлять током через весь последовательный участок.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="почему-led-нужен-резистор-прямое-падение-напряжения">Почему LED нужен резистор: прямое падение напряжения<a href="#почему-led-нужен-резистор-прямое-падение-напряжения" class="hash-link" aria-label="Прямая ссылка на Почему LED нужен резистор: прямое падение напряжения" title="Прямая ссылка на Почему LED нужен резистор: прямое падение напряжения" translate="no">​</a></h3>
+<p>Светодиод (LED) — это полупроводниковый диод, который излучает свет при прохождении тока. В отличие от резистора, LED имеет нелинейную вольт-амперную характеристику.</p>
+<p>Когда через LED течет ток, на нем &quot;падает&quot; (теряется) фиксированное напряжение, которое называется <strong>прямым падением напряжения</strong> (forward voltage, <code>Vf</code>). Это напряжение зависит от цвета LED:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Цвет LED</th><th>Типичное Vf</th></tr></thead><tbody><tr><td>Красный</td><td>1.8 - 2.2 В</td></tr><tr><td>Зеленый</td><td>2.0 - 2.4 В</td></tr><tr><td>Синий</td><td>3.0 - 3.4 В</td></tr><tr><td>Белый</td><td>3.0 - 3.6 В</td></tr></tbody></table>
+<p>Если подключить LED напрямую к <code>5 В</code> без резистора, ток через LED будет ограничен только его внутренним сопротивлением, которое очень мало. Ток может достичь сотен миллиампер, что превышает максимально допустимый ток LED (обычно 20-30 мА). LED сгорит за секунды или мгновенно.</p>
+<blockquote>
+<p><strong>Физика</strong></p>
+<p>В LED ток возникает из-за рекомбинации электронов и дырок в p-n переходе. При рекомбинации выделяется энергия в виде фотона. <code>Vf</code> — это энергия, необходимая для преодоления потенциального барьера p-n перехода. Чем больше энергия фотона (короче длина волны), тем больше <code>Vf</code>. Синий свет имеет бОльшую энергию фотона, чем красный, поэтому <code>Vf</code> синего LED выше.</p>
+</blockquote>
+<p><strong>Резистор ограничивает ток:</strong></p>
+<p>Когда LED подключен последовательно с резистором, общее напряжение <code>5 В</code> распределяется между резистором и LED:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Vsource = Vresistor + Vf</span><br></div></code></pre></div></div>
+<p>Через последовательную цепь течет один и тот же ток <code>I</code>. По закону Ома для резистора:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Vresistor = I × R</span><br></div></code></pre></div></div>
+<p>Подставляем:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Vsource = I × R + Vf</span><br></div></code></pre></div></div>
+<p>Отсюда:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">I = (Vsource - Vf) / R</span><br></div></code></pre></div></div>
+<p>Это ключевая формула для расчета тока через LED.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="расчет-токоограничивающего-резистора">Расчет токоограничивающего резистора<a href="#расчет-токоограничивающего-резистора" class="hash-link" aria-label="Прямая ссылка на Расчет токоограничивающего резистора" title="Прямая ссылка на Расчет токоограничивающего резистора" translate="no">​</a></h3>
+<p>Теперь можем вывести формулу для расчета резистора:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">R = (Vsource - Vf) / Iled</span><br></div></code></pre></div></div>
+<p>Где:</p>
+<ul>
+<li class=""><code>Vsource</code> — напряжение источника (для Arduino Mega пин в <code>HIGH</code> дает ~5 В).</li>
+<li class=""><code>Vf</code> — прямое падение напряжения LED (из datasheet или типичных значений).</li>
+<li class=""><code>Iled</code> — желаемый ток через LED (обычно 15-20 мА для стандартных 5 мм LED).</li>
+<li class=""><code>R</code> — искомое сопротивление резистора (Ом).</li>
+</ul>
+<p><strong>Пример расчета для красного LED:</strong></p>
+<ul>
+<li class=""><code>Vsource = 5 В</code></li>
+<li class=""><code>Vf = 2.0 В</code> (типичное для красного)</li>
+<li class=""><code>Iled = 20 мА = 0.02 А</code></li>
+</ul>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">R = (5 - 2.0) / 0.02 = 3.0 / 0.02 = 150 Ом</span><br></div></code></pre></div></div>
+<p>Ближайший стандартный номинал из ряда E12: <code>150 Ом</code> (есть), или <code>220 Ом</code> (запас по току).</p>
+<p>Если выбрать <code>220 Ом</code>, реальный ток будет:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">I = (5 - 2.0) / 220 ≈ 13.6 мА</span><br></div></code></pre></div></div>
+<p>LED будет светить чуть тусклее, но безопасно.</p>
+<blockquote>
+<p><strong>Инженерная заметка</strong></p>
+<p>В инженерной практике обычно выбирают резистор с запасом — чуть больше расчетного. Это дает запас по току (LED не перегружен) и по мощности резистора. Разница в яркости между 15 мА и 20 мА почти незаметна для глаза.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="стандартные-номиналы-резисторов-и-выбор-ближайшего">Стандартные номиналы резисторов и выбор ближайшего<a href="#стандартные-номиналы-резисторов-и-выбор-ближайшего" class="hash-link" aria-label="Прямая ссылка на Стандартные номиналы резисторов и выбор ближайшего" title="Прямая ссылка на Стандартные номиналы резисторов и выбор ближайшего" translate="no">​</a></h3>
+<p>Резисторы выпускаются не с произвольными значениями, а по стандартным рядам (E6, E12, E24, E96). Наиболее распространенный ряд — E12, который содержит 12 значений на декаду с допуском ±10%:</p>
+<p><strong>Ряд E12 (1.0 - 10.0):</strong>
+10, 12, 15, 18, 22, 27, 33, 39, 47, 56, 68, 82</p>
+<p>Эти значения умножаются на степени 10: <code>10 Ом</code>, <code>100 Ом</code>, <code>1 кОм</code>, <code>10 кОм</code> и т.д.</p>
+<p>Примеры стандартных номиналов: <code>220 Ом</code>, <code>330 Ом</code>, <code>470 Ом</code>, <code>1 кОм</code>, <code>2.2 кОм</code>, <code>10 кОм</code>.</p>
+<p>Если расчет дал <code>150 Ом</code>, а в наличии только <code>220 Ом</code> — берем <code>220 Ом</code>. Ток будет чуть меньше, LED чуть тусклее, но это безопасно.</p>
+<p>Если расчет дал <code>300 Ом</code>, ближайшие стандартные — <code>270 Ом</code> и <code>330 Ом</code>. Выбираем <code>330 Ом</code> (больше сопротивление → меньше ток → безопаснее).</p>
+<blockquote>
+<p><strong>Инженерная заметка</strong></p>
+<p>Допуск резистора ±5% или ±10% означает, что реальное сопротивление может отличаться от номинала. Резистор <code>220 Ом ±5%</code> может иметь сопротивление от <code>209 Ом</code> до <code>231 Ом</code>. Поэтому точный расчет тока через LED тоже имеет погрешность. Это нормально — схема должна работать с учетом разброса параметров компонентов.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ограничения-тока-пина-arduino">Ограничения тока пина Arduino<a href="#ограничения-тока-пина-arduino" class="hash-link" aria-label="Прямая ссылка на Ограничения тока пина Arduino" title="Прямая ссылка на Ограничения тока пина Arduino" translate="no">​</a></h3>
+<p>Каждый цифровой пин Arduino Mega 2560 R3 может выдавать максимум <strong>40 мА</strong>. Это аппаратное ограничение микроконтроллера ATmega2560. Превышение этого тока может повредить пин или весь микроконтроллер.</p>
+<p><strong>Рекомендуемый безопасный ток:</strong> 20 мА на пин.</p>
+<p>Если нужно управлять нагрузкой, потребляющей больше 20 мА (яркий LED, мотор, реле), используются дополнительные компоненты: транзисторы, MOSFET, драйверы.</p>
+<p><strong>Суммарный ток:</strong></p>
+<p>Суммарный ток всех пинов Arduino Mega не должен превышать <strong>200 мА</strong>. Если одновременно включить 10 LED по 20 мА, это уже предел. Если больше — нужно внешнее питание для нагрузки.</p>
+<blockquote>
+<p><strong>Безопасность</strong></p>
+<p>Если подключить LED без резистора, ток может достичь сотен миллиампер. Это гарантированно повредит пин или микроконтроллер. Резистор — не опция, а обязательное требование безопасности схемы.</p>
+</blockquote>
+<blockquote>
+<p><strong>Глубже</strong></p>
+<p>Пин Arduino — это выход порта микроконтроллера, управляемый транзисторным ключом внутри чипа. Транзистор имеет ограниченное сопротивление в открытом состоянии (<code>Ron ~ 25 Ом</code> для ATmega2560). При коротком замыкании пина на землю через него потечет ток <code>I = 5 В / 25 Ом = 200 мА</code>, что значительно превышает допустимое. Такой ток вызовет перегрев транзистора и его разрушение.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="мощность-резистора">Мощность резистора<a href="#мощность-резистора" class="hash-link" aria-label="Прямая ссылка на Мощность резистора" title="Прямая ссылка на Мощность резистора" translate="no">​</a></h3>
+<p>Когда через резистор течет ток, он рассеивает мощность в виде тепла:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">P = I² × R  или  P = U × I  или  P = U² / R</span><br></div></code></pre></div></div>
+<p>Стандартные резисторы на макетных платах обычно имеют мощность <code>0.25 Вт</code> (1/4 Вт) или <code>0.125 Вт</code> (1/8 Вт).</p>
+<p><strong>Пример:</strong></p>
+<p>Резистор <code>220 Ом</code>, ток <code>20 мА</code>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">P = I² × R = (0.02)² × 220 = 0.0004 × 220 = 0.088 Вт = 88 мВт</span><br></div></code></pre></div></div>
+<p>Это значительно меньше <code>0.25 Вт</code>, резистор не перегреется.</p>
+<p>Если бы ток был <code>100 мА</code>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">P = (0.1)² × 220 = 0.01 × 220 = 2.2 Вт</span><br></div></code></pre></div></div>
+<p>Резистор <code>0.25 Вт</code> сгорел бы. Нужен был бы резистор мощностью <code>5 Вт</code> или выше.</p>
+<blockquote>
+<p><strong>Инженерная заметка</strong></p>
+<p>Для LED-схем с током 10-20 мА стандартные резисторы <code>0.25 Вт</code> имеют огромный запас по мощности. Проблемы начинаются при токах выше 50 мА или при низкоомных резисторах в мощных схемах.</p>
+</blockquote>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проект-1-расчет-резистора-для-красного-led">Проект 1. Расчет резистора для красного LED<a href="#проект-1-расчет-резистора-для-красного-led" class="hash-link" aria-label="Прямая ссылка на Проект 1. Расчет резистора для красного LED" title="Прямая ссылка на Проект 1. Расчет резистора для красного LED" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идея-проекта">Идея проекта<a href="#идея-проекта" class="hash-link" aria-label="Прямая ссылка на Идея проекта" title="Прямая ссылка на Идея проекта" translate="no">​</a></h3>
+<p>Рассчитать резистор для красного светодиода, собрать схему и убедиться, что LED светит с безопасной яркостью.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="чему-учит-этот-проект">Чему учит этот проект<a href="#чему-учит-этот-проект" class="hash-link" aria-label="Прямая ссылка на Чему учит этот проект" title="Прямая ссылка на Чему учит этот проект" translate="no">​</a></h3>
+<ul>
+<li class="">Применить формулу расчета резистора.</li>
+<li class="">Найти <code>Vf</code> красного LED в datasheet или использовать типичное значение.</li>
+<li class="">Выбрать стандартный номинал резистора.</li>
+<li class="">Собрать схему по таблице соединений.</li>
+<li class="">Проверить результат визуально.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-понадобится">Что понадобится<a href="#что-понадобится" class="hash-link" aria-label="Прямая ссылка на Что понадобится" title="Прямая ссылка на Что понадобится" translate="no">​</a></h3>
+<ul>
+<li class="">Arduino Mega 2560 R3</li>
+<li class="">Breadboard</li>
+<li class="">Красный светодиод (5 мм)</li>
+<li class="">Резистор <code>220 Ом</code> (или рассчитанный номинал)</li>
+<li class="">Провода папа-папа (2 шт)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="расчет-резистора">Расчет резистора<a href="#расчет-резистора" class="hash-link" aria-label="Прямая ссылка на Расчет резистора" title="Прямая ссылка на Расчет резистора" translate="no">​</a></h3>
+<p><strong>Исходные данные:</strong></p>
+<ul>
+<li class=""><code>Vsource = 5 В</code> (пин Arduino в состоянии <code>HIGH</code>)</li>
+<li class=""><code>Vf = 2.0 В</code> (типичное для красного LED)</li>
+<li class=""><code>Iled = 20 мА = 0.02 А</code> (безопасный ток для стандартного LED)</li>
+</ul>
+<p><strong>Расчет:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">R = (Vsource - Vf) / Iled</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">R = (5 - 2.0) / 0.02</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">R = 3.0 / 0.02</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">R = 150 Ом</span><br></div></code></pre></div></div>
+<p>Ближайший стандартный номинал: <code>150 Ом</code> (если есть) или <code>220 Ом</code> (более распространенный).</p>
+<p>Если используем <code>220 Ом</code>, реальный ток:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">I = (5 - 2.0) / 220 ≈ 0.0136 А ≈ 13.6 мА</span><br></div></code></pre></div></div>
+<p>Это безопасно и достаточно для хорошей яркости.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="схема-подключения">Схема подключения<a href="#схема-подключения" class="hash-link" aria-label="Прямая ссылка на Схема подключения" title="Прямая ссылка на Схема подключения" translate="no">​</a></h3>
+<p><strong>Описание:</strong></p>
+<ol>
+<li class="">Пин <code>D9</code> Arduino → резистор <code>220 Ом</code>.</li>
+<li class="">Резистор → анод LED (длинная ножка).</li>
+<li class="">Катод LED (короткая ножка) → <code>GND</code> Arduino.</li>
+</ol>
+<p><strong>Путь тока:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">D9 (5V) → Резистор 220 Ом → Анод LED → Катод LED → GND (0V)</span><br></div></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="таблица-соединений">Таблица соединений<a href="#таблица-соединений" class="hash-link" aria-label="Прямая ссылка на Таблица соединений" title="Прямая ссылка на Таблица соединений" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Компонент</th><th>Вывод</th><th>Точка Breadboard</th><th>Куда идет</th><th>Комментарий</th></tr></thead><tbody><tr><td>Arduino</td><td>D9</td><td>—</td><td>a10 (провод)</td><td>Управляющий пин</td></tr><tr><td>Резистор 220 Ом</td><td>Вывод 1</td><td>a10</td><td>—</td><td>Один конец к D9</td></tr><tr><td>Резистор 220 Ом</td><td>Вывод 2</td><td>a11</td><td>—</td><td>Второй конец к аноду LED</td></tr><tr><td>LED красный</td><td>Анод (+)</td><td>a11</td><td>—</td><td>Длинная ножка</td></tr><tr><td>LED красный</td><td>Катод (-)</td><td>a12</td><td>—</td><td>Короткая ножка</td></tr><tr><td>Arduino</td><td>GND</td><td>—</td><td>a12 (провод)</td><td>Общая земля</td></tr></tbody></table>
+<p><strong>Альтернативная схема (с использованием breadboard шин):</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Компонент</th><th>Вывод</th><th>Точка Breadboard</th><th>Куда идет</th><th>Комментарий</th></tr></thead><tbody><tr><td>Arduino</td><td>D9</td><td>—</td><td>e10 (провод)</td><td>Управляющий пин</td></tr><tr><td>Резистор 220 Ом</td><td>Вывод 1</td><td>e10</td><td>—</td><td>К пину D9</td></tr><tr><td>Резистор 220 Ом</td><td>Вывод 2</td><td>e11</td><td>—</td><td>К аноду LED</td></tr><tr><td>LED красный</td><td>Анод (+)</td><td>e11</td><td>—</td><td>Длинная ножка, в одну группу с резистором</td></tr><tr><td>LED красный</td><td>Катод (-)</td><td>e13</td><td>—</td><td>Короткая ножка</td></tr><tr><td>Провод</td><td>—</td><td>e13</td><td>Шина GND</td><td>От катода к общей земле</td></tr><tr><td>Arduino</td><td>GND</td><td>—</td><td>Шина GND</td><td>Общая земля breadboard</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="код-проекта">Код проекта<a href="#код-проекта" class="hash-link" aria-label="Прямая ссылка на Код проекта" title="Прямая ссылка на Код проекта" translate="no">​</a></h3>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Проект 1: Расчет резистора для красного LED</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">// Глава 1.3</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> ledPin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">9</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">// Пин, к которому подключен LED</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">// Настраиваем пин как выход</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">// Включаем LED</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">                </span><span class="token comment" style="color:#999988;font-style:italic">// Ждем 1 секунду</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Выключаем LED</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">                </span><span class="token comment" style="color:#999988;font-style:italic">// Ждем 1 секунду</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-коде">Что происходит в коде<a href="#что-происходит-в-коде" class="hash-link" aria-label="Прямая ссылка на Что происходит в коде" title="Прямая ссылка на Что происходит в коде" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>Константа <code>ledPin = 9</code>:</strong> Определяем пин, к которому подключен LED. Использование константы вместо числа напрямую в коде — хорошая практика: если нужно изменить пин, меняем значение только в одном месте.</p>
+</li>
+<li class="">
+<p><strong><code>pinMode(ledPin, OUTPUT)</code>:</strong> Настраиваем пин <code>D9</code> как цифровой выход. Теперь микроконтроллер может управлять напряжением на этом пине.</p>
+</li>
+<li class="">
+<p><strong><code>digitalWrite(ledPin, HIGH)</code>:</strong> Устанавливаем пин в состояние <code>HIGH</code> (~5 В). Ток начинает течь через резистор и LED. LED загорается.</p>
+</li>
+<li class="">
+<p><strong><code>delay(1000)</code>:</strong> Блокирующая задержка 1000 мс (1 секунда). Программа &quot;замирает&quot; на это время.</p>
+</li>
+<li class="">
+<p><strong><code>digitalWrite(ledPin, LOW)</code>:</strong> Устанавливаем пин в состояние <code>LOW</code> (~0 В). Разность напряжений исчезает, ток прекращается, LED гаснет.</p>
+</li>
+<li class="">
+<p><strong>Цикл <code>loop()</code>:</strong> Повторяется бесконечно, LED мигает с периодом 2 секунды.</p>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-схеме">Что происходит в схеме<a href="#что-происходит-в-схеме" class="hash-link" aria-label="Прямая ссылка на Что происходит в схеме" title="Прямая ссылка на Что происходит в схеме" translate="no">​</a></h3>
+<p><strong>Когда <code>D9</code> в состоянии <code>HIGH</code> (~5 В):</strong></p>
+<ul>
+<li class="">Напряжение между <code>D9</code> и <code>GND</code> = 5 В.</li>
+<li class="">Это напряжение распределяется между резистором и LED.</li>
+<li class="">На LED падает <code>Vf ≈ 2.0 В</code>.</li>
+<li class="">На резисторе падает <code>Vresistor = 5 - 2.0 = 3.0 В</code>.</li>
+<li class="">Ток через цепь: <code>I = 3.0 / 220 ≈ 13.6 мА</code>.</li>
+<li class="">Этот ток протекает через резистор, затем через LED, затем возвращается в <code>GND</code>.</li>
+<li class="">LED излучает красный свет.</li>
+</ul>
+<p><strong>Когда <code>D9</code> в состоянии <code>LOW</code> (~0 В):</strong></p>
+<ul>
+<li class="">Напряжение между <code>D9</code> и <code>GND</code> ≈ 0 В.</li>
+<li class="">Разности потенциалов нет, ток не течет.</li>
+<li class="">LED не светит.</li>
+</ul>
+<blockquote>
+<p><strong>Физика</strong></p>
+<p>Когда ток течет через LED, электроны рекомбинируют с дырками в p-n переходе, выделяя энергию в виде фотонов красного света. Энергия фотона <code>E = h × f</code>, где <code>h</code> — постоянная Планка, <code>f</code> — частота света. Для красного света <code>f ≈ 4.3 × 10^14 Гц</code>, энергия фотона ~1.8 эВ, что соответствует <code>Vf ≈ 1.8-2.0 В</code>.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-проверить-работу">Как проверить работу<a href="#как-проверить-работу" class="hash-link" aria-label="Прямая ссылка на Как проверить работу" title="Прямая ссылка на Как проверить работу" translate="no">​</a></h3>
+<ol>
+<li class="">Загрузи код в Arduino.</li>
+<li class="">Красный LED должен мигать: 1 секунда горит, 1 секунда не горит.</li>
+<li class="">Яркость должна быть комфортной для глаза, не тусклой и не ослепительной.</li>
+</ol>
+<p><strong>Опционально (если есть мультиметр):</strong></p>
+<ul>
+<li class="">Переключи мультиметр в режим измерения постоянного напряжения (DC V).</li>
+<li class="">Измерь напряжение между <code>D9</code> и <code>GND</code> при <code>HIGH</code>: должно быть ~4.8-5.0 В.</li>
+<li class="">Измерь падение напряжения на LED (между анодом и катодом) при включенном состоянии: должно быть ~1.8-2.2 В для красного.</li>
+<li class="">Измерь падение напряжения на резисторе: должно быть ~2.8-3.2 В.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="если-не-работает">Если не работает<a href="#если-не-работает" class="hash-link" aria-label="Прямая ссылка на Если не работает" title="Прямая ссылка на Если не работает" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Симптом</th><th>Возможная причина</th><th>Решение</th></tr></thead><tbody><tr><td>LED не горит совсем</td><td>LED подключен наоборот (перепутаны анод и катод)</td><td>Переверни LED: длинная ножка к резистору, короткая к GND</td></tr><tr><td>LED не горит</td><td>Резистор не подключен или обрыв в цепи</td><td>Проверь все соединения, убедись, что резистор в цепи</td></tr><tr><td>LED очень тускло светит</td><td>Слишком большое сопротивление резистора (например, 10 кОм вместо 220 Ом)</td><td>Замени резистор на 220 Ом</td></tr><tr><td>LED горит постоянно, не мигает</td><td>Код не загружен или ошибка в коде</td><td>Перезагрузи код, проверь <code>pinMode()</code> и <code>digitalWrite()</code></td></tr><tr><td>LED мигает, но очень быстро/медленно</td><td>Неправильные значения <code>delay()</code></td><td>Проверь значения: должно быть <code>delay(1000)</code> для 1 секунды</td></tr></tbody></table>
+<blockquote>
+<p><strong>Ошибка новичка</strong></p>
+<p>Частая ошибка — забыть резистор и подключить LED напрямую к пину Arduino. Визуально LED может даже загореться на мгновение, но через несколько секунд погаснет навсегда, а пин Arduino может быть поврежден. <strong>Резистор обязателен.</strong></p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идеи-для-развития">Идеи для развития<a href="#идеи-для-развития" class="hash-link" aria-label="Прямая ссылка на Идеи для развития" title="Прямая ссылка на Идеи для развития" translate="no">​</a></h3>
+<ol>
+<li class="">Измени <code>delay()</code> и сделай LED миганием азбуки Морзе: SOS (· · · — — — · · ·).</li>
+<li class="">Поменяй пин с <code>D9</code> на другой (например, <code>D10</code>) — не забудь изменить и в коде, и в схеме.</li>
+<li class="">Если есть мультиметр, измерь реальный ток через LED (переключи мультиметр в режим измерения тока, включи его последовательно в цепь между резистором и анодом LED).</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проект-2-сравнение-трех-резисторов-на-одном-led">Проект 2. Сравнение трех резисторов на одном LED<a href="#проект-2-сравнение-трех-резисторов-на-одном-led" class="hash-link" aria-label="Прямая ссылка на Проект 2. Сравнение трех резисторов на одном LED" title="Прямая ссылка на Проект 2. Сравнение трех резисторов на одном LED" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идея-проекта-1">Идея проекта<a href="#идея-проекта-1" class="hash-link" aria-label="Прямая ссылка на Идея проекта" title="Прямая ссылка на Идея проекта" translate="no">​</a></h3>
+<p>Собрать схему с одним красным LED и тремя разными резисторами (<code>220 Ом</code>, <code>330 Ом</code>, <code>1 кОм</code>), последовательно меняя резистор и наблюдая изменение яркости. Это покажет, как сопротивление влияет на ток и яркость LED.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="чему-учит-этот-проект-1">Чему учит этот проект<a href="#чему-учит-этот-проект-1" class="hash-link" aria-label="Прямая ссылка на Чему учит этот проект" title="Прямая ссылка на Чему учит этот проект" translate="no">​</a></h3>
+<ul>
+<li class="">Связать теоретический расчет тока с визуальным результатом.</li>
+<li class="">Понять, что большее сопротивление → меньше ток → меньше яркость.</li>
+<li class="">Увидеть, что LED не сгорает даже при малом токе (1-2 мА).</li>
+<li class="">Научиться безопасно заменять компоненты в собранной схеме.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-понадобится-1">Что понадобится<a href="#что-понадобится-1" class="hash-link" aria-label="Прямая ссылка на Что понадобится" title="Прямая ссылка на Что понадобится" translate="no">​</a></h3>
+<ul>
+<li class="">Arduino Mega 2560 R3</li>
+<li class="">Breadboard</li>
+<li class="">Красный светодиод (5 мм)</li>
+<li class="">Резистор <code>220 Ом</code></li>
+<li class="">Резистор <code>330 Ом</code></li>
+<li class="">Резистор <code>1 кОм</code></li>
+<li class="">Провода папа-папа (2 шт)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="расчет-тока-для-каждого-резистора">Расчет тока для каждого резистора<a href="#расчет-тока-для-каждого-резистора" class="hash-link" aria-label="Прямая ссылка на Расчет тока для каждого резистора" title="Прямая ссылка на Расчет тока для каждого резистора" translate="no">​</a></h3>
+<p><strong>Общие данные:</strong></p>
+<ul>
+<li class=""><code>Vsource = 5 В</code></li>
+<li class=""><code>Vf = 2.0 В</code> (красный LED)</li>
+</ul>
+<p><strong>Резистор 220 Ом:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">I = (5 - 2.0) / 220 ≈ 13.6 мА</span><br></div></code></pre></div></div>
+<p>Яркий, хорошо видимый свет.</p>
+<p><strong>Резистор 330 Ом:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">I = (5 - 2.0) / 330 ≈ 9.1 мА</span><br></div></code></pre></div></div>
+<p>Чуть менее яркий, но все еще хорошо виден.</p>
+<p><strong>Резистор 1 кОм (1000 Ом):</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">I = (5 - 2.0) / 1000 = 3.0 мА</span><br></div></code></pre></div></div>
+<p>Заметно тусклее, но LED все еще светит.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="схема-подключения-1">Схема подключения<a href="#схема-подключения-1" class="hash-link" aria-label="Прямая ссылка на Схема подключения" title="Прямая ссылка на Схема подключения" translate="no">​</a></h3>
+<p>Схема идентична Проекту 1, но резистор будет меняться.</p>
+<p><strong>Описание:</strong></p>
+<ol>
+<li class="">Пин <code>D9</code> → резистор (сначала <code>220 Ом</code>).</li>
+<li class="">Резистор → анод LED.</li>
+<li class="">Катод LED → <code>GND</code>.</li>
+</ol>
+<p><strong>Таблица соединений (базовая):</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Компонент</th><th>Вывод</th><th>Точка Breadboard</th><th>Куда идет</th><th>Комментарий</th></tr></thead><tbody><tr><td>Arduino</td><td>D9</td><td>—</td><td>e10 (провод)</td><td>Управляющий пин</td></tr><tr><td>Резистор</td><td>Вывод 1</td><td>e10</td><td>—</td><td>К пину D9</td></tr><tr><td>Резистор</td><td>Вывод 2</td><td>e11</td><td>—</td><td>К аноду LED</td></tr><tr><td>LED красный</td><td>Анод (+)</td><td>e11</td><td>—</td><td>Длинная ножка</td></tr><tr><td>LED красный</td><td>Катод (-)</td><td>e13</td><td>—</td><td>Короткая ножка</td></tr><tr><td>Arduino</td><td>GND</td><td>—</td><td>e13 (провод)</td><td>Общая земля</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="код-проекта-1">Код проекта<a href="#код-проекта-1" class="hash-link" aria-label="Прямая ссылка на Код проекта" title="Прямая ссылка на Код проекта" translate="no">​</a></h3>
+<p>Код полностью идентичен Проекту 1. LED будет постоянно мигать, что позволит сравнивать яркость.</p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Проект 2: Сравнение резисторов</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">// Глава 1.3</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> ledPin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">9</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-коде-и-схеме">Что происходит в коде и схеме<a href="#что-происходит-в-коде-и-схеме" class="hash-link" aria-label="Прямая ссылка на Что происходит в коде и схеме" title="Прямая ссылка на Что происходит в коде и схеме" translate="no">​</a></h3>
+<p>Код не меняется. Изменяется только физический компонент — резистор. Закон Ома автоматически пересчитывает ток в зависимости от сопротивления.</p>
+<p><strong>С резистором 220 Ом:</strong></p>
+<ul>
+<li class="">Падение на резисторе: <code>3 В</code>.</li>
+<li class="">Ток: <code>13.6 мА</code>.</li>
+<li class="">Яркость: максимальная из трех вариантов.</li>
+</ul>
+<p><strong>С резистором 330 Ом:</strong></p>
+<ul>
+<li class="">Падение на резисторе: <code>3 В</code>.</li>
+<li class="">Ток: <code>9.1 мА</code>.</li>
+<li class="">Яркость: средняя, заметно меньше, чем при <code>220 Ом</code>.</li>
+</ul>
+<p><strong>С резистором 1 кОм:</strong></p>
+<ul>
+<li class="">Падение на резисторе: <code>3 В</code>.</li>
+<li class="">Ток: <code>3 мА</code>.</li>
+<li class="">Яркость: тусклая, но LED все еще виден в затемненном помещении.</li>
+</ul>
+<blockquote>
+<p><strong>Интуиция</strong></p>
+<p>LED как водопад: чем больше воды (тока) течет, тем больше брызг (фотонов) и ярче свечение. Резистор — это кран, который регулирует поток. Большое сопротивление — кран почти закрыт, маленький поток, тусклый свет.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-проверить-работу-1">Как проверить работу<a href="#как-проверить-работу-1" class="hash-link" aria-label="Прямая ссылка на Как проверить работу" title="Прямая ссылка на Как проверить работу" translate="no">​</a></h3>
+<ol>
+<li class="">Загрузи код в Arduino.</li>
+<li class="">Собери схему с резистором <code>220 Ом</code>.</li>
+<li class="">Запомни яркость LED.</li>
+<li class=""><strong>Отключи питание Arduino</strong> (выдерни USB-кабель).</li>
+<li class="">Замени резистор <code>220 Ом</code> на <code>330 Ом</code>.</li>
+<li class="">Подключи питание.</li>
+<li class="">Сравни яркость — LED должен быть чуть тусклее.</li>
+<li class="">Повтори с резистором <code>1 кОм</code> — LED будет заметно тусклее.</li>
+</ol>
+<blockquote>
+<p><strong>Безопасность</strong></p>
+<p>Всегда отключай питание Arduino перед заменой компонентов. Замена под напряжением может привести к короткому замыканию или случайному подключению компонента не в ту точку.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="если-не-работает-1">Если не работает<a href="#если-не-работает-1" class="hash-link" aria-label="Прямая ссылка на Если не работает" title="Прямая ссылка на Если не работает" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Симптом</th><th>Возможная причина</th><th>Решение</th></tr></thead><tbody><tr><td>С резистором 1 кОм LED совсем не горит</td><td>Может быть неисправен LED или неправильно подключен</td><td>Проверь полярность LED, попробуй другой LED</td></tr><tr><td>Яркость не меняется при смене резистора</td><td>Возможно, резисторы перепутаны (все одинаковые)</td><td>Проверь цветовую маркировку резисторов</td></tr><tr><td>LED горит одинаково ярко во всех случаях</td><td>Возможно, используется LED с встроенным резистором</td><td>Убедись, что используешь обычный LED, а не модуль</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идеи-для-развития-1">Идеи для развития<a href="#идеи-для-развития-1" class="hash-link" aria-label="Прямая ссылка на Идеи для развития" title="Прямая ссылка на Идеи для развития" translate="no">​</a></h3>
+<ol>
+<li class="">Попробуй резистор <code>10 кОм</code> — LED будет едва виден.</li>
+<li class="">Попробуй резистор <code>100 Ом</code> — LED будет очень ярким (но безопасным: ток ~30 мА, близко к пределу пина).</li>
+<li class="">Если есть мультиметр, измерь ток через LED для каждого резистора и сравни с расчетом.</li>
+</ol>
+<blockquote>
+<p><strong>Ошибка новичка</strong></p>
+<p>Некоторые думают, что резистор <code>1 кОм</code> &quot;слишком большой&quot; и LED вообще не загорится. Это не так. LED будет светить даже при токе 1-2 мА, просто очень тускло. Резистор не &quot;блокирует&quot; ток полностью — он ограничивает его по закону Ома.</p>
+</blockquote>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проект-3-три-led-разных-цветов-с-одинаковыми-резисторами">Проект 3. Три LED разных цветов с одинаковыми резисторами<a href="#проект-3-три-led-разных-цветов-с-одинаковыми-резисторами" class="hash-link" aria-label="Прямая ссылка на Проект 3. Три LED разных цветов с одинаковыми резисторами" title="Прямая ссылка на Проект 3. Три LED разных цветов с одинаковыми резисторами" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идея-проекта-2">Идея проекта<a href="#идея-проекта-2" class="hash-link" aria-label="Прямая ссылка на Идея проекта" title="Прямая ссылка на Идея проекта" translate="no">​</a></h3>
+<p>Собрать схему с тремя LED разных цветов (красный, зеленый, синий), используя одинаковые резисторы <code>220 Ом</code>. Увидеть, что LED светят с разной яркостью из-за разного <code>Vf</code>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="чему-учит-этот-проект-2">Чему учит этот проект<a href="#чему-учит-этот-проект-2" class="hash-link" aria-label="Прямая ссылка на Чему учит этот проект" title="Прямая ссылка на Чему учит этот проект" translate="no">​</a></h3>
+<ul>
+<li class="">Понять, что <code>Vf</code> зависит от цвета LED.</li>
+<li class="">Увидеть практическое следствие: при одинаковом резисторе разные LED имеют разный ток.</li>
+<li class="">Научиться управлять несколькими LED с разных пинов.</li>
+<li class="">Подготовиться к расчету резисторов для каждого цвета отдельно.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-понадобится-2">Что понадобится<a href="#что-понадобится-2" class="hash-link" aria-label="Прямая ссылка на Что понадобится" title="Прямая ссылка на Что понадобится" translate="no">​</a></h3>
+<ul>
+<li class="">Arduino Mega 2560 R3</li>
+<li class="">Breadboard</li>
+<li class="">Красный светодиод (5 мм)</li>
+<li class="">Зеленый светодиод (5 мм)</li>
+<li class="">Синий светодиод (5 мм)</li>
+<li class="">Резисторы <code>220 Ом</code> (3 шт)</li>
+<li class="">Провода папа-папа (6 шт)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="теоретический-расчет-тока-для-каждого-led">Теоретический расчет тока для каждого LED<a href="#теоретический-расчет-тока-для-каждого-led" class="hash-link" aria-label="Прямая ссылка на Теоретический расчет тока для каждого LED" title="Прямая ссылка на Теоретический расчет тока для каждого LED" translate="no">​</a></h3>
+<p><strong>Красный LED:</strong></p>
+<ul>
+<li class=""><code>Vf = 2.0 В</code></li>
+<li class=""><code>I = (5 - 2.0) / 220 ≈ 13.6 мА</code></li>
+</ul>
+<p><strong>Зеленый LED:</strong></p>
+<ul>
+<li class=""><code>Vf = 2.2 В</code> (типичное)</li>
+<li class=""><code>I = (5 - 2.2) / 220 ≈ 12.7 мА</code></li>
+</ul>
+<p><strong>Синий LED:</strong></p>
+<ul>
+<li class=""><code>Vf = 3.2 В</code> (типичное)</li>
+<li class=""><code>I = (5 - 3.2) / 220 ≈ 8.2 мА</code></li>
+</ul>
+<p>Синий LED получит наименьший ток из-за большего <code>Vf</code>. Он будет светить заметно тусклее, чем красный и зеленый.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="схема-подключения-2">Схема подключения<a href="#схема-подключения-2" class="hash-link" aria-label="Прямая ссылка на Схема подключения" title="Прямая ссылка на Схема подключения" translate="no">​</a></h3>
+<p>Три LED подключаются к трем разным пинам: <code>D9</code>, <code>D10</code>, <code>D11</code>. Каждый LED имеет свой резистор <code>220 Ом</code>.</p>
+<p><strong>Описание:</strong></p>
+<ol>
+<li class=""><code>D9</code> → резистор <code>220 Ом</code> → анод красного LED → катод → <code>GND</code>.</li>
+<li class=""><code>D10</code> → резистор <code>220 Ом</code> → анод зеленого LED → катод → <code>GND</code>.</li>
+<li class=""><code>D11</code> → резистор <code>220 Ом</code> → анод синего LED → катод → <code>GND</code>.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="таблица-соединений-1">Таблица соединений<a href="#таблица-соединений-1" class="hash-link" aria-label="Прямая ссылка на Таблица соединений" title="Прямая ссылка на Таблица соединений" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Компонент</th><th>Вывод</th><th>Точка Breadboard</th><th>Куда идет</th><th>Комментарий</th></tr></thead><tbody><tr><td>Arduino</td><td>D9</td><td>—</td><td>e10 (провод)</td><td>Красный LED</td></tr><tr><td>Резистор 220 Ом</td><td>1</td><td>e10</td><td>—</td><td>К D9</td></tr><tr><td>Резистор 220 Ом</td><td>2</td><td>e11</td><td>—</td><td>К аноду красного LED</td></tr><tr><td>LED красный</td><td>Анод (+)</td><td>e11</td><td>—</td><td>Длинная ножка</td></tr><tr><td>LED красный</td><td>Катод (-)</td><td>e13</td><td>—</td><td>Короткая ножка</td></tr><tr><td>Провод</td><td>—</td><td>e13</td><td>Шина GND</td><td>К общей земле</td></tr><tr><td>Arduino</td><td>D10</td><td>—</td><td>e20 (провод)</td><td>Зеленый LED</td></tr><tr><td>Резистор 220 Ом</td><td>1</td><td>e20</td><td>—</td><td>К D10</td></tr><tr><td>Резистор 220 Ом</td><td>2</td><td>e21</td><td>—</td><td>К аноду зеленого LED</td></tr><tr><td>LED зеленый</td><td>Анод (+)</td><td>e21</td><td>—</td><td>Длинная ножка</td></tr><tr><td>LED зеленый</td><td>Катод (-)</td><td>e23</td><td>—</td><td>Короткая ножка</td></tr><tr><td>Провод</td><td>—</td><td>e23</td><td>Шина GND</td><td>К общей земле</td></tr><tr><td>Arduino</td><td>D11</td><td>—</td><td>e30 (провод)</td><td>Синий LED</td></tr><tr><td>Резистор 220 Ом</td><td>1</td><td>e30</td><td>—</td><td>К D11</td></tr><tr><td>Резистор 220 Ом</td><td>2</td><td>e31</td><td>—</td><td>К аноду синего LED</td></tr><tr><td>LED синий</td><td>Анод (+)</td><td>e31</td><td>—</td><td>Длинная ножка</td></tr><tr><td>LED синий</td><td>Катод (-)</td><td>e33</td><td>—</td><td>Короткая ножка</td></tr><tr><td>Провод</td><td>—</td><td>e33</td><td>Шина GND</td><td>К общей земле</td></tr><tr><td>Arduino</td><td>GND</td><td>—</td><td>Шина GND</td><td>Общая земля для всех LED</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="код-проекта-2">Код проекта<a href="#код-проекта-2" class="hash-link" aria-label="Прямая ссылка на Код проекта" title="Прямая ссылка на Код проекта" translate="no">​</a></h3>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Проект 3: Три LED разных цветов</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">// Глава 1.3</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> redPin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">9</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> greenPin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">10</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> bluePin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">11</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">redPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">greenPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">bluePin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Включаем все LED одновременно</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">redPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">greenPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">bluePin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">2000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">// Горят 2 секунды</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Выключаем все LED</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">redPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">greenPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">bluePin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> </span><span class="token comment" style="color:#999988;font-style:italic">// Пауза 1 секунда</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-коде-1">Что происходит в коде<a href="#что-происходит-в-коде-1" class="hash-link" aria-label="Прямая ссылка на Что происходит в коде" title="Прямая ссылка на Что происходит в коде" translate="no">​</a></h3>
+<ol>
+<li class=""><strong>Три константы:</strong> <code>redPin</code>, <code>greenPin</code>, <code>bluePin</code> — пины для каждого LED.</li>
+<li class=""><strong><code>setup()</code>:</strong> Настраиваем все три пина как выходы.</li>
+<li class=""><strong><code>loop()</code>:</strong>
+<ul>
+<li class="">Включаем все три LED одновременно (<code>HIGH</code>).</li>
+<li class="">Ждем 2 секунды — LED горят.</li>
+<li class="">Выключаем все три LED (<code>LOW</code>).</li>
+<li class="">Ждем 1 секунду — пауза.</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-схеме-1">Что происходит в схеме<a href="#что-происходит-в-схеме-1" class="hash-link" aria-label="Прямая ссылка на Что происходит в схеме" title="Прямая ссылка на Что происходит в схеме" translate="no">​</a></h3>
+<p>Все три LED подключены параллельно (каждый к своему пину), но управляются одновременно.</p>
+<p><strong>Красный LED:</strong></p>
+<ul>
+<li class="">Ток: <code>13.6 мА</code>.</li>
+<li class="">Яркий, хорошо виден.</li>
+</ul>
+<p><strong>Зеленый LED:</strong></p>
+<ul>
+<li class="">Ток: <code>12.7 мА</code>.</li>
+<li class="">Яркий, почти как красный.</li>
+</ul>
+<p><strong>Синий LED:</strong></p>
+<ul>
+<li class="">Ток: <code>8.2 мА</code>.</li>
+<li class="">Заметно тусклее красного и зеленого.</li>
+</ul>
+<p>Разница в яркости вызвана разным <code>Vf</code>. При одинаковом резисторе <code>220 Ом</code> синий LED получает меньше тока, потому что на нем самое большое падение напряжения.</p>
+<blockquote>
+<p><strong>Глубже</strong></p>
+<p>Энергия фотона света связана с его длиной волны: <code>E = h × c / λ</code>. Синий свет имеет короткую длину волны (~450 нм), красный — длинную (~650 нм). Синий фотон несет больше энергии, поэтому для его генерации в LED нужен больший барьер p-n перехода, что выражается в большем <code>Vf</code>.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-проверить-работу-2">Как проверить работу<a href="#как-проверить-работу-2" class="hash-link" aria-label="Прямая ссылка на Как проверить работу" title="Прямая ссылка на Как проверить работу" translate="no">​</a></h3>
+<ol>
+<li class="">Загрузи код в Arduino.</li>
+<li class="">Все три LED должны загораться одновременно на 2 секунды, затем гаснуть на 1 секунду.</li>
+<li class="">Обрати внимание на разницу в яркости: красный и зеленый яркие, синий заметно тусклее.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="если-не-работает-2">Если не работает<a href="#если-не-работает-2" class="hash-link" aria-label="Прямая ссылка на Если не работает" title="Прямая ссылка на Если не работает" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Симптом</th><th>Возможная причина</th><th>Решение</th></tr></thead><tbody><tr><td>Один или несколько LED не горят</td><td>Неправильная полярность или обрыв в цепи</td><td>Проверь полярность каждого LED, все соединения</td></tr><tr><td>Все LED горят одинаково ярко</td><td>Возможно, используются LED с встроенными резисторами</td><td>Проверь, что используешь обычные LED, а не модули</td></tr><tr><td>LED мигают не синхронно</td><td>Ошибка в коде: разные пины управляются в разное время</td><td>Убедись, что все <code>digitalWrite()</code> для <code>HIGH</code> и <code>LOW</code> в правильном порядке</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идеи-для-развития-2">Идеи для развития<a href="#идеи-для-развития-2" class="hash-link" aria-label="Прямая ссылка на Идеи для развития" title="Прямая ссылка на Идеи для развития" translate="no">​</a></h3>
+<ol>
+<li class="">Измени код так, чтобы LED включались по очереди: сначала красный, потом зеленый, потом синий, потом все вместе.</li>
+<li class="">Сделай &quot;бегущий огонь&quot;: красный → зеленый → синий → красный...</li>
+<li class="">Добавь Serial Monitor и выведи сообщения при включении каждого LED.</li>
+</ol>
+<blockquote>
+<p><strong>Инженерная заметка</strong></p>
+<p>В RGB-модулях (общий анод или общий катод) используется один корпус с тремя LED внутри. Для правильной цветопередачи нужно рассчитывать резистор отдельно для каждого цвета или использовать ШИМ для управления яркостью. Об этом будет подробно в Главе 2.1.</p>
+</blockquote>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проект-4-расчет-резистора-для-синего-led-и-проверка">Проект 4. Расчет резистора для синего LED и проверка<a href="#проект-4-расчет-резистора-для-синего-led-и-проверка" class="hash-link" aria-label="Прямая ссылка на Проект 4. Расчет резистора для синего LED и проверка" title="Прямая ссылка на Проект 4. Расчет резистора для синего LED и проверка" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идея-проекта-3">Идея проекта<a href="#идея-проекта-3" class="hash-link" aria-label="Прямая ссылка на Идея проекта" title="Прямая ссылка на Идея проекта" translate="no">​</a></h3>
+<p>Рассчитать правильный резистор специально для синего LED, чтобы компенсировать его большое <code>Vf</code> и получить яркость, сравнимую с красным LED.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="чему-учит-этот-проект-3">Чему учит этот проект<a href="#чему-учит-этот-проект-3" class="hash-link" aria-label="Прямая ссылка на Чему учит этот проект" title="Прямая ссылка на Чему учит этот проект" translate="no">​</a></h3>
+<ul>
+<li class="">Применить формулу расчета для LED с высоким <code>Vf</code>.</li>
+<li class="">Понять, что для разных цветов нужны разные резисторы.</li>
+<li class="">Увидеть разницу между &quot;универсальным&quot; резистором <code>220 Ом</code> и оптимизированным под конкретный LED.</li>
+<li class="">Закрепить навык чтения datasheet (или использования типичных значений).</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-понадобится-3">Что понадобится<a href="#что-понадобится-3" class="hash-link" aria-label="Прямая ссылка на Что понадобится" title="Прямая ссылка на Что понадобится" translate="no">​</a></h3>
+<ul>
+<li class="">Arduino Mega 2560 R3</li>
+<li class="">Breadboard</li>
+<li class="">Синий светодиод (5 мм)</li>
+<li class="">Резистор <code>220 Ом</code> (для сравнения)</li>
+<li class="">Резистор <code>100 Ом</code> или <code>150 Ом</code> (рассчитанный)</li>
+<li class="">Провода папа-папа (2 шт)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="расчет-резистора-для-синего-led">Расчет резистора для синего LED<a href="#расчет-резистора-для-синего-led" class="hash-link" aria-label="Прямая ссылка на Расчет резистора для синего LED" title="Прямая ссылка на Расчет резистора для синего LED" translate="no">​</a></h3>
+<p><strong>Исходные данные:</strong></p>
+<ul>
+<li class=""><code>Vsource = 5 В</code></li>
+<li class=""><code>Vf = 3.2 В</code> (типичное для синего LED)</li>
+<li class=""><code>Iled = 20 мА = 0.02 А</code></li>
+</ul>
+<p><strong>Расчет:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">R = (Vsource - Vf) / Iled</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">R = (5 - 3.2) / 0.02</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">R = 1.8 / 0.02</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">R = 90 Ом</span><br></div></code></pre></div></div>
+<p>Ближайший стандартный номинал: <code>100 Ом</code>.</p>
+<p><strong>Реальный ток с резистором 100 Ом:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">I = (5 - 3.2) / 100 = 1.8 / 100 = 18 мА</span><br></div></code></pre></div></div>
+<p>Это безопасно и даст хорошую яркость.</p>
+<p><strong>Сравнение с резистором 220 Ом (из Проекта 3):</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">I = (5 - 3.2) / 220 ≈ 8.2 мА</span><br></div></code></pre></div></div>
+<p>С резистором <code>100 Ом</code> ток будет в 2.2 раза больше, LED будет заметно ярче.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="схема-подключения-3">Схема подключения<a href="#схема-подключения-3" class="hash-link" aria-label="Прямая ссылка на Схема подключения" title="Прямая ссылка на Схема подключения" translate="no">​</a></h3>
+<p>Схема идентична Проекту 1, но используется синий LED и резистор <code>100 Ом</code>.</p>
+<p><strong>Таблица соединений:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Компонент</th><th>Вывод</th><th>Точка Breadboard</th><th>Куда идет</th><th>Комментарий</th></tr></thead><tbody><tr><td>Arduino</td><td>D9</td><td>—</td><td>e10 (провод)</td><td>Управляющий пин</td></tr><tr><td>Резистор 100 Ом</td><td>1</td><td>e10</td><td>—</td><td>К пину D9</td></tr><tr><td>Резистор 100 Ом</td><td>2</td><td>e11</td><td>—</td><td>К аноду LED</td></tr><tr><td>LED синий</td><td>Анод (+)</td><td>e11</td><td>—</td><td>Длинная ножка</td></tr><tr><td>LED синий</td><td>Катод (-)</td><td>e13</td><td>—</td><td>Короткая ножка</td></tr><tr><td>Arduino</td><td>GND</td><td>—</td><td>e13 (провод)</td><td>Общая земля</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="код-проекта-3">Код проекта<a href="#код-проекта-3" class="hash-link" aria-label="Прямая ссылка на Код проекта" title="Прямая ссылка на Код проекта" translate="no">​</a></h3>
+<p>Код полностью идентичен Проекту 1 — меняется только физический компонент.</p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Проект 4: Расчет резистора для синего LED</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">// Глава 1.3</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> ledPin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">9</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-схеме-2">Что происходит в схеме<a href="#что-происходит-в-схеме-2" class="hash-link" aria-label="Прямая ссылка на Что происходит в схеме" title="Прямая ссылка на Что происходит в схеме" translate="no">​</a></h3>
+<p><strong>С резистором 100 Ом:</strong></p>
+<ul>
+<li class="">Падение напряжения на резисторе: <code>5 - 3.2 = 1.8 В</code>.</li>
+<li class="">Ток: <code>1.8 / 100 = 18 мА</code>.</li>
+<li class="">Синий LED светит ярко, сравнимо с красным LED из Проекта 1.</li>
+</ul>
+<p><strong>Сравнение с резистором 220 Ом:</strong></p>
+<ul>
+<li class="">Ток: <code>8.2 мА</code>.</li>
+<li class="">LED тусклее почти в 2 раза.</li>
+</ul>
+<blockquote>
+<p><strong>Инженерная заметка</strong></p>
+<p>В коммерческих устройствах с RGB-подсветкой (клавиатуры, мониторы, LED-ленты) для каждого цвета используются отдельные резисторы или ШИМ-управление яркостью. Это обеспечивает правильную цветопередачу и одинаковую визуальную яркость всех цветов.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-проверить-работу-3">Как проверить работу<a href="#как-проверить-работу-3" class="hash-link" aria-label="Прямая ссылка на Как проверить работу" title="Прямая ссылка на Как проверить работу" translate="no">​</a></h3>
+<ol>
+<li class="">Собери схему с синим LED и резистором <code>220 Ом</code>.</li>
+<li class="">Загрузи код.</li>
+<li class="">Запомни яркость — LED будет довольно тусклым.</li>
+<li class="">Отключи питание.</li>
+<li class="">Замени резистор <code>220 Ом</code> на <code>100 Ом</code>.</li>
+<li class="">Подключи питание.</li>
+<li class="">Синий LED должен стать заметно ярче.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="если-не-работает-3">Если не работает<a href="#если-не-работает-3" class="hash-link" aria-label="Прямая ссылка на Если не работает" title="Прямая ссылка на Если не работает" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Симптом</th><th>Возможная причина</th><th>Решение</th></tr></thead><tbody><tr><td>С резистором 100 Ом LED не горит</td><td>Возможно, перепутана полярность</td><td>Переверни LED</td></tr><tr><td>LED горит одинаково с 100 Ом и 220 Ом</td><td>Возможно, перепутаны резисторы</td><td>Проверь цветовую маркировку</td></tr><tr><td>LED очень тусклый даже с 100 Ом</td><td>Возможно, неисправен LED или <code>Vf</code> выше типичного</td><td>Попробуй другой синий LED</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идеи-для-развития-3">Идеи для развития<a href="#идеи-для-развития-3" class="hash-link" aria-label="Прямая ссылка на Идеи для развития" title="Прямая ссылка на Идеи для развития" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p>Собери схему с тремя LED (красный, зеленый, синий), используя рассчитанные резисторы для каждого цвета:</p>
+<ul>
+<li class="">Красный: <code>150 Ом</code> или <code>220 Ом</code>.</li>
+<li class="">Зеленый: <code>180 Ом</code> или <code>220 Ом</code>.</li>
+<li class="">Синий: <code>100 Ом</code>.</li>
+</ul>
+<p>Все три LED должны светить с примерно одинаковой яркостью.</p>
+</li>
+<li class="">
+<p>Если есть мультиметр, измерь реальное <code>Vf</code> для каждого цвета LED:</p>
+<ul>
+<li class="">Подключи мультиметр параллельно LED (режим измерения напряжения).</li>
+<li class="">Измерь напряжение между анодом и катодом при включенном LED.</li>
+<li class="">Сравни измеренное <code>Vf</code> с типичными значениями.</li>
+</ul>
+</li>
+<li class="">
+<p>Рассчитай и собери схему с белым LED (<code>Vf ≈ 3.4 В</code>).</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Ошибка новичка</strong></p>
+<p>Некоторые думают, что один резистор <code>220 Ом</code> подходит для всех цветов LED. Это работает, но неоптимально: красный и зеленый будут яркими, синий — тусклым. Для правильной яркости нужно рассчитывать резистор под каждый цвет отдельно или использовать ШИМ.</p>
+</blockquote>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="эксперименты">Эксперименты<a href="#эксперименты" class="hash-link" aria-label="Прямая ссылка на Эксперименты" title="Прямая ссылка на Эксперименты" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="эксперимент-1-измерение-напряжения-на-пине-arduino">Эксперимент 1: Измерение напряжения на пине Arduino<a href="#эксперимент-1-измерение-напряжения-на-пине-arduino" class="hash-link" aria-label="Прямая ссылка на Эксперимент 1: Измерение напряжения на пине Arduino" title="Прямая ссылка на Эксперимент 1: Измерение напряжения на пине Arduino" translate="no">​</a></h3>
+<p><strong>Цель:</strong> Убедиться, что пин в состоянии <code>HIGH</code> выдает ~5 В, а в <code>LOW</code> — ~0 В.</p>
+<p><strong>Что нужно:</strong> Мультиметр.</p>
+<p><strong>Как провести:</strong></p>
+<ol>
+<li class="">Загрузи код из Проекта 1 (LED мигает на пине <code>D9</code>).</li>
+<li class="">Переключи мультиметр в режим измерения постоянного напряжения (DC V, диапазон до 20 В).</li>
+<li class="">Подключи черный щуп мультиметра к <code>GND</code> Arduino.</li>
+<li class="">Подключи красный щуп к пину <code>D9</code>.</li>
+<li class="">Когда LED горит (пин в <code>HIGH</code>), мультиметр должен показать ~4.8-5.0 В.</li>
+<li class="">Когда LED не горит (пин в <code>LOW</code>), мультиметр должен показать ~0.0-0.1 В.</li>
+</ol>
+<p><strong>Что это дает:</strong></p>
+<p>Ты видишь, что <code>HIGH</code> и <code>LOW</code> — не абстрактные булевы значения, а реальные напряжения ~5 В и ~0 В.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="эксперимент-2-измерение-падения-напряжения-на-led">Эксперимент 2: Измерение падения напряжения на LED<a href="#эксперимент-2-измерение-падения-напряжения-на-led" class="hash-link" aria-label="Прямая ссылка на Эксперимент 2: Измерение падения напряжения на LED" title="Прямая ссылка на Эксперимент 2: Измерение падения напряжения на LED" translate="no">​</a></h3>
+<p><strong>Цель:</strong> Измерить реальное <code>Vf</code> LED и сравнить с типичным значением.</p>
+<p><strong>Что нужно:</strong> Мультиметр, собранная схема с LED.</p>
+<p><strong>Как провести:</strong></p>
+<ol>
+<li class="">Собери схему с красным LED и резистором <code>220 Ом</code> (Проект 1).</li>
+<li class="">Загрузи код, LED должен мигать.</li>
+<li class="">Переключи мультиметр в режим измерения постоянного напряжения.</li>
+<li class="">Когда LED горит, подключи щупы мультиметра:
+<ul>
+<li class="">Красный щуп к аноду LED (точка между резистором и LED).</li>
+<li class="">Черный щуп к катоду LED (точка между LED и <code>GND</code>).</li>
+</ul>
+</li>
+<li class="">Мультиметр покажет падение напряжения на LED: для красного ожидается ~1.8-2.2 В.</li>
+<li class="">Повтори для зеленого и синего LED.</li>
+</ol>
+<p><strong>Ожидаемые результаты:</strong></p>
+<ul>
+<li class="">Красный: ~2.0 В.</li>
+<li class="">Зеленый: ~2.2 В.</li>
+<li class="">Синий: ~3.2 В.</li>
+</ul>
+<p><strong>Что это дает:</strong></p>
+<p>Ты убедишься, что <code>Vf</code> действительно зависит от цвета LED и можешь использовать измеренное значение для более точного расчета резистора.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="эксперимент-3-экстремально-большой-резистор">Эксперимент 3: Экстремально большой резистор<a href="#эксперимент-3-экстремально-большой-резистор" class="hash-link" aria-label="Прямая ссылка на Эксперимент 3: Экстремально большой резистор" title="Прямая ссылка на Эксперимент 3: Экстремально большой резистор" translate="no">​</a></h3>
+<p><strong>Цель:</strong> Посмотреть, что произойдет с LED при очень большом сопротивлении.</p>
+<p><strong>Что нужно:</strong> Резистор <code>10 кОм</code>.</p>
+<p><strong>Как провести:</strong></p>
+<ol>
+<li class="">Собери схему с красным LED и резистором <code>10 кОм</code>.</li>
+<li class="">Загрузи код.</li>
+<li class="">LED будет едва заметно светиться (ток ~0.3 мА).</li>
+</ol>
+<p><strong>Расчет тока:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">I = (5 - 2.0) / 10000 = 0.0003 А = 0.3 мА</span><br></div></code></pre></div></div>
+<p><strong>Что это дает:</strong></p>
+<p>Ты видишь, что LED может работать даже при очень малом токе, просто очень тускло. Это полезно для индикаторных LED, где яркость не важна, а критично энергопотребление.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="эксперимент-4-экстремально-малый-резистор-осторожно">Эксперимент 4: Экстремально малый резистор (осторожно!)<a href="#эксперимент-4-экстремально-малый-резистор-осторожно" class="hash-link" aria-label="Прямая ссылка на Эксперимент 4: Экстремально малый резистор (осторожно!)" title="Прямая ссылка на Эксперимент 4: Экстремально малый резистор (осторожно!)" translate="no">​</a></h3>
+<p><strong>Цель:</strong> Понять, почему нельзя использовать слишком малое сопротивление.</p>
+<p><strong>Что нужно:</strong> Резистор <code>47 Ом</code> или <code>33 Ом</code> (если есть).</p>
+<blockquote>
+<p><strong>Безопасность</strong></p>
+<p>Этот эксперимент на грани безопасности. Не используй резистор меньше <code>33 Ом</code>. Не оставляй схему включенной надолго.</p>
+</blockquote>
+<p><strong>Как провести:</strong></p>
+<ol>
+<li class="">Собери схему с красным LED и резистором <code>47 Ом</code>.</li>
+<li class="">Загрузи код с длинными паузами (<code>delay(5000)</code>), чтобы LED не горел постоянно.</li>
+<li class="">LED будет очень ярким.</li>
+</ol>
+<p><strong>Расчет тока:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">I = (5 - 2.0) / 47 ≈ 63 мА</span><br></div></code></pre></div></div>
+<p>Это <strong>превышает</strong> максимально допустимый ток пина Arduino (40 мА) и LED (обычно 20-30 мА).</p>
+<p><strong>Что произойдет:</strong></p>
+<ul>
+<li class="">LED может сгореть (если ток слишком большой для него).</li>
+<li class="">Пин Arduino может быть поврежден (ток выше 40 мА).</li>
+<li class="">Если включить несколько таких LED, можно повредить весь микроконтроллер.</li>
+</ul>
+<p><strong>Что это дает:</strong></p>
+<p>Ты видишь практическое следствие превышения тока. Резистор — не декоративный элемент, а критически важный компонент безопасности.</p>
+<blockquote>
+<p><strong>Важно</strong></p>
+<p>Не проводи этот эксперимент без необходимости. Он показывает, что теория имеет прямые последствия для надежности устройства.</p>
+</blockquote>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="частые-ошибки-главы">Частые ошибки главы<a href="#частые-ошибки-главы" class="hash-link" aria-label="Прямая ссылка на Частые ошибки главы" title="Прямая ссылка на Частые ошибки главы" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-1-забыли-резистор">Ошибка 1: Забыли резистор<a href="#ошибка-1-забыли-резистор" class="hash-link" aria-label="Прямая ссылка на Ошибка 1: Забыли резистор" title="Прямая ссылка на Ошибка 1: Забыли резистор" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> LED загорелся на мгновение, потом погас навсегда.</p>
+<p><strong>Причина:</strong> LED подключен напрямую к пину без резистора. Ток превысил допустимый, LED сгорел.</p>
+<p><strong>Решение:</strong> Всегда использовать токоограничивающий резистор. Минимальное безопасное значение для LED с Arduino Mega: <code>100 Ом</code> (для синего), <code>150 Ом</code> (для красного/зеленого).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-2-неправильный-расчет-забыли-вычесть-vf">Ошибка 2: Неправильный расчет: забыли вычесть Vf<a href="#ошибка-2-неправильный-расчет-забыли-вычесть-vf" class="hash-link" aria-label="Прямая ссылка на Ошибка 2: Неправильный расчет: забыли вычесть Vf" title="Прямая ссылка на Ошибка 2: Неправильный расчет: забыли вычесть Vf" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Рассчитали резистор как <code>R = 5 / 0.02 = 250 Ом</code>, LED горит ярче, чем ожидалось.</p>
+<p><strong>Причина:</strong> Забыли вычесть <code>Vf</code> из напряжения источника. Реальный ток:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">I = (5 - 2.0) / 250 = 12 мА (вместо ожидаемых 20 мА)</span><br></div></code></pre></div></div>
+<p><strong>Решение:</strong> Всегда используй формулу <code>R = (Vsource - Vf) / Iled</code>. <code>Vf</code> не должно игнорироваться.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-3-перепутали-цвета-led-при-расчете">Ошибка 3: Перепутали цвета LED при расчете<a href="#ошибка-3-перепутали-цвета-led-при-расчете" class="hash-link" aria-label="Прямая ссылка на Ошибка 3: Перепутали цвета LED при расчете" title="Прямая ссылка на Ошибка 3: Перепутали цвета LED при расчете" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Рассчитали резистор для красного LED (<code>Vf = 2.0 В</code>), но по ошибке использовали синий LED (<code>Vf = 3.2 В</code>). Синий LED очень яркий и быстро греется.</p>
+<p><strong>Причина:</strong> Ток через синий LED с резистором <code>150 Ом</code>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">I = (5 - 3.2) / 150 = 12 мА (ожидалось)</span><br></div></code></pre></div></div>
+<p>Но если расчет был для красного (резистор меньше):</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">I = (5 - 3.2) / 100 = 18 мА</span><br></div></code></pre></div></div>
+<p>Может быть безопасно, но если резистор был 47 Ом (для красного при высоком токе), синий LED получит:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">I = (5 - 3.2) / 47 ≈ 38 мА</span><br></div></code></pre></div></div>
+<p>Это на грани перегрузки.</p>
+<p><strong>Решение:</strong> Всегда проверяй, для какого цвета LED выполнен расчет. Используй маркировку или комментарии в схеме.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-4-не-учли-допуск-резистора">Ошибка 4: Не учли допуск резистора<a href="#ошибка-4-не-учли-допуск-резистора" class="hash-link" aria-label="Прямая ссылка на Ошибка 4: Не учли допуск резистора" title="Прямая ссылка на Ошибка 4: Не учли допуск резистора" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Рассчитали резистор <code>220 Ом</code>, ожидали ток <code>13.6 мА</code>, но LED светит ярче или тусклее.</p>
+<p><strong>Причина:</strong> Резистор имеет допуск ±5% или ±10%. Реальное сопротивление может быть от <code>198 Ом</code> до <code>242 Ом</code> (для допуска ±10%).</p>
+<p><strong>Решение:</strong> Это нормально. Схема должна быть устойчива к разбросу параметров. Если критично точное управление яркостью, используй ШИМ (Глава 2.1).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-5-использовали-один-резистор-на-несколько-led">Ошибка 5: Использовали один резистор на несколько LED<a href="#ошибка-5-использовали-один-резистор-на-несколько-led" class="hash-link" aria-label="Прямая ссылка на Ошибка 5: Использовали один резистор на несколько LED" title="Прямая ссылка на Ошибка 5: Использовали один резистор на несколько LED" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Подключили два LED последовательно через один резистор <code>220 Ом</code>. Оба LED очень тусклые.</p>
+<p><strong>Причина:</strong> При последовательном подключении LED складываются <code>Vf</code>:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Vtotal = Vf1 + Vf2 = 2.0 + 2.0 = 4.0 В</span><br></div></code></pre></div></div>
+<p>Падение на резисторе:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Vresistor = 5 - 4.0 = 1.0 В</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">I = 1.0 / 220 ≈ 4.5 мА</span><br></div></code></pre></div></div>
+<p>Ток слишком мал для нормальной яркости.</p>
+<p><strong>Решение:</strong> Для последовательного подключения пересчитывай резистор с учетом суммарного <code>Vf</code>. Или подключай LED параллельно (каждый со своим резистором).</p>
+<blockquote>
+<p><strong>Инженерная заметка</strong></p>
+<p>В LED-лентах часто используется последовательное подключение групп LED для экономии резисторов, но это требует точного расчета и высокого напряжения питания (12 В или 24 В).</p>
+</blockquote>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проверь-себя">Проверь себя<a href="#проверь-себя" class="hash-link" aria-label="Прямая ссылка на Проверь себя" title="Прямая ссылка на Проверь себя" translate="no">​</a></h2>
+<ol>
+<li class="">
+<p><strong>Что такое закон Ома? Напиши формулу и объясни каждый символ.</strong></p>
+</li>
+<li class="">
+<p><strong>Почему LED нужен токоограничивающий резистор? Что произойдет без него?</strong></p>
+</li>
+<li class="">
+<p><strong>Рассчитай резистор для желтого LED с <code>Vf = 2.1 В</code>, если нужен ток <code>15 мА</code> при питании <code>5 В</code>.</strong></p>
+</li>
+<li class="">
+<p><strong>У тебя есть синий LED (<code>Vf = 3.2 В</code>) и резистор <code>330 Ом</code>. Какой ток потечет через LED при напряжении <code>5 В</code>?</strong></p>
+</li>
+<li class="">
+<p><strong>Можно ли подключить к одному пину Arduino два LED с разными резисторами параллельно? Что произойдет с током пина?</strong></p>
+</li>
+<li class="">
+<p><strong>Почему синий LED тусклее красного при одинаковом резисторе?</strong></p>
+</li>
+<li class="">
+<p><strong>Если резистор <code>220 Ом</code> имеет допуск ±10%, какой диапазон тока может быть через LED с <code>Vf = 2.0 В</code>?</strong></p>
+</li>
+</ol>
+<p><strong>Ответы:</strong></p>
+<ol>
+<li class="">
+<p><code>U = I × R</code>. <code>U</code> — напряжение (В), <code>I</code> — ток (А), <code>R</code> — сопротивление (Ом). Закон связывает эти три величины.</p>
+</li>
+<li class="">
+<p>LED имеет очень малое сопротивление в прямом направлении. Без резистора ток ограничен только внутренним сопротивлением LED и источника, может достичь сотен мА, LED сгорит.</p>
+</li>
+<li class="">
+<p><code>R = (5 - 2.1) / 0.015 = 2.9 / 0.015 ≈ 193 Ом</code>. Ближайший стандартный: <code>220 Ом</code>.</p>
+</li>
+<li class="">
+<p><code>I = (5 - 3.2) / 330 ≈ 5.5 мА</code>.</p>
+</li>
+<li class="">
+<p>Можно. Токи через каждый LED сложатся: <code>Itotal = I1 + I2</code>. Нужно следить, чтобы суммарный ток не превысил 40 мА (предел пина).</p>
+</li>
+<li class="">
+<p>Синий LED имеет большее <code>Vf</code> (~3.2 В), поэтому при том же резисторе через него течет меньший ток.</p>
+</li>
+<li class="">
+<p>Резистор может быть от <code>198 Ом</code> до <code>242 Ом</code>. Ток: от <code>I = 3.0 / 242 ≈ 12.4 мА</code> до <code>I = 3.0 / 198 ≈ 15.2 мА</code>.</p>
+</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проекты">Мини-проекты<a href="#мини-проекты" class="hash-link" aria-label="Прямая ссылка на Мини-проекты" title="Прямая ссылка на Мини-проекты" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проект-1-rgb-светофор-с-правильными-резисторами">Мини-проект 1: RGB-светофор с правильными резисторами<a href="#мини-проект-1-rgb-светофор-с-правильными-резисторами" class="hash-link" aria-label="Прямая ссылка на Мини-проект 1: RGB-светофор с правильными резисторами" title="Прямая ссылка на Мини-проект 1: RGB-светофор с правильными резисторами" translate="no">​</a></h3>
+<p><strong>Задача:</strong> Собрать светофор из трех LED (красный, желтый, зеленый), рассчитав резистор для каждого цвета так, чтобы все LED светили с одинаковой яркостью (~15 мА).</p>
+<p><strong>Подсказка:</strong></p>
+<ul>
+<li class="">Красный: <code>Vf ≈ 2.0 В</code>, <code>R = (5 - 2.0) / 0.015 = 200 Ом</code> → <code>220 Ом</code>.</li>
+<li class="">Желтый: <code>Vf ≈ 2.1 В</code>, <code>R = (5 - 2.1) / 0.015 = 193 Ом</code> → <code>220 Ом</code>.</li>
+<li class="">Зеленый: <code>Vf ≈ 2.2 В</code>, <code>R = (5 - 2.2) / 0.015 = 187 Ом</code> → <code>220 Ом</code>.</li>
+</ul>
+<p>Все три можно использовать <code>220 Ом</code> — разница в токе будет незначительной.</p>
+<p><strong>Код:</strong></p>
+<p>Светофор должен работать циклично:</p>
+<ol>
+<li class="">Красный — 5 секунд.</li>
+<li class="">Желтый — 2 секунды.</li>
+<li class="">Зеленый — 5 секунд.</li>
+<li class="">Желтый — 2 секунды.</li>
+<li class="">Повтор.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проект-2-индикатор-уровня-с-пятью-led">Мини-проект 2: Индикатор уровня с пятью LED<a href="#мини-проект-2-индикатор-уровня-с-пятью-led" class="hash-link" aria-label="Прямая ссылка на Мини-проект 2: Индикатор уровня с пятью LED" title="Прямая ссылка на Мини-проект 2: Индикатор уровня с пятью LED" translate="no">​</a></h3>
+<p><strong>Задача:</strong> Собрать схему с пятью LED (любого цвета), которые загораются последовательно, имитируя индикатор уровня (как на аудиооборудовании).</p>
+<p><strong>Подсказка:</strong></p>
+<p>Используй пять пинов: <code>D9</code>, <code>D10</code>, <code>D11</code>, <code>D12</code>, <code>D13</code>. Каждому LED — свой резистор <code>220 Ом</code>. Код должен включать LED один за другим с задержкой <code>500 мс</code>, затем выключать в обратном порядке.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проект-3-калькулятор-резистора-в-serial-monitor">Мини-проект 3: Калькулятор резистора в Serial Monitor<a href="#мини-проект-3-калькулятор-резистора-в-serial-monitor" class="hash-link" aria-label="Прямая ссылка на Мини-проект 3: Калькулятор резистора в Serial Monitor" title="Прямая ссылка на Мини-проект 3: Калькулятор резистора в Serial Monitor" translate="no">​</a></h3>
+<p><strong>Задача:</strong> Написать программу, которая запрашивает у пользователя через Serial Monitor:</p>
+<ul>
+<li class="">Напряжение источника (<code>Vsource</code>).</li>
+<li class="">Прямое падение напряжения LED (<code>Vf</code>).</li>
+<li class="">Желаемый ток (<code>Iled</code>).</li>
+</ul>
+<p>И выводит расчетное сопротивление резистора.</p>
+<p><strong>Подсказка:</strong></p>
+<p>Используй <code>Serial.begin(9600)</code>, <code>Serial.println()</code>, <code>Serial.parseFloat()</code> для ввода чисел с плавающей точкой.</p>
+<p><strong>Пример вывода:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Введите Vsource (V): 5</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Введите Vf (V): 2.0</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Введите Iled (mA): 20</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Расчетный резистор: 150 Ом</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Ближайший стандартный: 220 Ом</span><br></div></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проект-4-измерение-тока-через-led-если-есть-мультиметр">Мини-проект 4: Измерение тока через LED (если есть мультиметр)<a href="#мини-проект-4-измерение-тока-через-led-если-есть-мультиметр" class="hash-link" aria-label="Прямая ссылка на Мини-проект 4: Измерение тока через LED (если есть мультиметр)" title="Прямая ссылка на Мини-проект 4: Измерение тока через LED (если есть мультиметр)" translate="no">​</a></h3>
+<p><strong>Задача:</strong> Собрать схему с LED и резистором, но включить мультиметр последовательно в цепь для измерения реального тока.</p>
+<p><strong>Как подключить мультиметр для измерения тока:</strong></p>
+<ol>
+<li class="">Переключи мультиметр в режим измерения постоянного тока (DC A, диапазон до 200 мА).</li>
+<li class="">Разорви цепь между резистором и анодом LED.</li>
+<li class="">Подключи мультиметр последовательно: резистор → красный щуп → черный щуп → анод LED.</li>
+<li class="">Загрузи код, измерь ток при включенном LED.</li>
+</ol>
+<p><strong>Что измерить:</strong></p>
+<ul>
+<li class="">Ток через красный LED с резистором <code>220 Ом</code> (ожидается ~13.6 мА).</li>
+<li class="">Ток через синий LED с резистором <code>220 Ом</code> (ожидается ~8.2 мА).</li>
+<li class="">Ток через синий LED с резистором <code>100 Ом</code> (ожидается ~18 мА).</li>
+</ul>
+<p>Сравни измеренные значения с расчетными.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-мы-теперь-умеем">Что мы теперь умеем<a href="#что-мы-теперь-умеем" class="hash-link" aria-label="Прямая ссылка на Что мы теперь умеем" title="Прямая ссылка на Что мы теперь умеем" translate="no">​</a></h2>
+<p>После этой главы ты:</p>
+<ol>
+<li class="">
+<p><strong>Понимаешь физический смысл напряжения, тока и сопротивления.</strong> Эти понятия больше не абстракция — ты видел их на практике, измерил мультиметром, рассчитал по формулам.</p>
+</li>
+<li class="">
+<p><strong>Умеешь применять закон Ома.</strong> <code>U = I × R</code> — теперь это рабочий инструмент для расчета компонентов схемы.</p>
+</li>
+<li class="">
+<p><strong>Понимаешь, почему LED нужен резистор.</strong> Резистор — не магический компонент &quot;чтобы не сгорел&quot;, а инструмент управления током через формулу <code>R = (Vsource - Vf) / Iled</code>.</p>
+</li>
+<li class="">
+<p><strong>Можешь рассчитать токоограничивающий резистор для любого LED.</strong> Находишь <code>Vf</code> в datasheet или используешь типичные значения, применяешь формулу, выбираешь ближайший стандартный номинал.</p>
+</li>
+<li class="">
+<p><strong>Понимаешь, почему LED разных цветов требуют разных резисторов.</strong> <code>Vf</code> зависит от цвета (энергии фотона), что влияет на ток при фиксированном резисторе.</p>
+</li>
+<li class="">
+<p><strong>Знаешь ограничения тока пина Arduino.</strong> Максимум 40 мА на пин, рекомендуется 20 мА. Суммарный ток всех пинов не должен превышать 200 мА.</p>
+</li>
+<li class="">
+<p><strong>Можешь диагностировать проблемы схемы через измерения.</strong> Если LED не горит или горит неправильно, можешь измерить напряжение/ток мультиметром и понять причину.</p>
+</li>
+<li class="">
+<p><strong>Понимаешь разброс параметров компонентов.</strong> Допуск резистора, вариация <code>Vf</code> — это нормально, схема должна быть устойчивой к этому.</p>
+</li>
+<li class="">
+<p><strong>Начал читать схемы как инженер, а не как исполнитель инструкций.</strong> Ты видишь не просто &quot;LED → резистор → GND&quot;, а поток тока, распределение напряжений, физический смысл каждого элемента.</p>
+</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-это-пригодится-дальше">Как это пригодится дальше<a href="#как-это-пригодится-дальше" class="hash-link" aria-label="Прямая ссылка на Как это пригодится дальше" title="Прямая ссылка на Как это пригодится дальше" translate="no">​</a></h2>
+<p>Эта глава — фундамент всей схемотехники учебника.</p>
+<p><strong>В ближайших главах:</strong></p>
+<ul>
+<li class="">
+<p><strong>Глава 1.4 (HIGH и LOW):</strong> Ты поймешь, что <code>HIGH</code> и <code>LOW</code> — это не булевы значения <code>true</code>/<code>false</code>, а физические напряжения ~5 В и ~0 В, которые можно измерить и использовать для логических вычислений.</p>
+</li>
+<li class="">
+<p><strong>Глава 2.1 (ШИМ):</strong> Закон Ома понадобится для понимания, почему ШИМ может управлять яркостью LED и скоростью мотора. Ты будешь рассчитывать среднюю мощность и средний ток.</p>
+</li>
+<li class="">
+<p><strong>Глава 2.2 (Кнопки и цифровые входы):</strong> Понадобится расчет подтягивающих резисторов (<code>pull-up</code>, <code>pull-down</code>), чтобы входной пин микроконтроллера видел определенные логические уровни.</p>
+</li>
+<li class="">
+<p><strong>Глава 3.4 (Делители напряжения и аналоговые входы):</strong> Закон Ома — основа делителя напряжения. Ты будешь рассчитывать сопротивления для получения нужного напряжения на входе АЦП.</p>
+</li>
+</ul>
+<p><strong>В более поздних разделах:</strong></p>
+<ul>
+<li class="">
+<p><strong>Моторы и реле (Раздел 6):</strong> Расчет тока нагрузки, выбор транзисторов и MOSFET, защитные диоды — все это опирается на понимание тока и напряжения.</p>
+</li>
+<li class="">
+<p><strong>Датчики (Разделы 7-8):</strong> Многие аналоговые датчики работают через делители напряжения, резистивные элементы (фоторезисторы, термисторы). Расчет схемы подключения опирается на закон Ома.</p>
+</li>
+<li class="">
+<p><strong>Протоколы и шины данных (Разделы 10-11):</strong> Подтягивающие резисторы для I2C, расчет терминаторов для SPI, понимание логических уровней для UART — все это требует знания тока и напряжения.</p>
+</li>
+<li class="">
+<p><strong>Интеграция с ПК (Раздел 12):</strong> Понимание, как Serial-порт передает данные через изменения напряжения.</p>
+</li>
+<li class="">
+<p><strong>Прототипирование и отладка (Разделы 16-17):</strong> Использование мультиметра, осциллографа, логического анализатора для диагностики схем. Без понимания напряжения и тока эти инструменты бесполезны.</p>
+</li>
+</ul>
+<p><strong>Концептуально:</strong></p>
+<p>Эта глава показала, что программа Arduino — это не просто код, а управление физическими процессами: током, напряжением, энергией. Каждая строка <code>digitalWrite()</code> изменяет состояние электрической цепи. Ты начал видеть мост между software и hardware.</p>
+<p>Следующие главы будут развивать эту связь дальше: цифровая логика (булева алгебра на напряжениях), аналоговые сигналы (непрерывные напряжения), ШИМ (импульсные последовательности), протоколы (закодированные в напряжениях биты данных).</p>
+<p>Электричество — это язык, на котором Arduino общается с миром. Теперь ты понимаешь основы этого языка.</p>
+<hr>
+<p><strong>Следующая глава:</strong> 1.4. <code>HIGH</code> и <code>LOW</code>: что на самом деле значат логические уровни.</p>
+<p>Мы углубимся в связь булевой логики программы с физическими напряжениями на пинах микроконтроллера. Ты поймешь, что такое TTL, цифровой сигнал и пороги распознавания, и соберешь проекты, где логические состояния управляют последовательностями действий (светофор, Morse-код SOS).</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/maksimkh34/arduino/tree/main/../chapters/01-03-electricity-for-programmers.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Отредактировать эту страницу</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Страница документа"><a class="pagination-nav__link pagination-nav__link--prev" href="/arduino/01-02-breadboard-first-external-circuit"><div class="pagination-nav__sublabel">Предыдущая страница</div><div class="pagination-nav__label">Breadboard и первая внешняя схема</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#зачем-нужна-эта-глава" class="table-of-contents__link toc-highlight">Зачем нужна эта глава</a></li><li><a href="#что-мы-соберем-к-концу-главы" class="table-of-contents__link toc-highlight">Что мы соберем к концу главы</a></li><li><a href="#что-ты-узнаешь-и-чему-научишься" class="table-of-contents__link toc-highlight">Что ты узнаешь и чему научишься</a></li><li><a href="#карта-путешествия" class="table-of-contents__link toc-highlight">Карта путешествия</a></li><li><a href="#ключевые-термины" class="table-of-contents__link toc-highlight">Ключевые термины</a></li><li><a href="#практическая-задача-главы" class="table-of-contents__link toc-highlight">Практическая задача главы</a></li><li><a href="#теория-которая-нужна-для-решения-задачи" class="table-of-contents__link toc-highlight">Теория, которая нужна для решения задачи</a><ul><li><a href="#напряжение-давление-для-электронов" class="table-of-contents__link toc-highlight">Напряжение: давление для электронов</a></li><li><a href="#ток-поток-электронов" class="table-of-contents__link toc-highlight">Ток: поток электронов</a></li><li><a href="#сопротивление-препятствие-потоку" class="table-of-contents__link toc-highlight">Сопротивление: препятствие потоку</a></li><li><a href="#закон-ома-связь-напряжения-тока-и-сопротивления" class="table-of-contents__link toc-highlight">Закон Ома: связь напряжения, тока и сопротивления</a></li><li><a href="#почему-led-нужен-резистор-прямое-падение-напряжения" class="table-of-contents__link toc-highlight">Почему LED нужен резистор: прямое падение напряжения</a></li><li><a href="#расчет-токоограничивающего-резистора" class="table-of-contents__link toc-highlight">Расчет токоограничивающего резистора</a></li><li><a href="#стандартные-номиналы-резисторов-и-выбор-ближайшего" class="table-of-contents__link toc-highlight">Стандартные номиналы резисторов и выбор ближайшего</a></li><li><a href="#ограничения-тока-пина-arduino" class="table-of-contents__link toc-highlight">Ограничения тока пина Arduino</a></li><li><a href="#мощность-резистора" class="table-of-contents__link toc-highlight">Мощность резистора</a></li></ul></li><li><a href="#проект-1-расчет-резистора-для-красного-led" class="table-of-contents__link toc-highlight">Проект 1. Расчет резистора для красного LED</a><ul><li><a href="#идея-проекта" class="table-of-contents__link toc-highlight">Идея проекта</a></li><li><a href="#чему-учит-этот-проект" class="table-of-contents__link toc-highlight">Чему учит этот проект</a></li><li><a href="#что-понадобится" class="table-of-contents__link toc-highlight">Что понадобится</a></li><li><a href="#расчет-резистора" class="table-of-contents__link toc-highlight">Расчет резистора</a></li><li><a href="#схема-подключения" class="table-of-contents__link toc-highlight">Схема подключения</a></li><li><a href="#таблица-соединений" class="table-of-contents__link toc-highlight">Таблица соединений</a></li><li><a href="#код-проекта" class="table-of-contents__link toc-highlight">Код проекта</a></li><li><a href="#что-происходит-в-коде" class="table-of-contents__link toc-highlight">Что происходит в коде</a></li><li><a href="#что-происходит-в-схеме" class="table-of-contents__link toc-highlight">Что происходит в схеме</a></li><li><a href="#как-проверить-работу" class="table-of-contents__link toc-highlight">Как проверить работу</a></li><li><a href="#если-не-работает" class="table-of-contents__link toc-highlight">Если не работает</a></li><li><a href="#идеи-для-развития" class="table-of-contents__link toc-highlight">Идеи для развития</a></li></ul></li><li><a href="#проект-2-сравнение-трех-резисторов-на-одном-led" class="table-of-contents__link toc-highlight">Проект 2. Сравнение трех резисторов на одном LED</a><ul><li><a href="#идея-проекта-1" class="table-of-contents__link toc-highlight">Идея проекта</a></li><li><a href="#чему-учит-этот-проект-1" class="table-of-contents__link toc-highlight">Чему учит этот проект</a></li><li><a href="#что-понадобится-1" class="table-of-contents__link toc-highlight">Что понадобится</a></li><li><a href="#расчет-тока-для-каждого-резистора" class="table-of-contents__link toc-highlight">Расчет тока для каждого резистора</a></li><li><a href="#схема-подключения-1" class="table-of-contents__link toc-highlight">Схема подключения</a></li><li><a href="#код-проекта-1" class="table-of-contents__link toc-highlight">Код проекта</a></li><li><a href="#что-происходит-в-коде-и-схеме" class="table-of-contents__link toc-highlight">Что происходит в коде и схеме</a></li><li><a href="#как-проверить-работу-1" class="table-of-contents__link toc-highlight">Как проверить работу</a></li><li><a href="#если-не-работает-1" class="table-of-contents__link toc-highlight">Если не работает</a></li><li><a href="#идеи-для-развития-1" class="table-of-contents__link toc-highlight">Идеи для развития</a></li></ul></li><li><a href="#проект-3-три-led-разных-цветов-с-одинаковыми-резисторами" class="table-of-contents__link toc-highlight">Проект 3. Три LED разных цветов с одинаковыми резисторами</a><ul><li><a href="#идея-проекта-2" class="table-of-contents__link toc-highlight">Идея проекта</a></li><li><a href="#чему-учит-этот-проект-2" class="table-of-contents__link toc-highlight">Чему учит этот проект</a></li><li><a href="#что-понадобится-2" class="table-of-contents__link toc-highlight">Что понадобится</a></li><li><a href="#теоретический-расчет-тока-для-каждого-led" class="table-of-contents__link toc-highlight">Теоретический расчет тока для каждого LED</a></li><li><a href="#схема-подключения-2" class="table-of-contents__link toc-highlight">Схема подключения</a></li><li><a href="#таблица-соединений-1" class="table-of-contents__link toc-highlight">Таблица соединений</a></li><li><a href="#код-проекта-2" class="table-of-contents__link toc-highlight">Код проекта</a></li><li><a href="#что-происходит-в-коде-1" class="table-of-contents__link toc-highlight">Что происходит в коде</a></li><li><a href="#что-происходит-в-схеме-1" class="table-of-contents__link toc-highlight">Что происходит в схеме</a></li><li><a href="#как-проверить-работу-2" class="table-of-contents__link toc-highlight">Как проверить работу</a></li><li><a href="#если-не-работает-2" class="table-of-contents__link toc-highlight">Если не работает</a></li><li><a href="#идеи-для-развития-2" class="table-of-contents__link toc-highlight">Идеи для развития</a></li></ul></li><li><a href="#проект-4-расчет-резистора-для-синего-led-и-проверка" class="table-of-contents__link toc-highlight">Проект 4. Расчет резистора для синего LED и проверка</a><ul><li><a href="#идея-проекта-3" class="table-of-contents__link toc-highlight">Идея проекта</a></li><li><a href="#чему-учит-этот-проект-3" class="table-of-contents__link toc-highlight">Чему учит этот проект</a></li><li><a href="#что-понадобится-3" class="table-of-contents__link toc-highlight">Что понадобится</a></li><li><a href="#расчет-резистора-для-синего-led" class="table-of-contents__link toc-highlight">Расчет резистора для синего LED</a></li><li><a href="#схема-подключения-3" class="table-of-contents__link toc-highlight">Схема подключения</a></li><li><a href="#код-проекта-3" class="table-of-contents__link toc-highlight">Код проекта</a></li><li><a href="#что-происходит-в-схеме-2" class="table-of-contents__link toc-highlight">Что происходит в схеме</a></li><li><a href="#как-проверить-работу-3" class="table-of-contents__link toc-highlight">Как проверить работу</a></li><li><a href="#если-не-работает-3" class="table-of-contents__link toc-highlight">Если не работает</a></li><li><a href="#идеи-для-развития-3" class="table-of-contents__link toc-highlight">Идеи для развития</a></li></ul></li><li><a href="#эксперименты" class="table-of-contents__link toc-highlight">Эксперименты</a><ul><li><a href="#эксперимент-1-измерение-напряжения-на-пине-arduino" class="table-of-contents__link toc-highlight">Эксперимент 1: Измерение напряжения на пине Arduino</a></li><li><a href="#эксперимент-2-измерение-падения-напряжения-на-led" class="table-of-contents__link toc-highlight">Эксперимент 2: Измерение падения напряжения на LED</a></li><li><a href="#эксперимент-3-экстремально-большой-резистор" class="table-of-contents__link toc-highlight">Эксперимент 3: Экстремально большой резистор</a></li><li><a href="#эксперимент-4-экстремально-малый-резистор-осторожно" class="table-of-contents__link toc-highlight">Эксперимент 4: Экстремально малый резистор (осторожно!)</a></li></ul></li><li><a href="#частые-ошибки-главы" class="table-of-contents__link toc-highlight">Частые ошибки главы</a><ul><li><a href="#ошибка-1-забыли-резистор" class="table-of-contents__link toc-highlight">Ошибка 1: Забыли резистор</a></li><li><a href="#ошибка-2-неправильный-расчет-забыли-вычесть-vf" class="table-of-contents__link toc-highlight">Ошибка 2: Неправильный расчет: забыли вычесть Vf</a></li><li><a href="#ошибка-3-перепутали-цвета-led-при-расчете" class="table-of-contents__link toc-highlight">Ошибка 3: Перепутали цвета LED при расчете</a></li><li><a href="#ошибка-4-не-учли-допуск-резистора" class="table-of-contents__link toc-highlight">Ошибка 4: Не учли допуск резистора</a></li><li><a href="#ошибка-5-использовали-один-резистор-на-несколько-led" class="table-of-contents__link toc-highlight">Ошибка 5: Использовали один резистор на несколько LED</a></li></ul></li><li><a href="#проверь-себя" class="table-of-contents__link toc-highlight">Проверь себя</a></li><li><a href="#мини-проекты" class="table-of-contents__link toc-highlight">Мини-проекты</a><ul><li><a href="#мини-проект-1-rgb-светофор-с-правильными-резисторами" class="table-of-contents__link toc-highlight">Мини-проект 1: RGB-светофор с правильными резисторами</a></li><li><a href="#мини-проект-2-индикатор-уровня-с-пятью-led" class="table-of-contents__link toc-highlight">Мини-проект 2: Индикатор уровня с пятью LED</a></li><li><a href="#мини-проект-3-калькулятор-резистора-в-serial-monitor" class="table-of-contents__link toc-highlight">Мини-проект 3: Калькулятор резистора в Serial Monitor</a></li><li><a href="#мини-проект-4-измерение-тока-через-led-если-есть-мультиметр" class="table-of-contents__link toc-highlight">Мини-проект 4: Измерение тока через LED (если есть мультиметр)</a></li></ul></li><li><a href="#что-мы-теперь-умеем" class="table-of-contents__link toc-highlight">Что мы теперь умеем</a></li><li><a href="#как-это-пригодится-дальше" class="table-of-contents__link toc-highlight">Как это пригодится дальше</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Контент</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/arduino/">Учебник</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Ссылки</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/maksimkh34/arduino" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Arduino Textbook. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>

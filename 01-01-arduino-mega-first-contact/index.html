@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="ru" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-01-01-arduino-mega-first-contact" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.1">
+<title data-rh="true">Первый контакт: знакомство с Arduino Mega 2560 R3 | Arduino Mega 2560 R3: Учебник</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://maksimkh34.github.io/arduino/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://maksimkh34.github.io/arduino/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://maksimkh34.github.io/arduino/01-01-arduino-mega-first-contact"><meta data-rh="true" property="og:locale" content="ru"><meta data-rh="true" name="docusaurus_locale" content="ru"><meta data-rh="true" name="docsearch:language" content="ru"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Первый контакт: знакомство с Arduino Mega 2560 R3 | Arduino Mega 2560 R3: Учебник"><meta data-rh="true" name="description" content="Зачем нужна эта глава"><meta data-rh="true" property="og:description" content="Зачем нужна эта глава"><link data-rh="true" rel="icon" href="/arduino/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://maksimkh34.github.io/arduino/01-01-arduino-mega-first-contact"><link data-rh="true" rel="alternate" href="https://maksimkh34.github.io/arduino/01-01-arduino-mega-first-contact" hreflang="ru"><link data-rh="true" rel="alternate" href="https://maksimkh34.github.io/arduino/01-01-arduino-mega-first-contact" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Первый контакт: знакомство с Arduino Mega 2560 R3","item":"https://maksimkh34.github.io/arduino/01-01-arduino-mega-first-contact"}]}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/arduino/assets/css/styles.75f65cb6.css">
+<script src="/arduino/assets/js/runtime~main.4a0ae35b.js" defer="defer"></script>
+<script src="/arduino/assets/js/main.0fe16ece.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/arduino/img/logo.svg"><div role="region" aria-label="Перейти к основному содержимому"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Перейти к основному содержимому</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Переключить навигационную панель" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/arduino/"><div class="navbar__logo"><img src="/arduino/img/logo.svg" alt="Arduino Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/arduino/img/logo.svg" alt="Arduino Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Arduino Mega 2560 R3</b></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/maksimkh34/arduino" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Переключение между темным и светлым режимом (сейчас используется system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Прокрутка к началу" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/arduino/01-01-arduino-mega-first-contact"><span title="Раздел 1" class="categoryLinkLabel_W154">Раздел 1</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/arduino/01-01-arduino-mega-first-contact"><span title="Первый контакт: знакомство с Arduino Mega 2560 R3" class="linkLabel_WmDU">Первый контакт: знакомство с Arduino Mega 2560 R3</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/arduino/01-02-breadboard-first-external-circuit"><span title="Breadboard и первая внешняя схема" class="linkLabel_WmDU">Breadboard и первая внешняя схема</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/arduino/01-03-electricity-for-programmers"><span title="Электричество для программистов: напряжение, ток и закон Ома" class="linkLabel_WmDU">Электричество для программистов: напряжение, ток и закон Ома</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Навигационная цепочка текущей страницы"><ul class="breadcrumbs"><li class="breadcrumbs__item"><span class="breadcrumbs__link">Раздел 1</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Первый контакт: знакомство с Arduino Mega 2560 R3</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">Содержание этой страницы</button></div><div class="theme-doc-markdown markdown"><header><h1>Глава 1.1. Первый контакт: знакомство с Arduino Mega 2560 R3</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="зачем-нужна-эта-глава">Зачем нужна эта глава<a href="#зачем-нужна-эта-глава" class="hash-link" aria-label="Прямая ссылка на Зачем нужна эта глава" title="Прямая ссылка на Зачем нужна эта глава" translate="no">​</a></h2>
+<p>Ты умеешь писать код. Ты понимаешь, как работают переменные, функции, циклы, структуры данных. Твои программы выполняются на процессорах с гигагерцами частоты, гигабайтами памяти и сложными операционными системами.</p>
+<p>Но что если задача — не обработать данные на сервере, а <strong>зажечь светодиод</strong>? Включить мотор? Прочитать температуру с датчика? Управлять роботом?</p>
+<p>Здесь начинается другой мир: мир <strong>микроконтроллеров</strong> и <strong>встраиваемых систем</strong> (embedded systems). Здесь нет операционной системы в привычном смысле. Нет файловой системы. Нет многозадачности из коробки. Зато есть прямой контроль над физическими сигналами: напряжением на выводах, временем в микросекундах, прерываниями от кнопок, показаниями АЦП.</p>
+<p>Arduino Mega 2560 R3 — это <strong>лаборатория для изучения embedded-разработки</strong>. Это плата разработки, которая делает работу с микроконтроллером ATmega2560 удобной: не нужен программатор, не нужно паять, не нужно разбираться с регистрами с первого дня. Ты пишешь код на языке, похожем на C++, загружаешь его через USB — и устройство начинает работать.</p>
+<p>Эта глава — первый шаг из мира чистого софта в мир физических устройств.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-мы-соберем-к-концу-главы">Что мы соберем к концу главы<a href="#что-мы-соберем-к-концу-главы" class="hash-link" aria-label="Прямая ссылка на Что мы соберем к концу главы" title="Прямая ссылка на Что мы соберем к концу главы" translate="no">​</a></h2>
+<p>К концу главы ты:</p>
+<ul>
+<li class="">Поймешь, что такое микроконтроллер и чем он отличается от процессора твоего компьютера.</li>
+<li class="">Узнаешь архитектуру Arduino Mega 2560 R3: память, частоту, пины, питание.</li>
+<li class="">Установишь Arduino IDE и настроишь окружение.</li>
+<li class="">Напишешь и загрузишь свой первый sketch (программу для Arduino).</li>
+<li class="">Заставишь встроенный светодиод на пине <code>D13</code> мигать.</li>
+<li class="">Поймешь структуру программы: <code>setup()</code> и <code>loop()</code>.</li>
+<li class="">Научишься управлять цифровым выходом: <code>pinMode()</code>, <code>digitalWrite()</code>, <code>delay()</code>.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-ты-узнаешь-и-чему-научишься">Что ты узнаешь и чему научишься<a href="#что-ты-узнаешь-и-чему-научишься" class="hash-link" aria-label="Прямая ссылка на Что ты узнаешь и чему научишься" title="Прямая ссылка на Что ты узнаешь и чему научишься" translate="no">​</a></h2>
+<p><strong>Теория:</strong></p>
+<ul>
+<li class="">Что такое микроконтроллер и плата разработки.</li>
+<li class="">Архитектура ATmega2560: ядро, память (Flash, SRAM, EEPROM), частота 16 МГц.</li>
+<li class="">Назначение основных компонентов платы Arduino Mega 2560 R3.</li>
+<li class="">Что такое пин, цифровой вход и выход.</li>
+<li class="">Как Arduino получает питание: USB, внешний источник, <code>Vin</code>, регулятор напряжения.</li>
+<li class="">Что такое bootloader и как он позволяет загружать код через USB без программатора.</li>
+<li class="">Структура sketch: <code>setup()</code> выполняется один раз, <code>loop()</code> — бесконечно.</li>
+</ul>
+<p><strong>Практика:</strong></p>
+<ul>
+<li class="">Подключить Arduino Mega к компьютеру.</li>
+<li class="">Установить драйвер (если нужно).</li>
+<li class="">Выбрать плату и порт в Arduino IDE.</li>
+<li class="">Загрузить sketch.</li>
+<li class="">Изменить код и увидеть результат на плате.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="карта-путешествия">Карта путешествия<a href="#карта-путешествия" class="hash-link" aria-label="Прямая ссылка на Карта путешествия" title="Прямая ссылка на Карта путешествия" translate="no">​</a></h2>
+<ol>
+<li class=""><strong>Микроконтроллер vs процессор ПК</strong> — поймем, что такое микроконтроллер и зачем он нужен.</li>
+<li class=""><strong>Обзор Arduino Mega 2560 R3</strong> — изучим плату: ATmega2560, пины, память, частоту, питание.</li>
+<li class=""><strong>Установка Arduino IDE</strong> — подготовим среду разработки.</li>
+<li class=""><strong>Структура sketch</strong> — разберем <code>setup()</code> и <code>loop()</code>, поймем жизненный цикл программы.</li>
+<li class=""><strong>Проект 1: Blink</strong> — заставим встроенный LED мигать.</li>
+<li class=""><strong>Проект 2: Анализ Blink</strong> — поймем, что происходит в коде и на плате.</li>
+<li class=""><strong>Проект 3: Изменение частоты мигания</strong> — поэкспериментируем с задержками.</li>
+<li class=""><strong>Эксперименты</strong> — изменим код, чтобы почувствовать принципы.</li>
+<li class=""><strong>Частые ошибки</strong> — разберем типичные проблемы новичков.</li>
+<li class=""><strong>Проверь себя</strong> — вопросы на понимание.</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="ключевые-термины">Ключевые термины<a href="#ключевые-термины" class="hash-link" aria-label="Прямая ссылка на Ключевые термины" title="Прямая ссылка на Ключевые термины" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Микроконтроллер (MCU, Microcontroller Unit)</strong> — микросхема, содержащая процессор, память и периферию на одном кристалле.</li>
+<li class=""><strong>Arduino Mega 2560 R3</strong> — плата разработки на базе микроконтроллера ATmega2560.</li>
+<li class=""><strong>ATmega2560</strong> — 8-битный микроконтроллер AVR от Atmel (ныне Microchip), 16 МГц, 256 КБ Flash, 8 КБ SRAM.</li>
+<li class=""><strong>Плата разработки (development board)</strong> — печатная плата с микроконтроллером, обвязкой, разъемами, облегчающая прототипирование.</li>
+<li class=""><strong>Пин (pin)</strong> — физический вывод микроконтроллера, через который можно читать или устанавливать электрический сигнал.</li>
+<li class=""><strong>Цифровой выход (digital output)</strong> — пин настроен на выдачу сигнала <code>HIGH</code> (5V) или <code>LOW</code> (0V).</li>
+<li class=""><strong>Sketch</strong> — программа для Arduino, написанная на языке Arduino (диалект C++).</li>
+<li class=""><strong>Bootloader</strong> — небольшая программа в памяти микроконтроллера, позволяющая загружать sketch через USB без внешнего программатора.</li>
+<li class=""><strong><code>setup()</code></strong> — функция, выполняющаяся один раз при включении или сбросе Arduino.</li>
+<li class=""><strong><code>loop()</code></strong> — функция, выполняющаяся бесконечно после <code>setup()</code>.</li>
+<li class=""><strong><code>pinMode(pin, mode)</code></strong> — функция настройки пина: <code>OUTPUT</code>, <code>INPUT</code>, <code>INPUT_PULLUP</code>.</li>
+<li class=""><strong><code>digitalWrite(pin, value)</code></strong> — функция установки состояния цифрового выхода: <code>HIGH</code> или <code>LOW</code>.</li>
+<li class=""><strong><code>delay(ms)</code></strong> — функция блокирующей задержки на указанное количество миллисекунд.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="практическая-задача-главы">Практическая задача главы<a href="#практическая-задача-главы" class="hash-link" aria-label="Прямая ссылка на Практическая задача главы" title="Прямая ссылка на Практическая задача главы" translate="no">​</a></h2>
+<p><strong>Задача:</strong> Заставить встроенный светодиод на Arduino Mega 2560 R3 (подключенный к пину <code>D13</code>) мигать с заданной частотой.</p>
+<p><strong>Почему это важно:</strong></p>
+<ul>
+<li class="">Это первый физический результат твоего кода.</li>
+<li class="">Ты убедишься, что плата работает, среда настроена правильно, код загружается.</li>
+<li class="">Ты поймешь базовую структуру программы для микроконтроллера.</li>
+<li class="">Ты научишься управлять цифровым выходом — основа для управления любыми устройствами: реле, моторами, дисплеями.</li>
+</ul>
+<p>Мигающий светодиод — это &quot;Hello, World!&quot; встраиваемых систем.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="теория-которая-нужна-для-решения-задачи">Теория, которая нужна для решения задачи<a href="#теория-которая-нужна-для-решения-задачи" class="hash-link" aria-label="Прямая ссылка на Теория, которая нужна для решения задачи" title="Прямая ссылка на Теория, которая нужна для решения задачи" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="микроконтроллер-vs-процессор-пк-в-чем-разница">Микроконтроллер vs процессор ПК: в чем разница<a href="#микроконтроллер-vs-процессор-пк-в-чем-разница" class="hash-link" aria-label="Прямая ссылка на Микроконтроллер vs процессор ПК: в чем разница" title="Прямая ссылка на Микроконтроллер vs процессор ПК: в чем разница" translate="no">​</a></h3>
+<p>Когда ты пишешь программу на Python, Java или C# для компьютера, ты работаешь в богатой программной среде:</p>
+<ul>
+<li class=""><strong>Операционная система</strong> (Windows, Linux, macOS) управляет памятью, процессами, файлами, устройствами.</li>
+<li class=""><strong>Многозадачность</strong> — десятки программ работают одновременно.</li>
+<li class=""><strong>Абстракции</strong> — ты не думаешь о регистрах процессора, портах ввода-вывода, прерываниях.</li>
+<li class=""><strong>Ресурсы</strong> — гигабайты памяти, гигагерцы частоты, мощные GPU.</li>
+</ul>
+<p>Микроконтроллер — это другой мир:</p>
+<ul>
+<li class=""><strong>Нет операционной системы</strong> (или она очень простая, как RTOS в продвинутых случаях).</li>
+<li class=""><strong>Одна программа</strong> — твой sketch выполняется напрямую на железе.</li>
+<li class=""><strong>Ограниченные ресурсы</strong> — килобайты памяти, мегагерцы частоты.</li>
+<li class=""><strong>Прямой доступ к железу</strong> — ты управляешь пинами, таймерами, АЦП, UART напрямую.</li>
+</ul>
+<blockquote>
+<p><strong>Интуиция</strong></p>
+<p>Процессор ПК — это дирижер огромного оркестра. Он управляет сотнями музыкантов (процессов), но сам не играет на инструментах напрямую.</p>
+<p>Микроконтроллер — это музыкант-одиночка. Он делает одно дело, но делает его сам, без посредников, и очень быстро реагирует на внешние события.</p>
+</blockquote>
+<p><strong>Зачем нужны микроконтроллеры?</strong></p>
+<ul>
+<li class=""><strong>Управление физическими устройствами</strong> — светофоры, стиральные машины, дроны, роботы, умные розетки, медицинские приборы.</li>
+<li class=""><strong>Реакция в реальном времени</strong> — прерывание от датчика должно обработаться за микросекунды, а не &quot;когда-нибудь&quot;.</li>
+<li class=""><strong>Энергоэффективность</strong> — микроконтроллер может работать от батарейки месяцами.</li>
+<li class=""><strong>Низкая цена</strong> — микроконтроллер стоит доллары, а не сотни долларов как ПК.</li>
+</ul>
+<blockquote>
+<p><strong>В реальных устройствах</strong></p>
+<p>Микроконтроллеры — основа современной электроники:</p>
+<ul>
+<li class="">В автомобиле их десятки: управление двигателем, ABS, подушками безопасности, климат-контролем.</li>
+<li class="">В стиральной машине — контроллер мотора, датчики уровня воды, температуры.</li>
+<li class="">В клавиатуре — контроллер сканирует матрицу клавиш и отправляет коды по USB.</li>
+<li class="">В умной лампочке — контроллер управляет RGB-светодиодами и слушает команды по Wi-Fi.</li>
+</ul>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="arduino-mega-2560-r3-знакомство-с-платой">Arduino Mega 2560 R3: знакомство с платой<a href="#arduino-mega-2560-r3-знакомство-с-платой" class="hash-link" aria-label="Прямая ссылка на Arduino Mega 2560 R3: знакомство с платой" title="Прямая ссылка на Arduino Mega 2560 R3: знакомство с платой" translate="no">​</a></h3>
+<p><strong>Что такое Arduino?</strong></p>
+<p>Arduino — это экосистема:</p>
+<ol>
+<li class=""><strong>Платы разработки</strong> — печатные платы с микроконтроллером и удобной обвязкой.</li>
+<li class=""><strong>Язык программирования</strong> — диалект C++ с простыми функциями для работы с железом.</li>
+<li class=""><strong>Среда разработки (IDE)</strong> — программа для написания, компиляции и загрузки кода.</li>
+<li class=""><strong>Сообщество</strong> — миллионы разработчиков, библиотеки, проекты, форумы.</li>
+</ol>
+<p><strong>Почему Arduino Mega 2560 R3?</strong></p>
+<p>Arduino существует в десятках вариантов: Uno, Nano, Mega, Due, MKR и др. Для этого учебника выбрана <strong>Arduino Mega 2560 R3</strong> по следующим причинам:</p>
+<ul>
+<li class=""><strong>Много пинов</strong> — 54 цифровых, 16 аналоговых. Можно подключить много датчиков, дисплеи, моторы одновременно.</li>
+<li class=""><strong>Больше памяти</strong> — 256 КБ Flash (программа), 8 КБ SRAM (данные). Для сложных проектов этого достаточно.</li>
+<li class=""><strong>Несколько UART</strong> — 4 аппаратных последовательных порта. Можно одновременно общаться с ПК, GPS, GSM-модулем.</li>
+<li class=""><strong>Совместимость</strong> — стандартная Arduino-экосистема, тысячи библиотек.</li>
+<li class=""><strong>Доступность</strong> — недорогая, распространенная плата.</li>
+</ul>
+<p><strong>Основные характеристики Arduino Mega 2560 R3:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Параметр</th><th>Значение</th></tr></thead><tbody><tr><td>Микроконтроллер</td><td>ATmega2560</td></tr><tr><td>Архитектура</td><td>AVR 8-bit</td></tr><tr><td>Тактовая частота</td><td>16 МГц</td></tr><tr><td>Flash-память (программа)</td><td>256 КБ (из них 8 КБ занято bootloader)</td></tr><tr><td>SRAM (оперативная память)</td><td>8 КБ</td></tr><tr><td>EEPROM (энергонезависимая память)</td><td>4 КБ</td></tr><tr><td>Цифровые пины ввода/вывода</td><td>54 (из них 15 поддерживают PWM)</td></tr><tr><td>Аналоговые входы</td><td>16 (разрешение 10 бит, 0-1023)</td></tr><tr><td>UART (аппаратный Serial)</td><td>4</td></tr><tr><td>Напряжение логики</td><td>5 В</td></tr><tr><td>Напряжение питания (USB)</td><td>5 В</td></tr><tr><td>Напряжение питания (внешнее)</td><td>7-12 В (рекомендуется), до 20 В (максимум)</td></tr><tr><td>Максимальный ток на пин</td><td>40 мА</td></tr><tr><td>Максимальный ток на все пины</td><td>200 мА</td></tr></tbody></table>
+<blockquote>
+<p><strong>Глубже: Что такое Flash, SRAM и EEPROM?</strong></p>
+<ul>
+<li class=""><strong>Flash</strong> — энергонезависимая память для хранения программы (твоего sketch). Данные сохраняются при выключении питания. Ограниченное число циклов перезаписи (~10 000), но для загрузки программ это не проблема.</li>
+<li class=""><strong>SRAM</strong> (Static RAM) — оперативная память для переменных, стека, динамических данных. Быстрая, но <strong>теряется при выключении</strong>. 8 КБ — это очень мало по меркам ПК, поэтому важно экономить память в embedded.</li>
+<li class=""><strong>EEPROM</strong> (Electrically Erasable Programmable Read-Only Memory) — энергонезависимая память для долгосрочного хранения данных: настроек, калибровок, счетчиков. Медленная запись, ограниченное число циклов (~100 000). Используется для данных, которые должны пережить перезагрузку.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>Ошибка новичка</strong></p>
+<p>Многие начинающие думают, что 256 КБ Flash и 8 КБ SRAM — это много. На самом деле, это крайне мало:</p>
+<ul>
+<li class="">Строка &quot;Hello, World!&quot; занимает 13 байт в SRAM.</li>
+<li class="">Массив <code>int data[1000]</code> — это 2000 байт (2 КБ). В SRAM поместится только 4 таких массива, и еще останется место для остальных переменных и стека.</li>
+<li class="">Библиотеки (например, для работы с дисплеем или SD-картой) могут занимать десятки килобайт Flash.</li>
+</ul>
+<p>Поэтому в embedded-разработке важно <strong>думать о памяти</strong>: избегать больших глобальных массивов, использовать <code>PROGMEM</code> для хранения констант во Flash, не злоупотреблять рекурсией (стек ограничен).</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="анатомия-платы-arduino-mega-2560-r3">Анатомия платы Arduino Mega 2560 R3<a href="#анатомия-платы-arduino-mega-2560-r3" class="hash-link" aria-label="Прямая ссылка на Анатомия платы Arduino Mega 2560 R3" title="Прямая ссылка на Анатомия платы Arduino Mega 2560 R3" translate="no">​</a></h3>
+<p>Плата Arduino Mega выглядит как прямоугольная печатная плата с рядами контактов (пинов) по краям, USB-разъемом, разъемом питания и большой микросхемой в центре.</p>
+<p><strong>Основные компоненты:</strong></p>
+<ol>
+<li class=""><strong>Микроконтроллер ATmega2560</strong> — черная квадратная микросхема в корпусе TQFP-100 (100 выводов). Это мозг платы.</li>
+<li class=""><strong>USB-разъем (Type B)</strong> — для подключения к компьютеру: загрузка программы, питание, обмен данными через Serial.</li>
+<li class=""><strong>Разъем питания (DC Jack, 2.1 мм)</strong> — для внешнего источника питания 7-12 В.</li>
+<li class=""><strong>Стабилизаторы напряжения</strong> — понижают внешнее напряжение до 5 В и 3.3 В.</li>
+<li class=""><strong>USB-Serial чип (ATmega16U2 или CH340)</strong> — преобразует USB в UART для общения с основным контроллером.</li>
+<li class=""><strong>Светодиоды:</strong>
+<ul>
+<li class=""><strong>PWR (зеленый)</strong> — индикатор питания.</li>
+<li class=""><strong>L (желтый/оранжевый)</strong> — встроенный светодиод, подключенный к пину <code>D13</code>. Это наш первый объект управления.</li>
+<li class=""><strong>TX/RX</strong> — мигают при обмене данными через Serial.</li>
+</ul>
+</li>
+<li class=""><strong>Кнопка RESET</strong> — перезагружает микроконтроллер (как Ctrl+Alt+Del для Arduino).</li>
+<li class=""><strong>Пины (выводы):</strong>
+<ul>
+<li class=""><strong>Цифровые пины 0-53</strong> — настраиваются как входы или выходы.</li>
+<li class=""><strong>Аналоговые входы A0-A15</strong> — читают напряжение от 0 до 5 В и преобразуют в число 0-1023.</li>
+<li class=""><strong>Питание:</strong>
+<ul>
+<li class=""><code>5V</code> — стабилизированное питание 5 В (выход).</li>
+<li class=""><code>3.3V</code> — стабилизированное питание 3.3 В (выход, до 50 мА).</li>
+<li class=""><code>GND</code> — земля (общий провод, 0 В). На плате несколько пинов <code>GND</code>.</li>
+<li class=""><code>Vin</code> — вход для внешнего питания (7-12 В).</li>
+<li class=""><code>IOREF</code> — опорное напряжение логики (5 В для Mega).</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Инженерная заметка: Почему на плате несколько GND?</strong></p>
+<p>Все пины <code>GND</code> на плате электрически соединены между собой. Несколько пинов <code>GND</code> сделаны для удобства: при сборке сложной схемы не нужно тянуть длинные провода к одному <code>GND</code> — можно использовать ближайший.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="питание-arduino-mega-откуда-берется-энергия">Питание Arduino Mega: откуда берется энергия<a href="#питание-arduino-mega-откуда-берется-энергия" class="hash-link" aria-label="Прямая ссылка на Питание Arduino Mega: откуда берется энергия" title="Прямая ссылка на Питание Arduino Mega: откуда берется энергия" translate="no">​</a></h3>
+<p>Arduino Mega может получать питание тремя способами:</p>
+<ol>
+<li class=""><strong>Через USB</strong> — 5 В от компьютера. Удобно для разработки и отладки. Ток ограничен портом USB (обычно 500 мА).</li>
+<li class=""><strong>Через разъем питания (DC Jack)</strong> — внешний адаптер 7-12 В. Напряжение понижается встроенным стабилизатором до 5 В. Позволяет питать более мощные устройства (моторы, много светодиодов).</li>
+<li class=""><strong>Через пин <code>Vin</code></strong> — внешний источник 7-12 В подключается напрямую к пину <code>Vin</code>. Работает так же, как DC Jack.</li>
+</ol>
+<blockquote>
+<p><strong>Важно: Выбор источника питания</strong></p>
+<ul>
+<li class="">Если питание подано <strong>и через USB, и через DC Jack одновременно</strong>, плата автоматически выберет внешнее питание (DC Jack/Vin). USB будет использоваться только для передачи данных.</li>
+<li class="">Не подавай на <code>Vin</code> напряжение выше 12 В (максимум 20 В, но стабилизатор сильно греется). Ниже 7 В — стабилизатор может не справиться.</li>
+<li class="">Не подавай на пин <code>5V</code> напряжение от внешнего источника, если плата питается от USB или DC Jack — это может повредить плату. Пин <code>5V</code> — это <strong>выход</strong>, а не вход.</li>
+</ul>
+</blockquote>
+<p><strong>Откуда брать 5V и GND для внешних компонентов?</strong></p>
+<ul>
+<li class="">Используй пины <code>5V</code> и <code>GND</code> на плате для питания датчиков, светодиодов (через резисторы), модулей.</li>
+<li class="">Максимальный ток, который можно взять с <code>5V</code> — около 500 мА при питании от USB, больше при внешнем питании (зависит от стабилизатора и источника).</li>
+<li class="">Если нужно питать мощные устройства (моторы, много светодиодов, сервоприводы) — используй внешний источник питания 5 В отдельно, но <strong>обязательно соедини GND Arduino и GND внешнего источника</strong> (общая земля).</li>
+</ul>
+<blockquote>
+<p><strong>Физика: Почему нужна общая земля (GND)?</strong></p>
+<p>Напряжение — это разность потенциалов между двумя точками. Когда Arduino выдает <code>HIGH</code> (5 В) на пине, это означает +5 В <strong>относительно своего GND</strong>. Если у внешнего устройства свой источник питания с <strong>другим GND</strong>, то разность потенциалов между пином Arduino и входом устройства будет неопределенной или неправильной. Соединение GND выравнивает потенциалы и делает сигналы согласованными.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="bootloader-как-код-попадает-в-микроконтроллер">Bootloader: как код попадает в микроконтроллер<a href="#bootloader-как-код-попадает-в-микроконтроллер" class="hash-link" aria-label="Прямая ссылка на Bootloader: как код попадает в микроконтроллер" title="Прямая ссылка на Bootloader: как код попадает в микроконтроллер" translate="no">​</a></h3>
+<p>Обычно для программирования микроконтроллера AVR нужен <strong>программатор</strong> — внешнее устройство, которое подключается к специальным выводам микроконтроллера (ISP: MISO, MOSI, SCK, RESET) и записывает программу во Flash-память.</p>
+<p>Arduino упрощает этот процесс благодаря <strong>bootloader</strong> — небольшой программе (~8 КБ), предустановленной в микроконтроллере на заводе. Bootloader выполняется сразу после включения или сброса платы и делает следующее:</p>
+<ol>
+<li class=""><strong>Ждет несколько секунд</strong> — проверяет, не пытается ли компьютер загрузить новую программу через Serial (USB).</li>
+<li class=""><strong>Если новая программа поступает</strong> — принимает её, записывает во Flash и перезапускается.</li>
+<li class=""><strong>Если новой программы нет</strong> — передает управление основной программе (твоему sketch).</li>
+</ol>
+<p>Таким образом, ты можешь загружать код просто через USB, без программатора.</p>
+<blockquote>
+<p><strong>Глубже: Как работает загрузка через bootloader?</strong></p>
+<ol>
+<li class="">Ты нажимаешь кнопку &quot;Upload&quot; в Arduino IDE.</li>
+<li class="">IDE компилирует твой sketch в машинный код (HEX-файл).</li>
+<li class="">IDE отправляет команду сброса на Arduino через USB (меняет состояние линии DTR).</li>
+<li class="">Arduino перезагружается, bootloader запускается.</li>
+<li class="">IDE передает HEX-файл через Serial (протокол STK500).</li>
+<li class="">Bootloader записывает код во Flash.</li>
+<li class="">Bootloader передает управление новой программе.</li>
+<li class="">Твой sketch начинает работать.</li>
+</ol>
+<p>Весь процесс занимает несколько секунд.</p>
+</blockquote>
+<blockquote>
+<p><strong>Инженерная заметка: Можно ли обойтись без bootloader?</strong></p>
+<p>Да, можно программировать ATmega2560 через ISP-программатор напрямую (например, USBasp или другая Arduino как ISP). Это даст:</p>
+<ul>
+<li class="">Дополнительные 8 КБ Flash.</li>
+<li class="">Более быстрый старт (нет задержки bootloader).</li>
+<li class="">Возможность программировать &quot;мертвую&quot; плату.</li>
+</ul>
+<p>Но для обучения и быстрого прототипирования bootloader — идеальный вариант.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="arduino-ide-среда-разработки">Arduino IDE: среда разработки<a href="#arduino-ide-среда-разработки" class="hash-link" aria-label="Прямая ссылка на Arduino IDE: среда разработки" title="Прямая ссылка на Arduino IDE: среда разработки" translate="no">​</a></h3>
+<p><strong>Arduino IDE</strong> (Integrated Development Environment) — программа для написания, компиляции и загрузки sketch.</p>
+<p><strong>Основные возможности:</strong></p>
+<ul>
+<li class="">Редактор кода с подсветкой синтаксиса.</li>
+<li class="">Компилятор (AVR-GCC под капотом).</li>
+<li class="">Загрузчик кода (avrdude).</li>
+<li class="">Serial Monitor — терминал для обмена текстовыми сообщениями с Arduino.</li>
+<li class="">Serial Plotter — график значений в реальном времени.</li>
+<li class="">Менеджер библиотек — установка готовых библиотек для датчиков, дисплеев, модулей.</li>
+</ul>
+<p><strong>Установка Arduino IDE:</strong></p>
+<ol>
+<li class="">Скачай последнюю версию с официального сайта: <a href="https://www.arduino.cc/en/software" target="_blank" rel="noopener noreferrer" class="">https://www.arduino.cc/en/software</a></li>
+<li class="">Установи (Windows: <code>.exe</code>, macOS: <code>.dmg</code>, Linux: <code>.AppImage</code> или через пакетный менеджер).</li>
+<li class="">Запусти IDE.</li>
+</ol>
+<p><strong>Настройка для Arduino Mega:</strong></p>
+<ol>
+<li class="">Подключи Arduino Mega к компьютеру через USB.</li>
+<li class="">Открой Arduino IDE.</li>
+<li class="">Выбери плату: <strong>Tools → Board → Arduino AVR Boards → Arduino Mega or Mega 2560</strong>.</li>
+<li class="">Выбери процессор: <strong>Tools → Processor → ATmega2560</strong>.</li>
+<li class="">Выбери порт: <strong>Tools → Port → COMx</strong> (Windows) или <strong>/dev/ttyUSBx</strong> (Linux) или <strong>/dev/cu.usbmodemxxxx</strong> (macOS).</li>
+</ol>
+<blockquote>
+<p><strong>Ошибка новичка: Плата не определяется</strong></p>
+<p>Если Arduino не появляется в списке портов:</p>
+<ul>
+<li class="">Проверь кабель USB — он должен быть <strong>data-кабелем</strong>, а не только для зарядки.</li>
+<li class="">Установи драйвер USB-Serial чипа:
+<ul>
+<li class="">Для ATmega16U2 (оригинальная Arduino) драйвер обычно ставится автоматически.</li>
+<li class="">Для CH340 (клоны Arduino) скачай драйвер с сайта производителя.</li>
+</ul>
+</li>
+<li class="">Попробуй другой USB-порт.</li>
+<li class="">Проверь, горит ли светодиод PWR на плате — если нет, проблема с питанием или платой.</li>
+</ul>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="структура-sketch-setup-и-loop">Структура sketch: setup() и loop()<a href="#структура-sketch-setup-и-loop" class="hash-link" aria-label="Прямая ссылка на Структура sketch: setup() и loop()" title="Прямая ссылка на Структура sketch: setup() и loop()" translate="no">​</a></h3>
+<p>Программа для Arduino называется <strong>sketch</strong> (скетч). Sketch — это текстовый файл с расширением <code>.ino</code>, содержащий код на языке Arduino (диалект C++).</p>
+<p><strong>Минимальная структура sketch:</strong></p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Код здесь выполняется один раз при включении или сбросе</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Код здесь выполняется бесконечно</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p><strong>Жизненный цикл программы:</strong></p>
+<ol>
+<li class=""><strong>Включение или сброс платы</strong> (кнопка RESET или подача питания).</li>
+<li class=""><strong>Bootloader</strong> выполняется и передает управление программе.</li>
+<li class=""><strong><code>setup()</code></strong> выполняется <strong>один раз</strong> — здесь ты настраиваешь пины, инициализируешь библиотеки, Serial, переменные.</li>
+<li class=""><strong><code>loop()</code></strong> выполняется <strong>бесконечно</strong> — здесь основная логика программы.</li>
+</ol>
+<blockquote>
+<p><strong>Интуиция</strong></p>
+<p><code>setup()</code> — это конструктор твоего устройства. Ты говоришь Arduino: &quot;Пин 13 — выход. Serial работает на скорости 9600. Датчик настроен.&quot;</p>
+<p><code>loop()</code> — это бесконечный цикл <code>while(true)</code>. Твоя программа живет здесь и реагирует на события: нажатие кнопки, изменение датчика, прием данных.</p>
+</blockquote>
+<p><strong>Почему <code>loop()</code>, а не <code>main()</code>?</strong></p>
+<p>В обычной программе на C++ точка входа — функция <code>main()</code>. В Arduino <code>main()</code> тоже есть, но она скрыта в системных файлах и выглядит примерно так:</p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">main</span><span class="token punctuation" style="color:#393A34">(</span><span class="token keyword" style="color:#00009f">void</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">init</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">         </span><span class="token comment" style="color:#999988;font-style:italic">// Инициализация таймеров, АЦП и других систем</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">        </span><span class="token comment" style="color:#999988;font-style:italic">// Вызов твоей функции setup()</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">for</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">;</span><span class="token punctuation" style="color:#393A34">;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">      </span><span class="token comment" style="color:#999988;font-style:italic">// Бесконечный цикл</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">       </span><span class="token comment" style="color:#999988;font-style:italic">// Вызов твоей функции loop()</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">return</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">       </span><span class="token comment" style="color:#999988;font-style:italic">// Никогда не выполнится</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p>Ты пишешь только <code>setup()</code> и <code>loop()</code>, а Arduino заботится о низкоуровневой инициализации.</p>
+<blockquote>
+<p><strong>Глубже: Что происходит в init()?</strong></p>
+<p>Функция <code>init()</code> (определена в <code>wiring.c</code>) настраивает:</p>
+<ul>
+<li class=""><strong>Timer0</strong> — для функций <code>millis()</code> и <code>delay()</code>. Тикает каждую миллисекунду.</li>
+<li class=""><strong>АЦП (ADC)</strong> — аналого-цифровой преобразователь для <code>analogRead()</code>.</li>
+<li class=""><strong>Прерывания</strong> — включает глобальные прерывания (<code>sei()</code>).</li>
+</ul>
+<p>Без <code>init()</code> Arduino не умел бы считать время и читать аналоговые входы.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="функции-для-управления-цифровыми-выходами">Функции для управления цифровыми выходами<a href="#функции-для-управления-цифровыми-выходами" class="hash-link" aria-label="Прямая ссылка на Функции для управления цифровыми выходами" title="Прямая ссылка на Функции для управления цифровыми выходами" translate="no">​</a></h3>
+<p>Для управления пинами Arduino предоставляет простые функции:</p>
+<p><strong><code>pinMode(pin, mode)</code></strong> — настраивает режим работы пина.</p>
+<ul>
+<li class=""><code>pin</code> — номер пина (например, <code>13</code> для встроенного LED).</li>
+<li class=""><code>mode</code> — режим:
+<ul>
+<li class=""><code>OUTPUT</code> — пин настроен как выход (может выдавать <code>HIGH</code> или <code>LOW</code>).</li>
+<li class=""><code>INPUT</code> — пин настроен как вход (читает внешний сигнал).</li>
+<li class=""><code>INPUT_PULLUP</code> — вход с подтягивающим резистором (для кнопок).</li>
+</ul>
+</li>
+</ul>
+<p><strong>Пример:</strong></p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Пин 13 теперь выход</span><br></div></code></pre></div></div>
+<p><strong><code>digitalWrite(pin, value)</code></strong> — устанавливает состояние цифрового выхода.</p>
+<ul>
+<li class=""><code>pin</code> — номер пина.</li>
+<li class=""><code>value</code> — состояние:
+<ul>
+<li class=""><code>HIGH</code> — логическая единица, ~5 В.</li>
+<li class=""><code>LOW</code> — логический ноль, 0 В.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Пример:</strong></p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Пин 13 выдает 5 В (LED включен)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">   </span><span class="token comment" style="color:#999988;font-style:italic">// Пин 13 выдает 0 В (LED выключен)</span><br></div></code></pre></div></div>
+<p><strong><code>delay(ms)</code></strong> — блокирующая задержка.</p>
+<ul>
+<li class=""><code>ms</code> — задержка в миллисекундах (1000 мс = 1 секунда).</li>
+</ul>
+<p>Функция останавливает выполнение программы на указанное время. Arduino ничего не делает — просто ждет.</p>
+<p><strong>Пример:</strong></p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Ждать 1 секунду</span><br></div></code></pre></div></div>
+<blockquote>
+<p><strong>Ошибка новичка: delay() блокирует всю программу</strong></p>
+<p>Пока выполняется <code>delay(1000)</code>, Arduino <strong>не может</strong> читать кнопки, датчики, принимать данные по Serial. Программа замерла.</p>
+<p>Это нормально для первых простых проектов, но для сложных устройств <code>delay()</code> — плохой выбор. В дальнейшем мы изучим неблокирующий подход с <code>millis()</code> (Глава 3.1).</p>
+</blockquote>
+<blockquote>
+<p><strong>Глубже: Что такое HIGH и LOW на уровне железа?</strong></p>
+<ul>
+<li class=""><code>HIGH</code> — выходной транзистор пина подключает вывод к линии питания VCC (5 В). Ток течет из пина.</li>
+<li class=""><code>LOW</code> — выходной транзистор подключает вывод к GND (0 В). Ток течет в пин.</li>
+</ul>
+<p>На самом деле это не совсем 5.0 В и 0.0 В:</p>
+<ul>
+<li class=""><code>HIGH</code> обычно 4.7-5.0 В (зависит от нагрузки).</li>
+<li class=""><code>LOW</code> обычно 0-0.3 В.</li>
+</ul>
+<p>Но для цифровой логики это не важно: всё выше ~3 В считается <code>HIGH</code>, всё ниже ~1.5 В — <code>LOW</code>.</p>
+</blockquote>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проект-1-blink-первый-мигающий-светодиод">Проект 1. Blink: первый мигающий светодиод<a href="#проект-1-blink-первый-мигающий-светодиод" class="hash-link" aria-label="Прямая ссылка на Проект 1. Blink: первый мигающий светодиод" title="Прямая ссылка на Проект 1. Blink: первый мигающий светодиод" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идея-проекта">Идея проекта<a href="#идея-проекта" class="hash-link" aria-label="Прямая ссылка на Идея проекта" title="Прямая ссылка на Идея проекта" translate="no">​</a></h3>
+<p>Заставить встроенный светодиод на пине <code>D13</code> мигать: включаться на 1 секунду, выключаться на 1 секунду, и так бесконечно.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="чему-учит-этот-проект">Чему учит этот проект<a href="#чему-учит-этот-проект" class="hash-link" aria-label="Прямая ссылка на Чему учит этот проект" title="Прямая ссылка на Чему учит этот проект" translate="no">​</a></h3>
+<ul>
+<li class="">Структура sketch: <code>setup()</code> и <code>loop()</code>.</li>
+<li class="">Настройка пина как выхода: <code>pinMode()</code>.</li>
+<li class="">Управление состоянием пина: <code>digitalWrite()</code>.</li>
+<li class="">Задержка: <code>delay()</code>.</li>
+<li class="">Загрузка кода на плату.</li>
+<li class="">Проверка работы устройства.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-понадобится">Что понадобится<a href="#что-понадобится" class="hash-link" aria-label="Прямая ссылка на Что понадобится" title="Прямая ссылка на Что понадобится" translate="no">​</a></h3>
+<ul>
+<li class="">Arduino Mega 2560 R3.</li>
+<li class="">USB-кабель (Type A - Type B).</li>
+<li class="">Компьютер с установленной Arduino IDE.</li>
+</ul>
+<p><strong>Внимание:</strong> Встроенный светодиод уже подключен к пину <code>D13</code> через резистор на плате. Дополнительные компоненты не нужны.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="схема-подключения">Схема подключения<a href="#схема-подключения" class="hash-link" aria-label="Прямая ссылка на Схема подключения" title="Прямая ссылка на Схема подключения" translate="no">​</a></h3>
+<p>Схема отсутствует в привычном смысле — используется <strong>встроенный светодиод</strong> на плате Arduino Mega 2560 R3.</p>
+<p><strong>Где находится встроенный LED:</strong></p>
+<ul>
+<li class="">Светодиод обозначен буквой <strong>L</strong> рядом с ним на плате (обычно желтого или оранжевого цвета).</li>
+<li class="">Он подключен между пином <code>D13</code> и <code>GND</code> через резистор ~1 кОм.</li>
+<li class="">Когда пин <code>D13</code> выдает <code>HIGH</code> (5 В), светодиод загорается.</li>
+<li class="">Когда пин <code>D13</code> выдает <code>LOW</code> (0 В), светодиод гаснет.</li>
+</ul>
+<p><strong>Почему можно управлять светодиодом без резистора?</strong></p>
+<p>Резистор уже установлен на плате между пином <code>D13</code> и светодиодом. Он ограничивает ток, чтобы светодиод не сгорел и не перегрузил пин микроконтроллера.</p>
+<blockquote>
+<p><strong>Важно: Никогда не подключай светодиод напрямую к пину без резистора!</strong></p>
+<p>Светодиод — это не резистор. Его сопротивление очень мало. Без ограничивающего резистора ток через светодиод может достичь сотен миллиампер, что:</p>
+<ul>
+<li class="">Сожжет светодиод.</li>
+<li class="">Повредит пин микроконтроллера (максимум 40 мА на пин).</li>
+</ul>
+<p>Встроенный LED безопасен, потому что резистор уже на плате. Когда будем подключать внешние светодиоды (Глава 1.2), мы обязательно добавим резисторы в схему.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="таблица-соединений">Таблица соединений<a href="#таблица-соединений" class="hash-link" aria-label="Прямая ссылка на Таблица соединений" title="Прямая ссылка на Таблица соединений" translate="no">​</a></h3>
+<p>Соединений нет — используется встроенный компонент платы.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Компонент</th><th>Контакт</th><th>Подключен к</th><th>Комментарий</th></tr></thead><tbody><tr><td>Встроенный LED (L)</td><td>Анод (+)</td><td>Пин D13 через резистор</td><td>Резистор ~1 кОм на плате</td></tr><tr><td>Встроенный LED (L)</td><td>Катод (-)</td><td>GND</td><td>Общий провод</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="код-проекта">Код проекта<a href="#код-проекта" class="hash-link" aria-label="Прямая ссылка на Код проекта" title="Прямая ссылка на Код проекта" translate="no">​</a></h3>
+<p>Открой Arduino IDE и введи следующий код:</p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Проект 1: Blink — мигающий светодиод на пине D13</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Настраиваем пин 13 как выход</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Включаем светодиод</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Ждем 1 секунду (1000 миллисекунд)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Выключаем светодиод</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Ждем 1 секунду</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p><strong>Как загрузить код:</strong></p>
+<ol>
+<li class="">Подключи Arduino Mega к компьютеру через USB.</li>
+<li class="">Убедись, что выбраны правильные плата и порт (см. раздел &quot;Arduino IDE&quot;).</li>
+<li class="">Нажми кнопку <strong>Upload</strong> (стрелка вправо) или выбери <strong>Sketch → Upload</strong>.</li>
+<li class="">Дождись сообщения &quot;Done uploading&quot;.</li>
+<li class="">Светодиод L на плате должен начать мигать.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-коде">Что происходит в коде<a href="#что-происходит-в-коде" class="hash-link" aria-label="Прямая ссылка на Что происходит в коде" title="Прямая ссылка на Что происходит в коде" translate="no">​</a></h3>
+<p>Разберем код построчно.</p>
+<p><strong>Комментарии:</strong></p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Проект 1: Blink — мигающий светодиод на пине D13</span><br></div></code></pre></div></div>
+<p>Строка, начинающаяся с <code>//</code>, — это <strong>комментарий</strong>. Компилятор игнорирует её. Комментарии нужны для пояснений.</p>
+<p><strong>Функция setup():</strong></p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<ul>
+<li class=""><code>void</code> — функция ничего не возвращает.</li>
+<li class=""><code>setup()</code> — выполняется <strong>один раз</strong> при включении или сбросе.</li>
+<li class=""><code>pinMode(13, OUTPUT)</code> — настраиваем пин 13 как <strong>выход</strong> (<code>OUTPUT</code>). Теперь мы можем управлять напряжением на этом пине.</li>
+</ul>
+<p><strong>Почему нужно вызывать pinMode()?</strong></p>
+<p>По умолчанию все пины настроены как <strong>входы</strong> (<code>INPUT</code>). Если попытаться вызвать <code>digitalWrite()</code> на пине, не настроенном как <code>OUTPUT</code>, сигнал будет слабым или вообще не будет работать. <code>pinMode()</code> переключает внутренний регистр порта микроконтроллера в режим выхода.</p>
+<p><strong>Функция loop():</strong></p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p>Эта функция выполняется <strong>бесконечно</strong>. Разберем шаг за шагом:</p>
+<ol>
+<li class=""><code>digitalWrite(13, HIGH);</code> — устанавливаем пин 13 в состояние <code>HIGH</code> (5 В). Светодиод загорается.</li>
+<li class=""><code>delay(1000);</code> — останавливаем выполнение на 1000 миллисекунд (1 секунда). Светодиод горит.</li>
+<li class=""><code>digitalWrite(13, LOW);</code> — устанавливаем пин 13 в состояние <code>LOW</code> (0 В). Светодиод гаснет.</li>
+<li class=""><code>delay(1000);</code> — ждем еще 1 секунду. Светодиод не горит.</li>
+<li class=""><strong>Конец <code>loop()</code></strong> — функция завершается, но Arduino автоматически вызывает её снова. Возвращаемся к шагу 1.</li>
+</ol>
+<p><strong>Итог:</strong> Светодиод мигает с периодом 2 секунды (1 секунда включен, 1 секунда выключен).</p>
+<blockquote>
+<p><strong>Интуиция</strong></p>
+<p>Представь, что <code>loop()</code> — это бесконечная лента конвейера. Каждый раз, когда лента делает круг, выполняется одна итерация: включить LED, подождать, выключить LED, подождать. И так вечно, пока плата включена.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-схеме">Что происходит в схеме<a href="#что-происходит-в-схеме" class="hash-link" aria-label="Прямая ссылка на Что происходит в схеме" title="Прямая ссылка на Что происходит в схеме" translate="no">​</a></h3>
+<p><strong>Электрическая сторона:</strong></p>
+<ol>
+<li class="">
+<p><strong>digitalWrite(13, HIGH):</strong></p>
+<ul>
+<li class="">Микроконтроллер подключает внутренний транзистор пина 13 к линии VCC (5 В).</li>
+<li class="">Ток течет: <strong>VCC (5 В) → резистор (~1 кОм) → светодиод → GND</strong>.</li>
+<li class="">Через светодиод течет ток ~3-4 мА (зависит от напряжения падения на светодиоде).</li>
+<li class="">Светодиод излучает свет.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>digitalWrite(13, LOW):</strong></p>
+<ul>
+<li class="">Микроконтроллер подключает пин 13 к GND (0 В).</li>
+<li class="">Разность потенциалов между анодом и катодом светодиода близка к нулю.</li>
+<li class="">Ток не течет.</li>
+<li class="">Светодиод не излучает свет.</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Физика: Почему светодиод светится?</strong></p>
+<p>Светодиод (LED, Light Emitting Diode) — это полупроводниковый диод, излучающий свет при прохождении тока. Когда электроны проходят через p-n переход, они рекомбинируют с дырками, выделяя энергию в виде фотонов. Цвет света зависит от материала полупроводника и ширины запрещенной зоны.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-проверить-работу">Как проверить работу<a href="#как-проверить-работу" class="hash-link" aria-label="Прямая ссылка на Как проверить работу" title="Прямая ссылка на Как проверить работу" translate="no">​</a></h3>
+<ol>
+<li class=""><strong>Визуально:</strong> Светодиод L на плате должен мигать с интервалом 1 секунда.</li>
+<li class=""><strong>Частота:</strong> Посчитай количество вспышек за 10 секунд. Должно быть 5 полных циклов (включение + выключение).</li>
+<li class=""><strong>Индикаторы загрузки:</strong> При загрузке кода светодиоды TX/RX быстро мигают — это нормально, загружается программа.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="если-не-работает">Если не работает<a href="#если-не-работает" class="hash-link" aria-label="Прямая ссылка на Если не работает" title="Прямая ссылка на Если не работает" translate="no">​</a></h3>
+<p><strong>Проблема 1: Светодиод не мигает, горит постоянно</strong></p>
+<ul>
+<li class=""><strong>Причина:</strong> Ошибка в коде. Возможно, пропущен <code>delay()</code> или <code>digitalWrite(13, LOW)</code>.</li>
+<li class=""><strong>Решение:</strong> Проверь код. Убедись, что есть обе строки: <code>digitalWrite(13, HIGH)</code> и <code>digitalWrite(13, LOW)</code>, и после каждой — <code>delay(1000)</code>.</li>
+</ul>
+<p><strong>Проблема 2: Светодиод не загорается вообще</strong></p>
+<ul>
+<li class=""><strong>Причина 1:</strong> Плата не получает питание. Светодиод PWR не горит.
+<ul>
+<li class=""><strong>Решение:</strong> Проверь USB-кабель. Попробуй другой порт USB.</li>
+</ul>
+</li>
+<li class=""><strong>Причина 2:</strong> Код не загрузился. Ошибка компиляции или загрузки.
+<ul>
+<li class=""><strong>Решение:</strong> Посмотри на сообщения в нижней части Arduino IDE. Красный текст — ошибка. Исправь код. Проверь выбор платы и порта.</li>
+</ul>
+</li>
+<li class=""><strong>Причина 3:</strong> Забыл вызвать <code>pinMode(13, OUTPUT)</code>.
+<ul>
+<li class=""><strong>Решение:</strong> Добавь эту строку в <code>setup()</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Проблема 3: Код загрузился, но светодиод не реагирует</strong></p>
+<ul>
+<li class=""><strong>Причина:</strong> Неправильно выбрана плата в Arduino IDE. Возможно, выбрана Arduino Uno вместо Mega.
+<ul>
+<li class=""><strong>Решение:</strong> Проверь: <strong>Tools → Board → Arduino Mega or Mega 2560</strong> и <strong>Tools → Processor → ATmega2560</strong>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Проблема 4: Ошибка загрузки &quot;avrdude: stk500v2_ReceiveMessage(): timeout&quot;</strong></p>
+<ul>
+<li class=""><strong>Причина:</strong> Arduino не отвечает. Возможно, плата зависла или неправильный порт.</li>
+<li class=""><strong>Решение:</strong>
+<ul>
+<li class="">Нажми кнопку RESET на плате и сразу попробуй загрузить код снова.</li>
+<li class="">Отключи и подключи USB-кабель.</li>
+<li class="">Проверь выбор порта.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идеи-для-развития">Идеи для развития<a href="#идеи-для-развития" class="hash-link" aria-label="Прямая ссылка на Идеи для развития" title="Прямая ссылка на Идеи для развития" translate="no">​</a></h3>
+<ol>
+<li class=""><strong>Измени частоту мигания:</strong> Попробуй <code>delay(500)</code> — светодиод будет мигать быстрее. Попробуй <code>delay(100)</code> — будет мигать очень быстро.</li>
+<li class=""><strong>Асимметричное мигание:</strong> Сделай так, чтобы светодиод горел 2 секунды, а гас на 0.5 секунды.</li>
+<li class=""><strong>SOS в коде Морзе:</strong> Три коротких вспышки, три длинных, три коротких.</li>
+<li class=""><strong>Измени пин:</strong> Попробуй управлять пином 12 вместо 13 (хотя на нем нет встроенного LED — это подготовка к следующей главе).</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проект-2-анализ-blink-что-происходит-под-капотом">Проект 2. Анализ Blink: что происходит под капотом<a href="#проект-2-анализ-blink-что-происходит-под-капотом" class="hash-link" aria-label="Прямая ссылка на Проект 2. Анализ Blink: что происходит под капотом" title="Прямая ссылка на Проект 2. Анализ Blink: что происходит под капотом" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идея-проекта-1">Идея проекта<a href="#идея-проекта-1" class="hash-link" aria-label="Прямая ссылка на Идея проекта" title="Прямая ссылка на Идея проекта" translate="no">​</a></h3>
+<p>Используем тот же код, но глубже разберем, <strong>что происходит на уровне микроконтроллера</strong> и <strong>как работает программа во времени</strong>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="чему-учит-этот-проект-1">Чему учит этот проект<a href="#чему-учит-этот-проект-1" class="hash-link" aria-label="Прямая ссылка на Чему учит этот проект" title="Прямая ссылка на Чему учит этот проект" translate="no">​</a></h3>
+<ul>
+<li class="">Понимание времени выполнения программы.</li>
+<li class="">Связь между кодом и физическими процессами.</li>
+<li class="">Введение в осциллограмму (текстовое описание сигнала во времени).</li>
+<li class="">Понимание ограничений <code>delay()</code>.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-понадобится-1">Что понадобится<a href="#что-понадобится-1" class="hash-link" aria-label="Прямая ссылка на Что понадобится" title="Прямая ссылка на Что понадобится" translate="no">​</a></h3>
+<ul>
+<li class="">Тот же код из Проекта 1.</li>
+<li class="">Бумага и карандаш для рисования временной диаграммы (опционально).</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="временная-диаграмма-сигнала">Временная диаграмма сигнала<a href="#временная-диаграмма-сигнала" class="hash-link" aria-label="Прямая ссылка на Временная диаграмма сигнала" title="Прямая ссылка на Временная диаграмма сигнала" translate="no">​</a></h3>
+<p>Представим, что мы наблюдаем сигнал на пине 13 во времени. Сигнал меняется так:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Время (сек):  0    1    2    3    4    5    6</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Пин 13:       HIGH LOW  HIGH LOW  HIGH LOW  HIGH</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Светодиод:    ВКЛ  ВЫКЛ ВКЛ  ВЫКЛ ВКЛ  ВЫКЛ ВКЛ</span><br></div></code></pre></div></div>
+<p><strong>Что видно:</strong></p>
+<ul>
+<li class="">Период сигнала — 2 секунды (1 сек HIGH + 1 сек LOW).</li>
+<li class="">Частота — 0.5 Гц (0.5 цикла в секунду).</li>
+<li class="">Скважность (duty cycle) — 50% (половину времени включен, половину выключен).</li>
+</ul>
+<blockquote>
+<p><strong>Математика в действии: Частота и период</strong></p>
+<ul>
+<li class=""><strong>Период (T)</strong> — время одного полного цикла. В нашем случае T = 2 сек.</li>
+<li class=""><strong>Частота (f)</strong> — количество циклов в секунду. f = 1/T = 1/2 = 0.5 Гц.</li>
+<li class=""><strong>Скважность (duty cycle, D)</strong> — доля времени, когда сигнал в состоянии HIGH. D = t_high / T = 1/2 = 50%.</li>
+</ul>
+<p>Эти понятия критически важны для ШИМ (PWM), который мы изучим в Главе 2.1.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-микроконтроллере">Что происходит в микроконтроллере<a href="#что-происходит-в-микроконтроллере" class="hash-link" aria-label="Прямая ссылка на Что происходит в микроконтроллере" title="Прямая ссылка на Что происходит в микроконтроллере" translate="no">​</a></h3>
+<p><strong>На уровне регистров:</strong></p>
+<p>Когда ты вызываешь <code>digitalWrite(13, HIGH)</code>, Arduino выполняет примерно следующее (упрощенно):</p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Псевдокод того, что делает digitalWrite(13, HIGH)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">PORTB </span><span class="token operator" style="color:#393A34">|=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">&lt;&lt;</span><span class="token plain"> PB7</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Устанавливаем бит 7 в регистре PORTB</span><br></div></code></pre></div></div>
+<p>Пин 13 на Arduino Mega физически соответствует биту <code>PB7</code> (бит 7) порта <code>B</code> микроконтроллера ATmega2560. Регистр <code>PORTB</code> — это 8-битное число, каждый бит которого управляет одним пином.</p>
+<ul>
+<li class=""><code>PORTB |= (1 &lt;&lt; PB7)</code> — устанавливает бит 7 в <code>1</code> (HIGH).</li>
+<li class=""><code>PORTB &amp;= ~(1 &lt;&lt; PB7)</code> — сбрасывает бит 7 в <code>0</code> (LOW).</li>
+</ul>
+<p>Функция <code>digitalWrite()</code> — это обертка, которая прячет от тебя работу с регистрами. Для начинающих это удобно. Для продвинутых проектов иногда нужен прямой доступ к регистрам (быстрее, компактнее код).</p>
+<blockquote>
+<p><strong>Глубже: Почему digitalWrite() медленная?</strong></p>
+<p><code>digitalWrite()</code> выполняет несколько проверок:</p>
+<ul>
+<li class="">Преобразует номер пина Arduino (13) в номер порта и бита (PORTB, бит 7).</li>
+<li class="">Проверяет, не PWM ли это пин (если да, отключает PWM).</li>
+<li class="">Затем устанавливает бит в регистре.</li>
+</ul>
+<p>Все это занимает ~50-60 тактов процессора. На частоте 16 МГц это ~3-4 микросекунды. Для мигающего светодиода это незаметно, но для быстрых протоколов (например, управление адресными светодиодами WS2812) это слишком медленно. Там используют прямую работу с портами или ассемблер.</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-во-время-delay">Что происходит во время delay()<a href="#что-происходит-во-время-delay" class="hash-link" aria-label="Прямая ссылка на Что происходит во время delay()" title="Прямая ссылка на Что происходит во время delay()" translate="no">​</a></h3>
+<p>Функция <code>delay(1000)</code> выполняет примерно следующее:</p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token keyword" style="color:#00009f">unsigned</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">long</span><span class="token plain"> ms</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">unsigned</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">long</span><span class="token plain"> start </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">millis</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Запомнить текущее время</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">while</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token function" style="color:#d73a49">millis</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">-</span><span class="token plain"> start </span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain"> ms</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Пока не прошло ms миллисекунд</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token comment" style="color:#999988;font-style:italic">// Ничего не делать, просто крутиться в цикле</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p><strong>Проблема:</strong> Во время <code>delay()</code> микроконтроллер <strong>ничего не делает</strong>. Он не может:</p>
+<ul>
+<li class="">Читать кнопки.</li>
+<li class="">Принимать данные по Serial.</li>
+<li class="">Обновлять дисплей.</li>
+<li class="">Реагировать на датчики.</li>
+</ul>
+<p>Программа <strong>заблокирована</strong>. Это называется <strong>блокирующая задержка</strong> (blocking delay).</p>
+<blockquote>
+<p><strong>Инженерная заметка: Когда delay() допустим?</strong></p>
+<ul>
+<li class="">В простых проектах с одним действием (мигающий LED).</li>
+<li class="">В начальном обучении.</li>
+<li class="">В коротких задержках (несколько миллисекунд), где блокировка не критична.</li>
+</ul>
+<p>Для реальных устройств (термостат, робот, система сигнализации) <code>delay()</code> почти всегда плохая идея. Вместо этого используют неблокирующие задержки с <code>millis()</code> (Глава 3.1) или прерывания (Глава 3.4).</p>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-проверить-работу-1">Как проверить работу<a href="#как-проверить-работу-1" class="hash-link" aria-label="Прямая ссылка на Как проверить работу" title="Прямая ссылка на Как проверить работу" translate="no">​</a></h3>
+<p>Проверка та же, что в Проекте 1. Но теперь ты понимаешь <strong>почему</strong> светодиод мигает и <strong>что происходит внутри</strong>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="если-не-работает-1">Если не работает<a href="#если-не-работает-1" class="hash-link" aria-label="Прямая ссылка на Если не работает" title="Прямая ссылка на Если не работает" translate="no">​</a></h3>
+<p>См. Проект 1.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идеи-для-развития-1">Идеи для развития<a href="#идеи-для-развития-1" class="hash-link" aria-label="Прямая ссылка на Идеи для развития" title="Прямая ссылка на Идеи для развития" translate="no">​</a></h3>
+<ol>
+<li class=""><strong>Нарисуй временную диаграмму:</strong> На бумаге или в текстовом файле изобрази, как меняется состояние пина во времени при разных значениях <code>delay()</code>.</li>
+<li class=""><strong>Посчитай такты процессора:</strong> Один цикл <code>loop()</code> занимает ~2 секунды. За это время процессор на 16 МГц выполнил 16 000 000 * 2 = 32 миллиона тактов. Почти все они потрачены на ожидание в <code>delay()</code>.</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проект-3-изменение-частоты-мигания-эксперименты-с-delay">Проект 3. Изменение частоты мигания: эксперименты с delay()<a href="#проект-3-изменение-частоты-мигания-эксперименты-с-delay" class="hash-link" aria-label="Прямая ссылка на Проект 3. Изменение частоты мигания: эксперименты с delay()" title="Прямая ссылка на Проект 3. Изменение частоты мигания: эксперименты с delay()" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идея-проекта-2">Идея проекта<a href="#идея-проекта-2" class="hash-link" aria-label="Прямая ссылка на Идея проекта" title="Прямая ссылка на Идея проекта" translate="no">​</a></h3>
+<p>Изменить частоту мигания светодиода, экспериментируя с параметрами <code>delay()</code>. Научиться связывать числа в коде с физическим поведением устройства.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="чему-учит-этот-проект-2">Чему учит этот проект<a href="#чему-учит-этот-проект-2" class="hash-link" aria-label="Прямая ссылка на Чему учит этот проект" title="Прямая ссылка на Чему учит этот проект" translate="no">​</a></h3>
+<ul>
+<li class="">Влияние значений <code>delay()</code> на частоту и период сигнала.</li>
+<li class="">Практическое ощущение времени в миллисекундах.</li>
+<li class="">Понимание границ восприятия человеческого глаза.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-понадобится-2">Что понадобится<a href="#что-понадобится-2" class="hash-link" aria-label="Прямая ссылка на Что понадобится" title="Прямая ссылка на Что понадобится" translate="no">​</a></h3>
+<ul>
+<li class="">Arduino Mega 2560 R3.</li>
+<li class="">USB-кабель.</li>
+<li class="">Arduino IDE.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="код-проекта-быстрое-мигание">Код проекта: быстрое мигание<a href="#код-проекта-быстрое-мигание" class="hash-link" aria-label="Прямая ссылка на Код проекта: быстрое мигание" title="Прямая ссылка на Код проекта: быстрое мигание" translate="no">​</a></h3>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Проект 3: Быстрое мигание (период 200 мс)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">100</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// 100 мс включен</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">100</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// 100 мс выключен</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p><strong>Что изменилось:</strong></p>
+<ul>
+<li class=""><code>delay(1000)</code> заменили на <code>delay(100)</code>.</li>
+<li class="">Период цикла: 100 мс + 100 мс = 200 мс = 0.2 секунды.</li>
+<li class="">Частота: f = 1 / 0.2 = 5 Гц (5 миганий в секунду).</li>
+</ul>
+<p><strong>Наблюдение:</strong></p>
+<p>Светодиод мигает очень быстро. Глаз еще различает отдельные вспышки, но уже на границе восприятия.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="код-проекта-очень-быстрое-мигание">Код проекта: очень быстрое мигание<a href="#код-проекта-очень-быстрое-мигание" class="hash-link" aria-label="Прямая ссылка на Код проекта: очень быстрое мигание" title="Прямая ссылка на Код проекта: очень быстрое мигание" translate="no">​</a></h3>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Проект 3: Очень быстрое мигание (период 20 мс)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">10</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// 10 мс включен</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">10</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// 10 мс выключен</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p><strong>Что изменилось:</strong></p>
+<ul>
+<li class="">Период цикла: 10 мс + 10 мс = 20 мс = 0.02 секунды.</li>
+<li class="">Частота: f = 1 / 0.02 = 50 Гц.</li>
+</ul>
+<p><strong>Наблюдение:</strong></p>
+<p>Глаз человека не различает мигание на частоте выше ~50-60 Гц. Светодиод кажется <strong>постоянно включенным</strong>, но с меньшей яркостью (потому что он включен только 50% времени).</p>
+<blockquote>
+<p><strong>Физика: Инерция зрения и частота кадров</strong></p>
+<p>Человеческий глаз воспринимает свет с инерцией ~15-20 мс. Если источник света мигает быстрее 50-60 раз в секунду, мозг усредняет сигнал и воспринимает его как непрерывный.</p>
+<p>Это принцип работы:</p>
+<ul>
+<li class=""><strong>Кино и видео:</strong> 24-60 кадров в секунду.</li>
+<li class=""><strong>LED-дисплеи:</strong> обновление экрана с частотой сотни герц, но глаз видит статичное изображение.</li>
+<li class=""><strong>Диммирование светодиодов:</strong> регулировка яркости через ШИМ (PWM) на частоте несколько килогерц.</li>
+</ul>
+</blockquote>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="код-проекта-асимметричное-мигание">Код проекта: асимметричное мигание<a href="#код-проекта-асимметричное-мигание" class="hash-link" aria-label="Прямая ссылка на Код проекта: асимметричное мигание" title="Прямая ссылка на Код проекта: асимметричное мигание" translate="no">​</a></h3>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Проект 3: Асимметричное мигание (долго горит, коротко гаснет)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">2000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// 2 секунды включен</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">500</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">   </span><span class="token comment" style="color:#999988;font-style:italic">// 0.5 секунды выключен</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p><strong>Что изменилось:</strong></p>
+<ul>
+<li class="">Период цикла: 2000 мс + 500 мс = 2500 мс = 2.5 секунды.</li>
+<li class="">Скважность: D = 2000 / 2500 = 80% (80% времени включен).</li>
+</ul>
+<p><strong>Наблюдение:</strong></p>
+<p>Светодиод долго горит, коротко гаснет. Это может быть полезно для индикации: &quot;Устройство работает нормально&quot; (долгое свечение) vs &quot;Тревога&quot; (короткие частые вспышки).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-коде-1">Что происходит в коде<a href="#что-происходит-в-коде-1" class="hash-link" aria-label="Прямая ссылка на Что происходит в коде" title="Прямая ссылка на Что происходит в коде" translate="no">​</a></h3>
+<p>Логика та же, что в Проекте 1, только изменены параметры <code>delay()</code>.</p>
+<p><strong>Важное наблюдение:</strong></p>
+<p>Изменяя <strong>одно число</strong> в коде, ты кардинально меняешь поведение физического устройства. Это суть embedded-разработки: программа напрямую управляет реальностью.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-проверить-работу-2">Как проверить работу<a href="#как-проверить-работу-2" class="hash-link" aria-label="Прямая ссылка на Как проверить работу" title="Прямая ссылка на Как проверить работу" translate="no">​</a></h3>
+<ol>
+<li class=""><strong>Быстрое мигание (100 мс):</strong> Посчитай вспышки за 10 секунд. Должно быть ~50.</li>
+<li class=""><strong>Очень быстрое мигание (10 мс):</strong> Светодиод кажется постоянно включенным, но тусклее.</li>
+<li class=""><strong>Асимметричное мигание:</strong> Светодиод горит 2 секунды, гаснет на 0.5 секунды.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="если-не-работает-2">Если не работает<a href="#если-не-работает-2" class="hash-link" aria-label="Прямая ссылка на Если не работает" title="Прямая ссылка на Если не работает" translate="no">​</a></h3>
+<p>См. Проект 1. Проверь, что правильно изменил значения в <code>delay()</code>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идеи-для-развития-2">Идеи для развития<a href="#идеи-для-развития-2" class="hash-link" aria-label="Прямая ссылка на Идеи для развития" title="Прямая ссылка на Идеи для развития" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>SOS в коде Морзе:</strong></p>
+<ul>
+<li class="">Короткая вспышка (точка): 200 мс включен, 200 мс пауза.</li>
+<li class="">Длинная вспышка (тире): 600 мс включен, 200 мс пауза.</li>
+<li class="">SOS: три точки, три тире, три точки.</li>
+</ul>
+<p><strong>Код для S (три точки):</strong></p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">for</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> i </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> i </span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">3</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> i</span><span class="token operator" style="color:#393A34">++</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">200</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">200</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+</li>
+<li class="">
+<p><strong>Найди порог восприятия:</strong> Постепенно уменьшай <code>delay()</code> и определи, при какой частоте ты перестаешь различать отдельные вспышки.</p>
+</li>
+<li class="">
+<p><strong>Имитация дыхания:</strong> Плавное изменение яркости (это требует PWM, который мы изучим в Главе 2.1, но можно грубо имитировать, меняя соотношение времени включения и выключения в быстром цикле).</p>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="эксперименты">Эксперименты<a href="#эксперименты" class="hash-link" aria-label="Прямая ссылка на Эксперименты" title="Прямая ссылка на Эксперименты" translate="no">​</a></h2>
+<blockquote>
+<p><strong>Эксперимент 1: Что если не вызывать pinMode()?</strong></p>
+<p>Удали строку <code>pinMode(13, OUTPUT);</code> из <code>setup()</code> и загрузи код. Что происходит?</p>
+<p><strong>Результат:</strong> Светодиод может слабо мигать или вообще не реагировать, потому что пин по умолчанию настроен как вход, а не выход.</p>
+<p><strong>Вывод:</strong> <code>pinMode()</code> обязателен для настройки режима работы пина.</p>
+</blockquote>
+<blockquote>
+<p><strong>Эксперимент 2: Что если delay(0)?</strong></p>
+<p>Замени оба <code>delay(1000)</code> на <code>delay(0)</code> и загрузи код.</p>
+<p><strong>Результат:</strong> Светодиод мигает так быстро (несколько микросекунд на цикл), что кажется постоянно включенным, но очень тусклым.</p>
+<p><strong>Вывод:</strong> <code>delay(0)</code> означает &quot;не ждать&quot;, <code>loop()</code> выполняется максимально быстро. Один цикл занимает ~10-15 микросекунд (время выполнения <code>digitalWrite()</code> и <code>delay(0)</code>).</p>
+</blockquote>
+<blockquote>
+<p><strong>Эксперимент 3: Измерь скорость выполнения loop()</strong></p>
+<p>Добавь счетчик и Serial-вывод:</p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">unsigned</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">long</span><span class="token plain"> count </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  Serial</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">begin</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">9600</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  count</span><span class="token operator" style="color:#393A34">++</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  Serial</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">println</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">count</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p>Открой Serial Monitor (Tools → Serial Monitor, скорость 9600). Увидишь, что каждые 2 секунды счетчик увеличивается на 1.</p>
+<p><strong>Вывод:</strong> Один цикл <code>loop()</code> выполняется ровно раз в 2 секунды (из-за <code>delay()</code>).</p>
+</blockquote>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="частые-ошибки-главы">Частые ошибки главы<a href="#частые-ошибки-главы" class="hash-link" aria-label="Прямая ссылка на Частые ошибки главы" title="Прямая ссылка на Частые ошибки главы" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-1-забыл-вызвать-pinmode">Ошибка 1: Забыл вызвать pinMode()<a href="#ошибка-1-забыл-вызвать-pinmode" class="hash-link" aria-label="Прямая ссылка на Ошибка 1: Забыл вызвать pinMode()" title="Прямая ссылка на Ошибка 1: Забыл вызвать pinMode()" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Код загружается, но светодиод не реагирует или мигает очень слабо.</p>
+<p><strong>Причина:</strong> Пин не настроен как выход.</p>
+<p><strong>Решение:</strong> Добавь <code>pinMode(13, OUTPUT);</code> в <code>setup()</code>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-2-неправильный-номер-пина">Ошибка 2: Неправильный номер пина<a href="#ошибка-2-неправильный-номер-пина" class="hash-link" aria-label="Прямая ссылка на Ошибка 2: Неправильный номер пина" title="Прямая ссылка на Ошибка 2: Неправильный номер пина" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Встроенный светодиод не мигает.</p>
+<p><strong>Причина:</strong> В коде указан неправильный пин (например, <code>pinMode(12, OUTPUT)</code> вместо <code>pinMode(13, OUTPUT)</code>).</p>
+<p><strong>Решение:</strong> Встроенный светодиод на Arduino Mega подключен к пину <strong>13</strong>. Используй именно этот номер.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-3-неправильно-выбрана-плата-в-arduino-ide">Ошибка 3: Неправильно выбрана плата в Arduino IDE<a href="#ошибка-3-неправильно-выбрана-плата-в-arduino-ide" class="hash-link" aria-label="Прямая ссылка на Ошибка 3: Неправильно выбрана плата в Arduino IDE" title="Прямая ссылка на Ошибка 3: Неправильно выбрана плата в Arduino IDE" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Код загружается, но ничего не работает или плата ведет себя странно.</p>
+<p><strong>Причина:</strong> В Arduino IDE выбрана неправильная плата (например, Arduino Uno вместо Mega).</p>
+<p><strong>Решение:</strong> Проверь: <strong>Tools → Board → Arduino Mega or Mega 2560</strong> и <strong>Tools → Processor → ATmega2560</strong>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-4-ошибка-компиляции-expected--before-">Ошибка 4: Ошибка компиляции &quot;expected &#x27;;&#x27; before &#x27;}&#x27;&quot;<a href="#ошибка-4-ошибка-компиляции-expected--before-" class="hash-link" aria-label="Прямая ссылка на Ошибка 4: Ошибка компиляции &quot;expected &#x27;;&#x27; before &#x27;}&#x27;&quot;" title="Прямая ссылка на Ошибка 4: Ошибка компиляции &quot;expected &#x27;;&#x27; before &#x27;}&#x27;&quot;" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Arduino IDE показывает красный текст с ошибкой.</p>
+<p><strong>Причина:</strong> Пропущена точка с запятой <code>;</code> в конце строки.</p>
+<p><strong>Решение:</strong> В C++ каждая инструкция должна заканчиваться точкой с запятой:</p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Правильно</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain">   </span><span class="token comment" style="color:#999988;font-style:italic">// Ошибка: нет ;</span><br></div></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-5-код-не-загружается-ошибка-avrdude-stk500v2_receivemessage-timeout">Ошибка 5: Код не загружается, ошибка &quot;avrdude: stk500v2_ReceiveMessage(): timeout&quot;<a href="#ошибка-5-код-не-загружается-ошибка-avrdude-stk500v2_receivemessage-timeout" class="hash-link" aria-label="Прямая ссылка на Ошибка 5: Код не загружается, ошибка &quot;avrdude: stk500v2_ReceiveMessage(): timeout&quot;" title="Прямая ссылка на Ошибка 5: Код не загружается, ошибка &quot;avrdude: stk500v2_ReceiveMessage(): timeout&quot;" translate="no">​</a></h3>
+<p><strong>Причина:</strong> Arduino не отвечает. Возможные причины:</p>
+<ul>
+<li class="">Неправильно выбран порт.</li>
+<li class="">USB-кабель только для зарядки (без data-линий).</li>
+<li class="">Плата зависла.</li>
+</ul>
+<p><strong>Решение:</strong></p>
+<ul>
+<li class="">Проверь выбор порта: <strong>Tools → Port</strong>.</li>
+<li class="">Попробуй другой USB-кабель.</li>
+<li class="">Нажми кнопку RESET на плате и сразу попробуй загрузить код снова.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проверь-себя">Проверь себя<a href="#проверь-себя" class="hash-link" aria-label="Прямая ссылка на Проверь себя" title="Прямая ссылка на Проверь себя" translate="no">​</a></h2>
+<p>Ответь на вопросы, чтобы убедиться, что ты понял материал главы.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="вопросы-на-понимание">Вопросы на понимание<a href="#вопросы-на-понимание" class="hash-link" aria-label="Прямая ссылка на Вопросы на понимание" title="Прямая ссылка на Вопросы на понимание" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>Чем микроконтроллер отличается от процессора ПК?</strong></p>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Ответ</summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+Микроконтроллер — это микросхема, содержащая процессор, память и периферию на одном кристалле. Он работает без операционной системы, имеет ограниченные ресурсы (килобайты памяти, мегагерцы частоты), но обеспечивает прямой доступ к железу и реакцию в реальном времени. Процессор ПК работает в богатой программной среде с ОС, абстракциями, многозадачностью и огромными ресурсами.
+</div></div></details>
+</li>
+<li class="">
+<p><strong>Сколько Flash-памяти, SRAM и EEPROM в Arduino Mega 2560 R3?</strong></p>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Ответ</summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+Flash: 256 КБ (из них 8 КБ занято bootloader). SRAM: 8 КБ. EEPROM: 4 КБ.
+</div></div></details>
+</li>
+<li class="">
+<p><strong>Что делает функция pinMode()?</strong></p>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Ответ</summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+Настраивает режим работы пина: OUTPUT (выход), INPUT (вход) или INPUT_PULLUP (вход с подтягивающим резистором).
+</div></div></details>
+</li>
+<li class="">
+<p><strong>В чем разница между HIGH и LOW?</strong></p>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Ответ</summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+HIGH — логическая единица, ~5 В на пине. LOW — логический ноль, 0 В на пине.
+</div></div></details>
+</li>
+<li class="">
+<p><strong>Почему delay() называют блокирующей задержкой?</strong></p>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Ответ</summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+Потому что во время выполнения `delay()` микроконтроллер ничего не делает — просто ждет. Программа заблокирована и не может читать датчики, кнопки, принимать данные.
+</div></div></details>
+</li>
+<li class="">
+<p><strong>Что такое bootloader и зачем он нужен?</strong></p>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Ответ</summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+Bootloader — небольшая программа (~8 КБ), предустановленная в микроконтроллере. Она позволяет загружать sketch через USB без внешнего программатора. Bootloader запускается при включении или сбросе, ждет новую программу, и если она не поступает — передает управление основной программе.
+</div></div></details>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="вопросы-на-применение">Вопросы на применение<a href="#вопросы-на-применение" class="hash-link" aria-label="Прямая ссылка на Вопросы на применение" title="Прямая ссылка на Вопросы на применение" translate="no">​</a></h3>
+<ol start="7">
+<li class="">
+<p><strong>Как изменить код, чтобы светодиод мигал с частотой 2 Гц (2 раза в секунду)?</strong></p>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Ответ</summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+Частота 2 Гц означает период T = 1/2 = 0.5 секунды = 500 мс. При скважности 50%: включен 250 мс, выключен 250 мс.
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">250</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">250</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+</div></div></details>
+</li>
+<li class="">
+<p><strong>Как сделать так, чтобы светодиод горел 80% времени?</strong></p>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Ответ</summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+Выбери период, например 1000 мс. 80% — это 800 мс включен, 200 мс выключен.
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">800</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">200</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+</div></div></details>
+</li>
+<li class="">
+<p><strong>Что произойдет, если в setup() написать pinMode(13, INPUT) вместо pinMode(13, OUTPUT)?</strong></p>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Ответ</summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+Пин 13 будет настроен как вход. digitalWrite() будет работать некорректно: сигнал будет слабым или не будет работать вообще. Светодиод не будет мигать нормально.
+</div></div></details>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="вопросы-на-объяснение">Вопросы на объяснение<a href="#вопросы-на-объяснение" class="hash-link" aria-label="Прямая ссылка на Вопросы на объяснение" title="Прямая ссылка на Вопросы на объяснение" translate="no">​</a></h3>
+<ol start="10">
+<li class="">
+<p><strong>Почему встроенный светодиод можно включать напрямую, а внешний светодиод нужно подключать через резистор?</strong></p>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Ответ</summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+Встроенный светодиод на Arduino Mega уже подключен через резистор (~1 кОм) на плате. Резистор ограничивает ток, чтобы не повредить светодиод и пин микроконтроллера. Внешний светодиод не имеет встроенного резистора, поэтому его нужно добавлять в схему.
+</div></div></details>
+</li>
+<li class="">
+<p><strong>Объясни, почему при delay(10) светодиод кажется постоянно включенным, хотя на самом деле мигает?</strong></p>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Ответ</summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+Человеческий глаз имеет инерцию зрения ~15-20 мс. При частоте мигания 50 Гц (период 20 мс) мозг усредняет сигнал и воспринимает его как непрерывный свет. Светодиод мигает слишком быстро, чтобы глаз различил отдельные вспышки.
+</div></div></details>
+</li>
+<li class="">
+<p><strong>Почему важно экономить память (SRAM) в embedded-разработке?</strong></p>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary>Ответ</summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+В Arduino Mega всего 8 КБ SRAM. Это очень мало: массив из 1000 чисел типа int занимает 2 КБ. Большие глобальные переменные, глубокая рекурсия, неэффективные алгоритмы быстро исчерпают память. Переполнение стека или нехватка памяти приводят к непредсказуемому поведению программы.
+</div></div></details>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проекты">Мини-проекты<a href="#мини-проекты" class="hash-link" aria-label="Прямая ссылка на Мини-проекты" title="Прямая ссылка на Мини-проекты" translate="no">​</a></h2>
+<p>Попробуй реализовать эти идеи самостоятельно, чтобы закрепить материал.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проект-1-сигнал-sos-в-коде-морзе">Мини-проект 1: Сигнал SOS в коде Морзе<a href="#мини-проект-1-сигнал-sos-в-коде-морзе" class="hash-link" aria-label="Прямая ссылка на Мини-проект 1: Сигнал SOS в коде Морзе" title="Прямая ссылка на Мини-проект 1: Сигнал SOS в коде Морзе" translate="no">​</a></h3>
+<p>Реализуй сигнал бедствия SOS в коде Морзе:</p>
+<ul>
+<li class="">Три короткие вспышки (S): 200 мс включен, 200 мс пауза.</li>
+<li class="">Три длинные вспышки (O): 600 мс включен, 200 мс пауза.</li>
+<li class="">Три короткие вспышки (S): 200 мс включен, 200 мс пауза.</li>
+<li class="">Длинная пауза между повторениями: 2000 мс.</li>
+</ul>
+<p><strong>Подсказка:</strong> Используй цикл <code>for</code> для повторяющихся вспышек.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проект-2-счетчик-циклов-в-serial-monitor">Мини-проект 2: Счетчик циклов в Serial Monitor<a href="#мини-проект-2-счетчик-циклов-в-serial-monitor" class="hash-link" aria-label="Прямая ссылка на Мини-проект 2: Счетчик циклов в Serial Monitor" title="Прямая ссылка на Мини-проект 2: Счетчик циклов в Serial Monitor" translate="no">​</a></h3>
+<p>Добавь в программу счетчик, который выводит в Serial Monitor количество выполненных циклов <code>loop()</code>.</p>
+<p><strong>Подсказка:</strong></p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">unsigned</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">long</span><span class="token plain"> count </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">0</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  Serial</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">begin</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">9600</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Инициализация Serial</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  count</span><span class="token operator" style="color:#393A34">++</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  Serial</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">print</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&quot;Цикл: &quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  Serial</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">println</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">count</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p>Открой Serial Monitor (Tools → Serial Monitor, скорость 9600) и наблюдай за счетчиком.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проект-3-имитация-дыхания">Мини-проект 3: Имитация дыхания<a href="#мини-проект-3-имитация-дыхания" class="hash-link" aria-label="Прямая ссылка на Мини-проект 3: Имитация дыхания" title="Прямая ссылка на Мини-проект 3: Имитация дыхания" translate="no">​</a></h3>
+<p>Создай эффект &quot;дыхания&quot; светодиода: постепенное увеличение яркости, затем постепенное уменьшение.</p>
+<p><strong>Подсказка:</strong> Пока ты не знаешь PWM (Глава 2.1), имитируй изменение яркости изменением соотношения времени включения и выключения в быстром цикле. Например:</p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Псевдо-яркость 10%: 1 мс включен, 9 мс выключен</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">9</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><br></div></code></pre></div></div>
+<p>Повторяй это несколько раз, затем увеличивай время включения (20%, 30%, ..., 100%), затем уменьшай обратно.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-мы-теперь-умеем">Что мы теперь умеем<a href="#что-мы-теперь-умеем" class="hash-link" aria-label="Прямая ссылка на Что мы теперь умеем" title="Прямая ссылка на Что мы теперь умеем" translate="no">​</a></h2>
+<p>К концу этой главы ты:</p>
+<ul>
+<li class="">Понимаешь, что такое микроконтроллер и чем он отличается от процессора ПК.</li>
+<li class="">Знаешь архитектуру Arduino Mega 2560 R3: ATmega2560, 256 КБ Flash, 8 КБ SRAM, 16 МГц, 54 цифровых пина, 16 аналоговых.</li>
+<li class="">Умеешь устанавливать и настраивать Arduino IDE.</li>
+<li class="">Понимаешь структуру sketch: <code>setup()</code> выполняется один раз, <code>loop()</code> — бесконечно.</li>
+<li class="">Умеешь настраивать пин как выход: <code>pinMode(pin, OUTPUT)</code>.</li>
+<li class="">Умеешь управлять цифровым выходом: <code>digitalWrite(pin, HIGH/LOW)</code>.</li>
+<li class="">Умеешь создавать задержки: <code>delay(ms)</code>.</li>
+<li class="">Понимаешь ограничения блокирующей задержки <code>delay()</code>.</li>
+<li class="">Можешь загрузить код на плату через USB и проверить его работу.</li>
+<li class="">Понимаешь связь между кодом и физическим поведением устройства.</li>
+</ul>
+<p><strong>Главное достижение:</strong> Ты заставил физическое устройство выполнять твои команды. Код из абстрактного стал реальным.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-это-пригодится-дальше">Как это пригодится дальше<a href="#как-это-пригодится-дальше" class="hash-link" aria-label="Прямая ссылка на Как это пригодится дальше" title="Прямая ссылка на Как это пригодится дальше" translate="no">​</a></h2>
+<p>Знания из этой главы — фундамент для всего учебника.</p>
+<p><strong>Ближайшие главы:</strong></p>
+<ul>
+<li class=""><strong>Глава 1.2 (Breadboard и первая внешняя схема):</strong> Мы подключим внешний светодиод на макетной плате, научимся безопасно собирать схемы, поймем, что такое резистор и зачем он нужен.</li>
+<li class=""><strong>Глава 1.3 (Электричество для программистов):</strong> Погрузимся в закон Ома, напряжение, ток, сопротивление. Поймем, почему резистор обязателен для светодиода.</li>
+<li class=""><strong>Глава 1.4 (HIGH и LOW):</strong> Углубимся в цифровые уровни сигналов, пороги, помехи, согласование логики.</li>
+</ul>
+<p><strong>Дальнейшие разделы:</strong></p>
+<ul>
+<li class=""><strong>Раздел 2 (Цифровые входы):</strong> Научимся читать кнопки, строить логические схемы, работать с конечными автоматами.</li>
+<li class=""><strong>Раздел 3 (Время и частота):</strong> Избавимся от <code>delay()</code>, научимся писать неблокирующий код с <code>millis()</code>, работать с прерываниями.</li>
+<li class=""><strong>Раздел 4 (Аналоговый мир):</strong> Начнем читать датчики, фильтровать шум, калибровать измерения.</li>
+</ul>
+<p>И так далее — до создания сложных систем: игр, роботов, IoT-устройств, систем управления.</p>
+<p><strong>Все начинается с мигающего светодиода.</strong></p>
+<p>Добро пожаловать в мир встраиваемых систем.</p>
+<hr>
+<p><strong>Следующая глава:</strong> <a class="" href="/arduino/01-02-breadboard-first-external-circuit">Глава 1.2. Breadboard и первая внешняя схема</a></p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/maksimkh34/arduino/tree/main/../chapters/01-01-arduino-mega-first-contact.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Отредактировать эту страницу</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Страница документа"><a class="pagination-nav__link pagination-nav__link--next" href="/arduino/01-02-breadboard-first-external-circuit"><div class="pagination-nav__sublabel">Следующая страница</div><div class="pagination-nav__label">Breadboard и первая внешняя схема</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#зачем-нужна-эта-глава" class="table-of-contents__link toc-highlight">Зачем нужна эта глава</a></li><li><a href="#что-мы-соберем-к-концу-главы" class="table-of-contents__link toc-highlight">Что мы соберем к концу главы</a></li><li><a href="#что-ты-узнаешь-и-чему-научишься" class="table-of-contents__link toc-highlight">Что ты узнаешь и чему научишься</a></li><li><a href="#карта-путешествия" class="table-of-contents__link toc-highlight">Карта путешествия</a></li><li><a href="#ключевые-термины" class="table-of-contents__link toc-highlight">Ключевые термины</a></li><li><a href="#практическая-задача-главы" class="table-of-contents__link toc-highlight">Практическая задача главы</a></li><li><a href="#теория-которая-нужна-для-решения-задачи" class="table-of-contents__link toc-highlight">Теория, которая нужна для решения задачи</a><ul><li><a href="#микроконтроллер-vs-процессор-пк-в-чем-разница" class="table-of-contents__link toc-highlight">Микроконтроллер vs процессор ПК: в чем разница</a></li><li><a href="#arduino-mega-2560-r3-знакомство-с-платой" class="table-of-contents__link toc-highlight">Arduino Mega 2560 R3: знакомство с платой</a></li><li><a href="#анатомия-платы-arduino-mega-2560-r3" class="table-of-contents__link toc-highlight">Анатомия платы Arduino Mega 2560 R3</a></li><li><a href="#питание-arduino-mega-откуда-берется-энергия" class="table-of-contents__link toc-highlight">Питание Arduino Mega: откуда берется энергия</a></li><li><a href="#bootloader-как-код-попадает-в-микроконтроллер" class="table-of-contents__link toc-highlight">Bootloader: как код попадает в микроконтроллер</a></li><li><a href="#arduino-ide-среда-разработки" class="table-of-contents__link toc-highlight">Arduino IDE: среда разработки</a></li><li><a href="#структура-sketch-setup-и-loop" class="table-of-contents__link toc-highlight">Структура sketch: setup() и loop()</a></li><li><a href="#функции-для-управления-цифровыми-выходами" class="table-of-contents__link toc-highlight">Функции для управления цифровыми выходами</a></li></ul></li><li><a href="#проект-1-blink-первый-мигающий-светодиод" class="table-of-contents__link toc-highlight">Проект 1. Blink: первый мигающий светодиод</a><ul><li><a href="#идея-проекта" class="table-of-contents__link toc-highlight">Идея проекта</a></li><li><a href="#чему-учит-этот-проект" class="table-of-contents__link toc-highlight">Чему учит этот проект</a></li><li><a href="#что-понадобится" class="table-of-contents__link toc-highlight">Что понадобится</a></li><li><a href="#схема-подключения" class="table-of-contents__link toc-highlight">Схема подключения</a></li><li><a href="#таблица-соединений" class="table-of-contents__link toc-highlight">Таблица соединений</a></li><li><a href="#код-проекта" class="table-of-contents__link toc-highlight">Код проекта</a></li><li><a href="#что-происходит-в-коде" class="table-of-contents__link toc-highlight">Что происходит в коде</a></li><li><a href="#что-происходит-в-схеме" class="table-of-contents__link toc-highlight">Что происходит в схеме</a></li><li><a href="#как-проверить-работу" class="table-of-contents__link toc-highlight">Как проверить работу</a></li><li><a href="#если-не-работает" class="table-of-contents__link toc-highlight">Если не работает</a></li><li><a href="#идеи-для-развития" class="table-of-contents__link toc-highlight">Идеи для развития</a></li></ul></li><li><a href="#проект-2-анализ-blink-что-происходит-под-капотом" class="table-of-contents__link toc-highlight">Проект 2. Анализ Blink: что происходит под капотом</a><ul><li><a href="#идея-проекта-1" class="table-of-contents__link toc-highlight">Идея проекта</a></li><li><a href="#чему-учит-этот-проект-1" class="table-of-contents__link toc-highlight">Чему учит этот проект</a></li><li><a href="#что-понадобится-1" class="table-of-contents__link toc-highlight">Что понадобится</a></li><li><a href="#временная-диаграмма-сигнала" class="table-of-contents__link toc-highlight">Временная диаграмма сигнала</a></li><li><a href="#что-происходит-в-микроконтроллере" class="table-of-contents__link toc-highlight">Что происходит в микроконтроллере</a></li><li><a href="#что-происходит-во-время-delay" class="table-of-contents__link toc-highlight">Что происходит во время delay()</a></li><li><a href="#как-проверить-работу-1" class="table-of-contents__link toc-highlight">Как проверить работу</a></li><li><a href="#если-не-работает-1" class="table-of-contents__link toc-highlight">Если не работает</a></li><li><a href="#идеи-для-развития-1" class="table-of-contents__link toc-highlight">Идеи для развития</a></li></ul></li><li><a href="#проект-3-изменение-частоты-мигания-эксперименты-с-delay" class="table-of-contents__link toc-highlight">Проект 3. Изменение частоты мигания: эксперименты с delay()</a><ul><li><a href="#идея-проекта-2" class="table-of-contents__link toc-highlight">Идея проекта</a></li><li><a href="#чему-учит-этот-проект-2" class="table-of-contents__link toc-highlight">Чему учит этот проект</a></li><li><a href="#что-понадобится-2" class="table-of-contents__link toc-highlight">Что понадобится</a></li><li><a href="#код-проекта-быстрое-мигание" class="table-of-contents__link toc-highlight">Код проекта: быстрое мигание</a></li><li><a href="#код-проекта-очень-быстрое-мигание" class="table-of-contents__link toc-highlight">Код проекта: очень быстрое мигание</a></li><li><a href="#код-проекта-асимметричное-мигание" class="table-of-contents__link toc-highlight">Код проекта: асимметричное мигание</a></li><li><a href="#что-происходит-в-коде-1" class="table-of-contents__link toc-highlight">Что происходит в коде</a></li><li><a href="#как-проверить-работу-2" class="table-of-contents__link toc-highlight">Как проверить работу</a></li><li><a href="#если-не-работает-2" class="table-of-contents__link toc-highlight">Если не работает</a></li><li><a href="#идеи-для-развития-2" class="table-of-contents__link toc-highlight">Идеи для развития</a></li></ul></li><li><a href="#эксперименты" class="table-of-contents__link toc-highlight">Эксперименты</a></li><li><a href="#частые-ошибки-главы" class="table-of-contents__link toc-highlight">Частые ошибки главы</a><ul><li><a href="#ошибка-1-забыл-вызвать-pinmode" class="table-of-contents__link toc-highlight">Ошибка 1: Забыл вызвать pinMode()</a></li><li><a href="#ошибка-2-неправильный-номер-пина" class="table-of-contents__link toc-highlight">Ошибка 2: Неправильный номер пина</a></li><li><a href="#ошибка-3-неправильно-выбрана-плата-в-arduino-ide" class="table-of-contents__link toc-highlight">Ошибка 3: Неправильно выбрана плата в Arduino IDE</a></li><li><a href="#ошибка-4-ошибка-компиляции-expected--before-" class="table-of-contents__link toc-highlight">Ошибка 4: Ошибка компиляции &quot;expected &#39;;&#39; before &#39;}&#39;&quot;</a></li><li><a href="#ошибка-5-код-не-загружается-ошибка-avrdude-stk500v2_receivemessage-timeout" class="table-of-contents__link toc-highlight">Ошибка 5: Код не загружается, ошибка &quot;avrdude: stk500v2_ReceiveMessage(): timeout&quot;</a></li></ul></li><li><a href="#проверь-себя" class="table-of-contents__link toc-highlight">Проверь себя</a><ul><li><a href="#вопросы-на-понимание" class="table-of-contents__link toc-highlight">Вопросы на понимание</a></li><li><a href="#вопросы-на-применение" class="table-of-contents__link toc-highlight">Вопросы на применение</a></li><li><a href="#вопросы-на-объяснение" class="table-of-contents__link toc-highlight">Вопросы на объяснение</a></li></ul></li><li><a href="#мини-проекты" class="table-of-contents__link toc-highlight">Мини-проекты</a><ul><li><a href="#мини-проект-1-сигнал-sos-в-коде-морзе" class="table-of-contents__link toc-highlight">Мини-проект 1: Сигнал SOS в коде Морзе</a></li><li><a href="#мини-проект-2-счетчик-циклов-в-serial-monitor" class="table-of-contents__link toc-highlight">Мини-проект 2: Счетчик циклов в Serial Monitor</a></li><li><a href="#мини-проект-3-имитация-дыхания" class="table-of-contents__link toc-highlight">Мини-проект 3: Имитация дыхания</a></li></ul></li><li><a href="#что-мы-теперь-умеем" class="table-of-contents__link toc-highlight">Что мы теперь умеем</a></li><li><a href="#как-это-пригодится-дальше" class="table-of-contents__link toc-highlight">Как это пригодится дальше</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Контент</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/arduino/">Учебник</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Ссылки</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/maksimkh34/arduino" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Arduino Textbook. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
