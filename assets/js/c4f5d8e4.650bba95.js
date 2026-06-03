@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkwebsite=globalThis.webpackChunkwebsite||[]).push([[634],{192(t,e,a){a.r(e),a.d(e,{default:()=>u});a(6540);var s=a(6347),i=a(6025),r=a(4848);function u(){return(0,r.jsx)(s.rd,{to:(0,i.Ay)("/01-01-arduino-mega-first-contact")})}}}]);
