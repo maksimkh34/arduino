@@ -1,0 +1,1405 @@
+<!doctype html>
+<html lang="ru" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-02-02-pull-up-pull-down" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.1">
+<title data-rh="true">Pull-up и pull-down: как сделать вход определенным | Arduino Mega 2560 R3: Учебник</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://maksimkh34.github.io/arduino/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://maksimkh34.github.io/arduino/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://maksimkh34.github.io/arduino/02-02-pull-up-pull-down"><meta data-rh="true" property="og:locale" content="ru"><meta data-rh="true" name="docusaurus_locale" content="ru"><meta data-rh="true" name="docsearch:language" content="ru"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Pull-up и pull-down: как сделать вход определенным | Arduino Mega 2560 R3: Учебник"><meta data-rh="true" name="description" content="Зачем нужна эта глава"><meta data-rh="true" property="og:description" content="Зачем нужна эта глава"><link data-rh="true" rel="icon" href="/arduino/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://maksimkh34.github.io/arduino/02-02-pull-up-pull-down"><link data-rh="true" rel="alternate" href="https://maksimkh34.github.io/arduino/02-02-pull-up-pull-down" hreflang="ru"><link data-rh="true" rel="alternate" href="https://maksimkh34.github.io/arduino/02-02-pull-up-pull-down" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Pull-up и pull-down: как сделать вход определенным","item":"https://maksimkh34.github.io/arduino/02-02-pull-up-pull-down"}]}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/arduino/assets/css/styles.75f65cb6.css">
+<script src="/arduino/assets/js/runtime~main.ad4f68c6.js" defer="defer"></script>
+<script src="/arduino/assets/js/main.bc16b17f.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/arduino/img/logo.svg"><div role="region" aria-label="Перейти к основному содержимому"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Перейти к основному содержимому</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Переключить навигационную панель" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/arduino/"><div class="navbar__logo"><img src="/arduino/img/logo.svg" alt="Arduino Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/arduino/img/logo.svg" alt="Arduino Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Arduino Mega 2560 R3</b></a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/maksimkh34/arduino" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Переключение между темным и светлым режимом (сейчас используется system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Прокрутка к началу" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/arduino/01-01-arduino-mega-first-contact"><span title="Раздел 1" class="categoryLinkLabel_W154">Раздел 1</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/arduino/01-01-arduino-mega-first-contact"><span title="Первый контакт: знакомство с Arduino Mega 2560 R3" class="linkLabel_WmDU">Первый контакт: знакомство с Arduino Mega 2560 R3</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/arduino/01-02-breadboard-first-external-circuit"><span title="Breadboard и первая внешняя схема" class="linkLabel_WmDU">Breadboard и первая внешняя схема</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/arduino/01-03-electricity-for-programmers"><span title="Электричество для программистов: напряжение, ток и закон Ома" class="linkLabel_WmDU">Электричество для программистов: напряжение, ток и закон Ома</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/arduino/01-04-high-low-logic-levels"><span title="HIGH и LOW: что на самом деле значат логические уровни" class="linkLabel_WmDU">HIGH и LOW: что на самом деле значат логические уровни</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/arduino/02-01-button-digital-input"><span title="Раздел 2" class="categoryLinkLabel_W154">Раздел 2</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/arduino/02-01-button-digital-input"><span title="Кнопка как цифровой вход: первое чтение состояния" class="linkLabel_WmDU">Кнопка как цифровой вход: первое чтение состояния</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/arduino/02-02-pull-up-pull-down"><span title="Pull-up и pull-down: как сделать вход определенным" class="linkLabel_WmDU">Pull-up и pull-down: как сделать вход определенным</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Навигационная цепочка текущей страницы"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Главная страница" class="breadcrumbs__link" href="/arduino/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Раздел 2</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Pull-up и pull-down: как сделать вход определенным</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">Содержание этой страницы</button></div><div class="theme-doc-markdown markdown"><header><h1>Глава 2.2. Pull-up и pull-down: как сделать вход определенным</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="зачем-нужна-эта-глава">Зачем нужна эта глава<a href="#зачем-нужна-эта-глава" class="hash-link" aria-label="Прямая ссылка на Зачем нужна эта глава" title="Прямая ссылка на Зачем нужна эта глава" translate="no">​</a></h2>
+<p>В главе 2.1 мы научились читать состояние кнопки через <code>digitalRead()</code> и использовали схему с <strong>pull-down резистором</strong> — резистором, подтягивающим вход к GND. Эта схема работает, но есть два момента:</p>
+<ol>
+<li class="">
+<p><strong>Pull-down резистор требует дополнительного компонента.</strong> Каждая кнопка нуждается в резисторе 10 кОм, что усложняет схему и увеличивает количество деталей.</p>
+</li>
+<li class="">
+<p><strong>Существует альтернативный подход — pull-up резистор.</strong> Вместо подтягивания входа к GND можно подтянуть его к VCC, что инвертирует логику: кнопка нажата → вход LOW, кнопка отпущена → вход HIGH.</p>
+</li>
+<li class="">
+<p><strong>ATmega2560 имеет встроенные pull-up резисторы.</strong> Их можно активировать программно через режим <code>INPUT_PULLUP</code>, что избавляет от необходимости внешних резисторов вообще.</p>
+</li>
+</ol>
+<p>Эта глава научит тебя выбирать правильный способ подключения кнопки в зависимости от задачи, понимать физику подтягивающих резисторов и использовать встроенные возможности микроконтроллера для упрощения схемы.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-мы-соберем-к-концу-главы">Что мы соберем к концу главы<a href="#что-мы-соберем-к-концу-главы" class="hash-link" aria-label="Прямая ссылка на Что мы соберем к концу главы" title="Прямая ссылка на Что мы соберем к концу главы" translate="no">​</a></h2>
+<ol>
+<li class=""><strong>Проект 2.2.1:</strong> Кнопка с внешним pull-up резистором управляет светодиодом (инверсная логика).</li>
+<li class=""><strong>Проект 2.2.2:</strong> Кнопка с встроенным <code>INPUT_PULLUP</code> управляет светодиодом без внешнего резистора.</li>
+<li class=""><strong>Проект 2.2.3:</strong> Две кнопки с разной логикой (внешний pull-down + встроенный pull-up) управляют одним светодиодом.</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-ты-узнаешь-и-чему-научишься">Что ты узнаешь и чему научишься<a href="#что-ты-узнаешь-и-чему-научишься" class="hash-link" aria-label="Прямая ссылка на Что ты узнаешь и чему научишься" title="Прямая ссылка на Что ты узнаешь и чему научишься" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="узнаешь">Узнаешь<a href="#узнаешь" class="hash-link" aria-label="Прямая ссылка на Узнаешь" title="Прямая ссылка на Узнаешь" translate="no">​</a></h3>
+<ul>
+<li class="">Что такое pull-up резистор и чем он отличается от pull-down.</li>
+<li class="">Как работает встроенный pull-up резистор в ATmega2560.</li>
+<li class="">Почему логика кнопки инвертируется при использовании pull-up.</li>
+<li class="">Какой номинал резистора выбрать и почему.</li>
+<li class="">Что происходит внутри микроконтроллера при активации <code>INPUT_PULLUP</code>.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="научишься">Научишься<a href="#научишься" class="hash-link" aria-label="Прямая ссылка на Научишься" title="Прямая ссылка на Научишься" translate="no">​</a></h3>
+<ul>
+<li class="">Подключать кнопку с внешним pull-up резистором.</li>
+<li class="">Использовать режим <code>INPUT_PULLUP</code> для упрощения схемы.</li>
+<li class="">Работать с инверсной логикой кнопок в коде.</li>
+<li class="">Комбинировать разные схемы подключения в одном проекте.</li>
+<li class="">Выбирать оптимальный способ подключения для конкретной задачи.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="карта-путешествия">Карта путешествия<a href="#карта-путешествия" class="hash-link" aria-label="Прямая ссылка на Карта путешествия" title="Прямая ссылка на Карта путешествия" translate="no">​</a></h2>
+<ol>
+<li class=""><strong>Теория:</strong> Что такое pull-up резистор и почему он нужен.</li>
+<li class=""><strong>Теория:</strong> Встроенные pull-up резисторы ATmega2560 и режим INPUT_PULLUP.</li>
+<li class=""><strong>Теория:</strong> Инверсия логики и выбор между pull-up и pull-down.</li>
+<li class=""><strong>Проект 2.2.1:</strong> Внешний pull-up резистор.</li>
+<li class=""><strong>Проект 2.2.2:</strong> Встроенный INPUT_PULLUP.</li>
+<li class=""><strong>Проект 2.2.3:</strong> Две кнопки с разной логикой.</li>
+<li class=""><strong>Эксперименты:</strong> Измерение тока pull-up резистора, сравнение внешнего и встроенного.</li>
+<li class=""><strong>Частые ошибки главы.</strong></li>
+<li class=""><strong>Проверь себя.</strong></li>
+<li class=""><strong>Мини-проекты.</strong></li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="ключевые-термины">Ключевые термины<a href="#ключевые-термины" class="hash-link" aria-label="Прямая ссылка на Ключевые термины" title="Прямая ссылка на Ключевые термины" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Pull-up резистор</strong> — резистор, подтягивающий вход к VCC (HIGH) в состоянии покоя.</li>
+<li class=""><strong>Pull-down резистор</strong> — резистор, подтягивающий вход к GND (LOW) в состоянии покоя.</li>
+<li class=""><strong>INPUT_PULLUP</strong> — режим пина Arduino, активирующий встроенный pull-up резистор микроконтроллера.</li>
+<li class=""><strong>Инверсия логики</strong> — изменение интерпретации состояния кнопки: нажата → LOW вместо HIGH.</li>
+<li class=""><strong>Floating input</strong> — вход без определенного состояния, улавливающий электромагнитные помехи.</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="практическая-задача-главы">Практическая задача главы<a href="#практическая-задача-главы" class="hash-link" aria-label="Прямая ссылка на Практическая задача главы" title="Прямая ссылка на Практическая задача главы" translate="no">​</a></h2>
+<p><strong>Задача:</strong> Научиться подключать кнопки так, чтобы избежать floating input, используя как внешние резисторы (pull-up и pull-down), так и встроенные возможности микроконтроллера.</p>
+<p><strong>Критерий успеха:</strong> Ты соберешь три схемы, в которых кнопки работают корректно, но используют разные способы подтягивания входа. Ты поймешь физические и программные различия между pull-up и pull-down, и сможешь выбирать оптимальный метод для своих проектов.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="pull-up-резистор-подтягивание-входа-к-vcc">Pull-up резистор: подтягивание входа к VCC<a href="#pull-up-резистор-подтягивание-входа-к-vcc" class="hash-link" aria-label="Прямая ссылка на Pull-up резистор: подтягивание входа к VCC" title="Прямая ссылка на Pull-up резистор: подтягивание входа к VCC" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="зачем-нужен-pull-up-резистор">Зачем нужен pull-up резистор<a href="#зачем-нужен-pull-up-резистор" class="hash-link" aria-label="Прямая ссылка на Зачем нужен pull-up резистор" title="Прямая ссылка на Зачем нужен pull-up резистор" translate="no">​</a></h3>
+<p>В главе 2.1 мы использовали <strong>pull-down резистор</strong>, который подтягивал вход к GND. Схема выглядела так:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">VCC (5V) ──┬─── Кнопка ──── Пин Arduino</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">           │</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">           └─── Резистор 10 кОм ──── GND</span><br></div></code></pre></div></div>
+<p>Когда кнопка не нажата, резистор создаёт путь к GND, и на входе устанавливается LOW. Когда кнопка нажата, VCC напрямую соединяется с пином, и вход становится HIGH.</p>
+<p><strong>Pull-up резистор делает всё наоборот:</strong> он подтягивает вход к VCC, а кнопка соединяет пин с GND.</p>
+<p>Схема с pull-up резистором:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">VCC (5V) ──┬─── Резистор 10 кОм ──── Пин Arduino</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">           │</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">           └─── Кнопка ──── GND</span><br></div></code></pre></div></div>
+<p>Теперь:</p>
+<ul>
+<li class=""><strong>Кнопка не нажата:</strong> резистор подтягивает вход к VCC → вход читает <strong>HIGH</strong>.</li>
+<li class=""><strong>Кнопка нажата:</strong> пин напрямую соединяется с GND → вход читает <strong>LOW</strong>.</li>
+</ul>
+<blockquote>
+<p><strong>Интуиция</strong></p>
+<p>Представь, что вход микроконтроллера — это вольтметр с очень высоким сопротивлением (мегаомы). Pull-down резистор говорит вольтметру: &quot;Если никто не подаёт напряжение, показывай 0 В&quot;. Pull-up резистор говорит: &quot;Если никто не тянет в землю, показывай 5 В&quot;. Кнопка — это переключатель, который либо подаёт напряжение (pull-down), либо тянет в землю (pull-up).</p>
+</blockquote>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="почему-инвертируется-логика">Почему инвертируется логика<a href="#почему-инвертируется-логика" class="hash-link" aria-label="Прямая ссылка на Почему инвертируется логика" title="Прямая ссылка на Почему инвертируется логика" translate="no">​</a></h3>
+<p>При использовании pull-up резистора логика кнопки становится <strong>инверсной</strong>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Состояние кнопки</th><th>Pull-down (глава 2.1)</th><th>Pull-up (эта глава)</th></tr></thead><tbody><tr><td>Не нажата</td><td>LOW</td><td>HIGH</td></tr><tr><td>Нажата</td><td>HIGH</td><td>LOW</td></tr></tbody></table>
+<p>Это не ошибка — это особенность схемы. В коде нужно учитывать инверсию:</p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Pull-down: нажата → HIGH</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token function" style="color:#d73a49">digitalRead</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonPin</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">==</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Кнопка нажата</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic">// Pull-up: нажата → LOW</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token function" style="color:#d73a49">digitalRead</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonPin</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">==</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Кнопка нажата</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<blockquote>
+<p><strong>Ошибка новичка</strong></p>
+<p>Самая частая ошибка при переходе с pull-down на pull-up — забыть инвертировать логику в коде. Если ты скопируешь код из главы 2.1 и подключишь кнопку с pull-up, светодиод будет гореть, когда кнопка <strong>не нажата</strong>, и гаснуть при нажатии. Это не поломка — это инверсия логики.</p>
+</blockquote>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="почему-pull-up-популярнее-pull-down">Почему pull-up популярнее pull-down<a href="#почему-pull-up-популярнее-pull-down" class="hash-link" aria-label="Прямая ссылка на Почему pull-up популярнее pull-down" title="Прямая ссылка на Почему pull-up популярнее pull-down" translate="no">​</a></h3>
+<p>Исторически и технически pull-up схемы встречаются чаще по нескольким причинам:</p>
+<ol>
+<li class="">
+<p><strong>Встроенные pull-up резисторы в микроконтроллерах.</strong> Почти все современные MCU (включая ATmega2560) имеют встроенные pull-up резисторы, которые можно активировать программно. Встроенных pull-down резисторов обычно нет.</p>
+</li>
+<li class="">
+<p><strong>Совместимость с open-collector/open-drain логикой.</strong> Многие цифровые интерфейсы (I²C, 1-Wire) используют pull-up резисторы, потому что устройства &quot;тянут&quot; линию в LOW, а pull-up резистор возвращает её в HIGH.</p>
+</li>
+<li class="">
+<p><strong>Меньше проблем с помехами в некоторых сценариях.</strong> Если провод от кнопки длинный, pull-up может быть устойчивее к наведённым помехам, потому что GND обычно имеет более низкое сопротивление и лучше экранирован.</p>
+</li>
+<li class="">
+<p><strong>Исторические причины.</strong> В ранних микропроцессорах (например, Intel 8080, MOS 6502) внешняя логика строилась на pull-up резисторах из-за особенностей TTL-логики.</p>
+</li>
+</ol>
+<p>Но это не значит, что pull-down плох. Для простых задач (одна кнопка на короткой дистанции) разницы почти нет.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="номинал-резистора-и-выбор-значения">Номинал резистора и выбор значения<a href="#номинал-резистора-и-выбор-значения" class="hash-link" aria-label="Прямая ссылка на Номинал резистора и выбор значения" title="Прямая ссылка на Номинал резистора и выбор значения" translate="no">​</a></h3>
+<p>Мы используем резистор <strong>10 кОм</strong> — это стандартное значение для pull-up и pull-down резисторов в цифровой логике. Почему именно 10 кОм?</p>
+<p><strong>Нижняя граница (слишком малое сопротивление):</strong></p>
+<p>Если резистор слишком мал (например, 100 Ом), при нажатии кнопки через резистор потечёт большой ток:</p>
+<p>[
+I = \frac{V_{CC}}{R} = \frac{5,\text{В}}{100,\text{Ом}} = 50,\text{мА}
+]</p>
+<p>Это:</p>
+<ul>
+<li class="">Нагружает источник питания.</li>
+<li class="">Нагревает резистор.</li>
+<li class="">Может превысить допустимый ток пина Arduino (обычно 20-40 мА).</li>
+</ul>
+<p><strong>Верхняя граница (слишком большое сопротивление):</strong></p>
+<p>Если резистор слишком велик (например, 1 МОм), входная ёмкость пина и паразитная ёмкость проводов создадут RC-цепь с большой постоянной времени. Вход будет медленно переключаться, и возможны ложные срабатывания из-за помех.</p>
+<p><strong>Золотая середина:</strong></p>
+<p>Диапазон <strong>4.7–47 кОм</strong> считается безопасным. Чаще всего используют <strong>10 кОм</strong> как компромисс:</p>
+<ul>
+<li class="">Ток в состоянии покоя: ( I = \frac{5,\text{В}}{10,\text{кОм}} = 0.5,\text{мА} ) — пренебрежимо мало.</li>
+<li class="">Время переключения: достаточно быстрое для любых человеческих действий.</li>
+<li class="">Помехоустойчивость: приемлемая.</li>
+</ul>
+<blockquote>
+<p><strong>Глубже: входной импеданс пина Arduino</strong></p>
+<p>Цифровой вход ATmega2560 имеет входное сопротивление порядка <strong>100 МОм</strong> (согласно даташиту). Это означает, что ток, текущий в сам пин, ничтожен (нА). Pull-up/pull-down резистор не &quot;борется&quot; со входом микроконтроллера — он борется с <strong>паразитными ёмкостями</strong> и <strong>помехами</strong>. Входная ёмкость пина — около 10 пФ. При резисторе 10 кОм постоянная времени RC-цепи:</p>
+<p>[
+\tau = R \times C = 10,\text{кОм} \times 10,\text{пФ} = 100,\text{нс}
+]</p>
+<p>Это в миллион раз быстрее, чем нужно для обработки нажатия кнопки (~10 мс).</p>
+</blockquote>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="встроенные-pull-up-резисторы-atmega2560">Встроенные pull-up резисторы ATmega2560<a href="#встроенные-pull-up-резисторы-atmega2560" class="hash-link" aria-label="Прямая ссылка на Встроенные pull-up резисторы ATmega2560" title="Прямая ссылка на Встроенные pull-up резисторы ATmega2560" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-это-работает-на-уровне-микроконтроллера">Как это работает на уровне микроконтроллера<a href="#как-это-работает-на-уровне-микроконтроллера" class="hash-link" aria-label="Прямая ссылка на Как это работает на уровне микроконтроллера" title="Прямая ссылка на Как это работает на уровне микроконтроллера" translate="no">​</a></h3>
+<p>ATmega2560 (и большинство других микроконтроллеров AVR) имеют <strong>встроенные pull-up резисторы</strong> на каждом цифровом пине. Их номинал — около <strong>20–50 кОм</strong> (типично 20 кОм).</p>
+<p>Эти резисторы можно активировать программно через режим <code>INPUT_PULLUP</code>.</p>
+<p><strong>Физически внутри микроконтроллера:</strong></p>
+<p>Каждый пин имеет внутреннюю схему, упрощенно выглядящую так:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">VCC (внутренний источник 5 В)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">[Внутренний резистор ~20 кОм]</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  ├─── Буфер входа ───&gt; В регистр данных (читается через digitalRead)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Вывод пина (физический контакт)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">(внешнее подключение)</span><br></div></code></pre></div></div>
+<p>Когда ты вызываешь <code>pinMode(pin, INPUT_PULLUP)</code>, микроконтроллер <strong>подключает внутренний резистор к VCC</strong>. Теперь пин подтянут к HIGH без внешних компонентов.</p>
+<blockquote>
+<p><strong>Глубже: регистры портов и pull-up</strong></p>
+<p>На уровне регистров ATmega2560 активация pull-up выглядит так:</p>
+<ol>
+<li class="">Регистр <strong>DDRx</strong> (Data Direction Register) устанавливается в 0 → пин настроен как вход.</li>
+<li class="">Регистр <strong>PORTx</strong> устанавливается в 1 → подключается внутренний pull-up резистор.</li>
+</ol>
+<p>Если DDRx = 0 и PORTx = 0 → вход без pull-up (режим INPUT).<br>
+Если DDRx = 0 и PORTx = 1 → вход с pull-up (режим INPUT_PULLUP).<br>
+Если DDRx = 1 → пин в режиме OUTPUT (PORTx управляет выходным уровнем).</p>
+<p>Функция <code>pinMode(pin, INPUT_PULLUP)</code> — это высокоуровневая обёртка, которая автоматически устанавливает правильные биты в DDRx и PORTx.</p>
+</blockquote>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="преимущества-и-ограничения-встроенного-pull-up">Преимущества и ограничения встроенного pull-up<a href="#преимущества-и-ограничения-встроенного-pull-up" class="hash-link" aria-label="Прямая ссылка на Преимущества и ограничения встроенного pull-up" title="Прямая ссылка на Преимущества и ограничения встроенного pull-up" translate="no">​</a></h3>
+<p><strong>Преимущества:</strong></p>
+<ol>
+<li class=""><strong>Упрощение схемы.</strong> Не нужен внешний резистор — достаточно подключить кнопку между пином и GND.</li>
+<li class=""><strong>Экономия места на плате.</strong> Меньше компонентов → меньше пайки, меньше точек отказа.</li>
+<li class=""><strong>Стандартизация.</strong> Все пины имеют одинаковые встроенные pull-up, что упрощает масштабирование проектов.</li>
+</ol>
+<p><strong>Ограничения:</strong></p>
+<ol>
+<li class=""><strong>Фиксированный номинал.</strong> Встроенный резистор ~20–50 кОм. Если нужен более &quot;жёсткий&quot; pull-up (меньшее сопротивление для борьбы с помехами или быстрого переключения ёмкостных нагрузок), нужен внешний резистор.</li>
+<li class=""><strong>Только pull-up, нет pull-down.</strong> ATmega2560 не имеет встроенных pull-down резисторов. Если нужна прямая логика (нажата → HIGH), придётся использовать внешний pull-down или инвертировать логику в коде.</li>
+<li class=""><strong>Невозможность отключения на лету (ограниченно).</strong> Если пин переключается между INPUT и INPUT_PULLUP динамически, нужно следить за порядком вызовов pinMode().</li>
+</ol>
+<blockquote>
+<p><strong>Инженерная заметка</strong></p>
+<p>В промышленных устройствах внешние pull-up резисторы часто используются даже при наличии встроенных, особенно на критичных входах. Причины:</p>
+<ul>
+<li class="">Более предсказуемый номинал (встроенные резисторы имеют разброс ±50%).</li>
+<li class="">Возможность выбрать меньшее сопротивление для помехоустойчивости.</li>
+<li class="">Независимость от настроек микроконтроллера (если прошивка сбросится, внешний резистор всё равно работает).</li>
+</ul>
+<p>Для учебных проектов встроенный pull-up более чем достаточен.</p>
+</blockquote>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="выбор-между-pull-up-и-pull-down-когда-что-использовать">Выбор между pull-up и pull-down: когда что использовать<a href="#выбор-между-pull-up-и-pull-down-когда-что-использовать" class="hash-link" aria-label="Прямая ссылка на Выбор между pull-up и pull-down: когда что использовать" title="Прямая ссылка на Выбор между pull-up и pull-down: когда что использовать" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="технические-соображения">Технические соображения<a href="#технические-соображения" class="hash-link" aria-label="Прямая ссылка на Технические соображения" title="Прямая ссылка на Технические соображения" translate="no">​</a></h3>
+<p>Для большинства простых задач (кнопка управляет светодиодом, меню, игра) выбор между pull-up и pull-down не критичен. Но есть ситуации, где один вариант предпочтительнее.</p>
+<p><strong>Используй pull-up (особенно встроенный INPUT_PULLUP), если:</strong></p>
+<ol>
+<li class=""><strong>Хочешь упростить схему.</strong> Встроенный pull-up избавляет от внешнего резистора.</li>
+<li class=""><strong>Работаешь с длинными проводами.</strong> Pull-up лучше подавляет наведённые помехи, если провод идёт через зашумленную среду (моторы, реле, трансформаторы).</li>
+<li class=""><strong>Интегрируешься с шинами, использующими pull-up.</strong> I²C, 1-Wire, open-drain логика требуют pull-up.</li>
+</ol>
+<p><strong>Используй pull-down (обязательно внешний резистор), если:</strong></p>
+<ol>
+<li class=""><strong>Нужна прямая логика (нажата → HIGH).</strong> Это интуитивнее для новичков и не требует инверсии в коде.</li>
+<li class=""><strong>Кнопка подключена к VCC, а не к GND.</strong> Например, если у тебя общий провод — это VCC (редкий случай, но встречается в модульных системах).</li>
+<li class=""><strong>Специфические требования протокола или устройства.</strong> Некоторые датчики и модули выдают сигнал, который логичнее интерпретировать с pull-down.</li>
+</ol>
+<p><strong>Симметричные случаи (без разницы):</strong></p>
+<ul>
+<li class="">Одиночная кнопка на коротком проводе (&lt; 20 см).</li>
+<li class="">Учебные проекты, где главная цель — понять принцип.</li>
+</ul>
+<blockquote>
+<p><strong>В реальных устройствах</strong></p>
+<p>В коммерческой электронике часто используют <strong>pull-up</strong> из-за исторической совместимости с TTL-логикой и наличия встроенных резисторов. Но в автомобильной электронике и промышленных контроллерах встречаются и pull-down схемы, особенно там, где важна отказоустойчивость: обрыв провода должен восприниматься как безопасное состояние, а не как случайное нажатие.</p>
+</blockquote>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="инверсия-логики-в-коде-как-с-этим-работать">Инверсия логики в коде: как с этим работать<a href="#инверсия-логики-в-коде-как-с-этим-работать" class="hash-link" aria-label="Прямая ссылка на Инверсия логики в коде: как с этим работать" title="Прямая ссылка на Инверсия логики в коде: как с этим работать" translate="no">​</a></h3>
+<p>Когда используешь pull-up, логика кнопки инвертируется. Есть два способа работы с этим:</p>
+<p><strong>Способ 1: Прямая проверка состояния (явная инверсия)</strong></p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> buttonPin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">2</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> INPUT_PULLUP</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token function" style="color:#d73a49">digitalRead</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonPin</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">==</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Кнопка нажата</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token comment" style="color:#999988;font-style:italic">// Действие</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p><strong>Способ 2: Логическая инверсия через оператор NOT</strong></p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> buttonPin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">2</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> INPUT_PULLUP</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">bool</span><span class="token plain"> buttonPressed </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">!</span><span class="token function" style="color:#d73a49">digitalRead</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonPin</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Инвертируем сигнал</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonPressed</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Теперь true означает &quot;нажата&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token comment" style="color:#999988;font-style:italic">// Действие</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p>Второй способ удобнее, если в коде много мест, где проверяется состояние кнопки: ты инвертируешь сигнал один раз при чтении, и дальше работаешь с &quot;прямой&quot; логикой.</p>
+<blockquote>
+<p><strong>Ошибка новичка</strong></p>
+<p>Если ты копируешь код из интернета, внимательно смотри на <code>pinMode()</code>:</p>
+<ul>
+<li class="">Если там <code>INPUT</code> и внешний резистор не указан → код неполный, схема будет работать нестабильно.</li>
+<li class="">Если там <code>INPUT_PULLUP</code>, но в комментариях написано &quot;кнопка подключена к VCC&quot; → ошибка в описании, не повторяй схему.</li>
+</ul>
+<p>Всегда проверяй соответствие между <code>pinMode()</code> и физической схемой подключения.</p>
+</blockquote>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проект-221-кнопка-с-внешним-pull-up-резистором">Проект 2.2.1. Кнопка с внешним pull-up резистором<a href="#проект-221-кнопка-с-внешним-pull-up-резистором" class="hash-link" aria-label="Прямая ссылка на Проект 2.2.1. Кнопка с внешним pull-up резистором" title="Прямая ссылка на Проект 2.2.1. Кнопка с внешним pull-up резистором" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идея-проекта">Идея проекта<a href="#идея-проекта" class="hash-link" aria-label="Прямая ссылка на Идея проекта" title="Прямая ссылка на Идея проекта" translate="no">​</a></h3>
+<p>Собрать схему с <strong>внешним pull-up резистором</strong>, где кнопка подключена между пином Arduino и GND, а резистор подтягивает пин к VCC. Светодиод загорается при нажатии кнопки.</p>
+<p>Это классическая схема, которая встречается в старых учебниках и промышленных устройствах до эры встроенных pull-up резисторов.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="чему-учит-этот-проект">Чему учит этот проект<a href="#чему-учит-этот-проект" class="hash-link" aria-label="Прямая ссылка на Чему учит этот проект" title="Прямая ссылка на Чему учит этот проект" translate="no">​</a></h3>
+<ul>
+<li class="">Собирать схему с внешним pull-up резистором.</li>
+<li class="">Понимать инверсию логики: кнопка нажата → вход LOW.</li>
+<li class="">Работать с инверсной логикой в коде.</li>
+<li class="">Видеть разницу между pull-down (глава 2.1) и pull-up (эта глава).</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-понадобится">Что понадобится<a href="#что-понадобится" class="hash-link" aria-label="Прямая ссылка на Что понадобится" title="Прямая ссылка на Что понадобится" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Компонент</th><th>Количество</th><th>Примечание</th></tr></thead><tbody><tr><td>Arduino Mega 2560 R3</td><td>1</td><td>Подключен к ПК через USB</td></tr><tr><td>Макетная плата</td><td>1</td><td>Breadboard</td></tr><tr><td>Кнопка (tactile switch)</td><td>1</td><td>Нормально разомкнутая</td></tr><tr><td>Светодиод</td><td>1</td><td>Любой цвет</td></tr><tr><td>Резистор 220 Ом</td><td>1</td><td>Для светодиода</td></tr><tr><td>Резистор 10 кОм</td><td>1</td><td>Pull-up резистор</td></tr><tr><td>Провода папа-папа</td><td>5-7</td><td>Для соединений</td></tr></tbody></table>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="схема-подключения">Схема подключения<a href="#схема-подключения" class="hash-link" aria-label="Прямая ссылка на Схема подключения" title="Прямая ссылка на Схема подключения" translate="no">​</a></h3>
+<p><strong>Описание:</strong></p>
+<ol>
+<li class="">
+<p><strong>Pull-up резистор и кнопка:</strong></p>
+<ul>
+<li class="">Один вывод резистора 10 кОм подключается к <code>VCC</code> (5V) на Arduino.</li>
+<li class="">Второй вывод резистора подключается к цифровому пину <code>D2</code>.</li>
+<li class="">Один контакт кнопки подключается к тому же пину <code>D2</code>.</li>
+<li class="">Второй контакт кнопки подключается к <code>GND</code>.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Светодиод:</strong></p>
+<ul>
+<li class="">Анод (длинная ножка) светодиода → резистор 220 Ом → пин <code>D13</code>.</li>
+<li class="">Катод (короткая ножка) светодиода → <code>GND</code>.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Логика работы:</strong></p>
+<ul>
+<li class="">Когда кнопка <strong>не нажата</strong>: резистор 10 кОм подтягивает пин D2 к VCC → <code>digitalRead(2)</code> возвращает HIGH.</li>
+<li class="">Когда кнопка <strong>нажата</strong>: пин D2 соединяется с GND напрямую → <code>digitalRead(2)</code> возвращает LOW.</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="таблица-соединений">Таблица соединений<a href="#таблица-соединений" class="hash-link" aria-label="Прямая ссылка на Таблица соединений" title="Прямая ссылка на Таблица соединений" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Компонент</th><th>Вывод/контакт</th><th>Точка на breadboard</th><th>Куда идёт</th><th>Комментарий</th></tr></thead><tbody><tr><td>Резистор 10 кОм</td><td>Вывод 1</td><td>a10</td><td>Провод к VCC (5V)</td><td>Pull-up резистор</td></tr><tr><td>Резистор 10 кОм</td><td>Вывод 2</td><td>a15</td><td>Провод к D2</td><td>Подтягивает D2 к VCC</td></tr><tr><td>Кнопка</td><td>Контакт 1</td><td>e15</td><td>Та же линия, что резистор</td><td>Один контакт к D2</td></tr><tr><td>Кнопка</td><td>Контакт 2</td><td>e17</td><td>Провод к GND</td><td>Второй контакт к земле</td></tr><tr><td>Светодиод</td><td>Анод (+)</td><td>f25</td><td>Через резистор к D13</td><td>Длинная ножка</td></tr><tr><td>Резистор 220 Ом</td><td>Вывод 1</td><td>f25</td><td>Та же линия, что анод LED</td><td>Токоограничивающий</td></tr><tr><td>Резистор 220 Ом</td><td>Вывод 2</td><td>j25</td><td>Провод к D13</td><td>Ограничивает ток</td></tr><tr><td>Светодиод</td><td>Катод (-)</td><td>f26</td><td>Провод к GND</td><td>Короткая ножка</td></tr></tbody></table>
+<p><strong>Общие подключения:</strong></p>
+<ul>
+<li class=""><code>VCC (5V)</code> Arduino → шина питания на breadboard → к резистору 10 кОм.</li>
+<li class=""><code>GND</code> Arduino → шина земли на breadboard → к кнопке и катоду светодиода.</li>
+<li class=""><code>D2</code> → к точке соединения резистора 10 кОм и кнопки.</li>
+<li class=""><code>D13</code> → к резистору 220 Ом (затем к аноду светодиода).</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="код-проекта">Код проекта<a href="#код-проекта" class="hash-link" aria-label="Прямая ссылка на Код проекта" title="Прямая ссылка на Код проекта" translate="no">​</a></h3>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Проект 2.2.1: Кнопка с внешним pull-up резистором</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> buttonPin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">2</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">   </span><span class="token comment" style="color:#999988;font-style:italic">// Кнопка подключена к D2</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> ledPin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">     </span><span class="token comment" style="color:#999988;font-style:italic">// Встроенный светодиод на D13</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> INPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">   </span><span class="token comment" style="color:#999988;font-style:italic">// Вход БЕЗ встроенного pull-up (резистор внешний)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> buttonState </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">digitalRead</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonPin</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Логика инвертирована: LOW означает &quot;нажата&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonState </span><span class="token operator" style="color:#393A34">==</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Кнопка нажата → светодиод горит</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">else</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">   </span><span class="token comment" style="color:#999988;font-style:italic">// Кнопка отпущена → светодиод погашен</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-коде">Что происходит в коде<a href="#что-происходит-в-коде" class="hash-link" aria-label="Прямая ссылка на Что происходит в коде" title="Прямая ссылка на Что происходит в коде" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong><code>pinMode(buttonPin, INPUT)</code></strong> — настраиваем D2 как вход <strong>без встроенного pull-up</strong>. Подтягивание обеспечивает внешний резистор 10 кОм.</p>
+</li>
+<li class="">
+<p><strong><code>digitalRead(buttonPin)</code></strong> — читаем состояние D2:</p>
+<ul>
+<li class="">Кнопка не нажата → резистор подтягивает вход к VCC → HIGH.</li>
+<li class="">Кнопка нажата → пин соединён с GND → LOW.</li>
+</ul>
+</li>
+<li class="">
+<p><strong><code>if (buttonState == LOW)</code></strong> — проверяем инверсную логику: LOW означает, что кнопка нажата.</p>
+</li>
+<li class="">
+<p><strong><code>digitalWrite(ledPin, HIGH)</code></strong> — включаем светодиод, пока кнопка нажата.</p>
+</li>
+</ol>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-схеме">Что происходит в схеме<a href="#что-происходит-в-схеме" class="hash-link" aria-label="Прямая ссылка на Что происходит в схеме" title="Прямая ссылка на Что происходит в схеме" translate="no">​</a></h3>
+<p><strong>Кнопка не нажата:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">VCC (5V) ──[Резистор 10 кОм]──── D2 (HIGH)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">                                  |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">                              Кнопка (разомкнута)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">                                  |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">                                 GND</span><br></div></code></pre></div></div>
+<p>Ток через резистор ничтожен (пин D2 имеет высокое входное сопротивление), напряжение на D2 ≈ 5 В → HIGH.</p>
+<p><strong>Кнопка нажата:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">VCC (5V) ──[Резистор 10 кОм]──┬── D2 (LOW)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">                               |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">                           Кнопка (замкнута)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">                               |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">                              GND</span><br></div></code></pre></div></div>
+<p>Пин D2 напрямую соединён с GND, напряжение на D2 ≈ 0 В → LOW. Резистор 10 кОм ограничивает ток:</p>
+<p>[
+I = \frac{V_{CC}}{R} = \frac{5,\text{В}}{10,\text{кОм}} = 0.5,\text{мА}
+]</p>
+<p>Это безопасная нагрузка для источника питания Arduino.</p>
+<blockquote>
+<p><strong>Физика: почему GND &quot;побеждает&quot; pull-up резистор</strong></p>
+<p>Когда кнопка замкнута, образуется делитель напряжения между резистором 10 кОм и сопротивлением замкнутой кнопки (~0.1 Ом). По закону делителя:</p>
+<p>[
+V_{D2} = V_{CC} \times \frac{R_{\text{кнопки}}}{R_{\text{pull-up}} + R_{\text{кнопки}}} \approx 5,\text{В} \times \frac{0.1,\text{Ом}}{10,000,\text{Ом}} \approx 0.00005,\text{В}
+]</p>
+<p>Практически 0 В — это гарантированный LOW для ATmega2560 (порог LOW &lt; 1.5 В).</p>
+</blockquote>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-проверить-работу">Как проверить работу<a href="#как-проверить-работу" class="hash-link" aria-label="Прямая ссылка на Как проверить работу" title="Прямая ссылка на Как проверить работу" translate="no">​</a></h3>
+<ol>
+<li class="">Загрузи код в Arduino.</li>
+<li class="">Наблюдай светодиод на D13:
+<ul>
+<li class="">Кнопка <strong>не нажата</strong> → светодиод <strong>погашен</strong>.</li>
+<li class="">Кнопка <strong>нажата</strong> → светодиод <strong>горит</strong>.</li>
+</ul>
+</li>
+<li class="">Проверь, что светодиод гаснет сразу после отпускания кнопки (без задержки).</li>
+</ol>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="если-не-работает">Если не работает<a href="#если-не-работает" class="hash-link" aria-label="Прямая ссылка на Если не работает" title="Прямая ссылка на Если не работает" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Проблема</th><th>Возможная причина</th><th>Решение</th></tr></thead><tbody><tr><td>Светодиод не реагирует на кнопку</td><td>Кнопка подключена неправильно</td><td>Проверь, что один контакт кнопки идёт к D2, второй — к GND</td></tr><tr><td>Светодиод горит постоянно</td><td>Pull-up резистор не подключён к VCC</td><td>Проверь соединение резистора с шиной 5V</td></tr><tr><td>Светодиод гаснет при нажатии (инверсия)</td><td>Логика в коде перепутана</td><td>Это нормально для pull-up! Если хочешь прямую логику, измени условие на <code>buttonState == HIGH</code></td></tr><tr><td>Светодиод мигает хаотично</td><td>Плохой контакт на breadboard</td><td>Переподключи резистор и кнопку в другие отверстия</td></tr></tbody></table>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идеи-для-развития">Идеи для развития<a href="#идеи-для-развития" class="hash-link" aria-label="Прямая ссылка на Идеи для развития" title="Прямая ссылка на Идеи для развития" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>Добавь Serial-вывод состояния кнопки:</strong></p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Serial</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">begin</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">9600</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Serial</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">println</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonState</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Выводи HIGH/LOW в монитор порта</span><br></div></code></pre></div></div>
+</li>
+<li class="">
+<p><strong>Измени номинал pull-up резистора:</strong> Попробуй 4.7 кОм или 47 кОм. Заметишь ли разницу в поведении?</p>
+</li>
+<li class="">
+<p><strong>Подключи второй светодиод:</strong> Один горит при нажатии, другой — при отпускании (инверсное состояние).</p>
+</li>
+<li class="">
+<p><strong>Сравни с pull-down из главы 2.1:</strong> Собери обе схемы рядом и убедись, что логика действительно инвертирована.</p>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проект-222-кнопка-с-встроенным-input_pullup">Проект 2.2.2. Кнопка с встроенным INPUT_PULLUP<a href="#проект-222-кнопка-с-встроенным-input_pullup" class="hash-link" aria-label="Прямая ссылка на Проект 2.2.2. Кнопка с встроенным INPUT_PULLUP" title="Прямая ссылка на Проект 2.2.2. Кнопка с встроенным INPUT_PULLUP" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идея-проекта-1">Идея проекта<a href="#идея-проекта-1" class="hash-link" aria-label="Прямая ссылка на Идея проекта" title="Прямая ссылка на Идея проекта" translate="no">​</a></h3>
+<p>Упростить схему из проекта 2.2.1, убрав внешний pull-up резистор и активировав <strong>встроенный pull-up резистор</strong> микроконтроллера через режим <code>INPUT_PULLUP</code>. Логика работы остаётся инверсной (нажата → LOW), но схема становится проще.</p>
+<p>Это наиболее популярный способ подключения кнопок в современных Arduino-проектах.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="чему-учит-этот-проект-1">Чему учит этот проект<a href="#чему-учит-этот-проект-1" class="hash-link" aria-label="Прямая ссылка на Чему учит этот проект" title="Прямая ссылка на Чему учит этот проект" translate="no">​</a></h3>
+<ul>
+<li class="">Использовать встроенные возможности микроконтроллера для упрощения схемы.</li>
+<li class="">Понимать, что <code>INPUT_PULLUP</code> включает внутренний резистор ~20 кОм.</li>
+<li class="">Работать с минималистичными схемами (кнопка + 2 провода).</li>
+<li class="">Видеть практическую пользу от знания внутреннего устройства микроконтроллера.</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-понадобится-1">Что понадобится<a href="#что-понадобится-1" class="hash-link" aria-label="Прямая ссылка на Что понадобится" title="Прямая ссылка на Что понадобится" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Компонент</th><th>Количество</th><th>Примечание</th></tr></thead><tbody><tr><td>Arduino Mega 2560 R3</td><td>1</td><td>Подключен к ПК через USB</td></tr><tr><td>Макетная плата</td><td>1</td><td>Breadboard</td></tr><tr><td>Кнопка (tactile switch)</td><td>1</td><td>Нормально разомкнутая</td></tr><tr><td>Светодиод</td><td>1</td><td>Любой цвет</td></tr><tr><td>Резистор 220 Ом</td><td>1</td><td>Для светодиода</td></tr><tr><td>Провода папа-папа</td><td>4-5</td><td>Для соединений</td></tr></tbody></table>
+<p><strong>Обрати внимание:</strong> в этом проекте <strong>нет резистора 10 кОм</strong> — его заменяет встроенный pull-up.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="схема-подключения-1">Схема подключения<a href="#схема-подключения-1" class="hash-link" aria-label="Прямая ссылка на Схема подключения" title="Прямая ссылка на Схема подключения" translate="no">​</a></h3>
+<p><strong>Описание:</strong></p>
+<ol>
+<li class="">
+<p><strong>Кнопка:</strong></p>
+<ul>
+<li class="">Один контакт кнопки подключается к цифровому пину <code>D2</code>.</li>
+<li class="">Второй контакт кнопки подключается к <code>GND</code>.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Светодиод (тот же, что в проекте 2.2.1):</strong></p>
+<ul>
+<li class="">Анод светодиода → резистор 220 Ом → пин <code>D13</code>.</li>
+<li class="">Катод светодиода → <code>GND</code>.</li>
+</ul>
+</li>
+</ol>
+<p><strong>Логика работы (идентична проекту 2.2.1):</strong></p>
+<ul>
+<li class="">Кнопка <strong>не нажата</strong>: встроенный резистор ~20 кОм подтягивает пин D2 к VCC → HIGH.</li>
+<li class="">Кнопка <strong>нажата</strong>: пин D2 соединяется с GND → LOW.</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="таблица-соединений-1">Таблица соединений<a href="#таблица-соединений-1" class="hash-link" aria-label="Прямая ссылка на Таблица соединений" title="Прямая ссылка на Таблица соединений" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Компонент</th><th>Вывод/контакт</th><th>Точка на breadboard</th><th>Куда идёт</th><th>Комментарий</th></tr></thead><tbody><tr><td>Кнопка</td><td>Контакт 1</td><td>e10</td><td>Провод к D2</td><td>Один контакт к пину</td></tr><tr><td>Кнопка</td><td>Контакт 2</td><td>e12</td><td>Провод к GND</td><td>Второй контакт к земле</td></tr><tr><td>Светодиод</td><td>Анод (+)</td><td>f20</td><td>Через резистор к D13</td><td>Длинная ножка</td></tr><tr><td>Резистор 220 Ом</td><td>Вывод 1</td><td>f20</td><td>Та же линия, что анод LED</td><td>Токоограничивающий</td></tr><tr><td>Резистор 220 Ом</td><td>Вывод 2</td><td>j20</td><td>Провод к D13</td><td>Ограничивает ток</td></tr><tr><td>Светодиод</td><td>Катод (-)</td><td>f21</td><td>Провод к GND</td><td>Короткая ножка</td></tr></tbody></table>
+<p><strong>Общие подключения:</strong></p>
+<ul>
+<li class=""><code>GND</code> Arduino → шина земли на breadboard → к кнопке и катоду светодиода.</li>
+<li class=""><code>D2</code> → к первому контакту кнопки.</li>
+<li class=""><code>D13</code> → к резистору 220 Ом (затем к аноду светодиода).</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="код-проекта-1">Код проекта<a href="#код-проекта-1" class="hash-link" aria-label="Прямая ссылка на Код проекта" title="Прямая ссылка на Код проекта" translate="no">​</a></h3>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Проект 2.2.2: Кнопка с встроенным INPUT_PULLUP</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> buttonPin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">2</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> ledPin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> INPUT_PULLUP</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Включаем встроенный pull-up резистор</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> buttonState </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">digitalRead</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonPin</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Логика инвертирована: LOW = нажата</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonState </span><span class="token operator" style="color:#393A34">==</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">else</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-коде-1">Что происходит в коде<a href="#что-происходит-в-коде-1" class="hash-link" aria-label="Прямая ссылка на Что происходит в коде" title="Прямая ссылка на Что происходит в коде" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong><code>pinMode(buttonPin, INPUT_PULLUP)</code></strong> — главное отличие от проекта 2.2.1:</p>
+<ul>
+<li class="">Пин D2 настраивается как вход.</li>
+<li class="">Одновременно <strong>активируется встроенный pull-up резистор</strong> (~20 кОм) внутри ATmega2560.</li>
+<li class="">Теперь пин подтянут к VCC без внешних компонентов.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Логика работы остаётся инверсной:</strong></p>
+<ul>
+<li class=""><code>buttonState == LOW</code> → кнопка нажата.</li>
+<li class=""><code>buttonState == HIGH</code> → кнопка отпущена.</li>
+</ul>
+</li>
+<li class="">
+<p>Остальной код идентичен проекту 2.2.1.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Глубже: что происходит в регистрах</strong></p>
+<p>Вызов <code>pinMode(2, INPUT_PULLUP)</code> выполняет следующие операции на уровне регистров ATmega2560:</p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Пин D2 на Mega 2560 — это PE4 (Port E, bit 4)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">DDRE </span><span class="token operator" style="color:#393A34">&amp;=</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">~</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">&lt;&lt;</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">4</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">   </span><span class="token comment" style="color:#999988;font-style:italic">// Очищаем бит 4 в DDRE → пин в режиме INPUT</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">PORTE </span><span class="token operator" style="color:#393A34">|=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">1</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">&lt;&lt;</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">4</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">   </span><span class="token comment" style="color:#999988;font-style:italic">// Устанавливаем бит 4 в PORTE → включаем pull-up</span><br></div></code></pre></div></div>
+<p>Теперь внутренний резистор микроконтроллера соединяет пин с внутренним источником VCC.</p>
+</blockquote>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-схеме-1">Что происходит в схеме<a href="#что-происходит-в-схеме-1" class="hash-link" aria-label="Прямая ссылка на Что происходит в схеме" title="Прямая ссылка на Что происходит в схеме" translate="no">​</a></h3>
+<p><strong>Кнопка не нажата:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">VCC (внутренний 5V)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">[Встроенный резистор ~20 кОм]</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"> D2 (HIGH) ────────── Кнопка (разомкнута) ──── GND</span><br></div></code></pre></div></div>
+<p>Встроенный резистор подтягивает пин к VCC → <code>digitalRead(2)</code> = HIGH.</p>
+<p><strong>Кнопка нажата:</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">VCC (внутренний 5V)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">[Встроенный резистор ~20 кОм]</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  |</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"> D2 (LOW) ────────── Кнопка (замкнута) ──── GND</span><br></div></code></pre></div></div>
+<p>Пин напрямую соединён с GND → <code>digitalRead(2)</code> = LOW. Ток через встроенный резистор:</p>
+<p>[
+I = \frac{5,\text{В}}{20,\text{кОм}} = 0.25,\text{мА}
+]</p>
+<p>Это в два раза меньше, чем в проекте 2.2.1 (там резистор был 10 кОм), и абсолютно безопасно для микроконтроллера.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-проверить-работу-1">Как проверить работу<a href="#как-проверить-работу-1" class="hash-link" aria-label="Прямая ссылка на Как проверить работу" title="Прямая ссылка на Как проверить работу" translate="no">​</a></h3>
+<ol>
+<li class="">Загрузи код в Arduino.</li>
+<li class="">Проверь поведение светодиода:
+<ul>
+<li class="">Кнопка <strong>не нажата</strong> → светодиод <strong>погашен</strong>.</li>
+<li class="">Кнопка <strong>нажата</strong> → светодиод <strong>горит</strong>.</li>
+</ul>
+</li>
+<li class="">Убедись, что схема работает <strong>точно так же</strong>, как проект 2.2.1, но без внешнего резистора.</li>
+</ol>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="если-не-работает-1">Если не работает<a href="#если-не-работает-1" class="hash-link" aria-label="Прямая ссылка на Если не работает" title="Прямая ссылка на Если не работает" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Проблема</th><th>Возможная причина</th><th>Решение</th></tr></thead><tbody><tr><td>Светодиод не реагирует</td><td>Кнопка подключена неправильно</td><td>Проверь, что один контакт идёт к D2, второй — к GND</td></tr><tr><td>Светодиод горит всегда</td><td>В коде написано <code>INPUT</code> вместо <code>INPUT_PULLUP</code></td><td>Исправь на <code>INPUT_PULLUP</code></td></tr><tr><td>Светодиод мигает случайно</td><td>Плохой контакт кнопки на breadboard</td><td>Переподключи кнопку</td></tr><tr><td>Светодиод гаснет при нажатии</td><td>Логика перепутана (но это нормально для pull-up)</td><td>Если нужна прямая логика, инвертируй условие: <code>if (buttonState == HIGH)</code></td></tr></tbody></table>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идеи-для-развития-1">Идеи для развития<a href="#идеи-для-развития-1" class="hash-link" aria-label="Прямая ссылка на Идеи для развития" title="Прямая ссылка на Идеи для развития" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>Сравни с внешним pull-up (проект 2.2.1):</strong></p>
+<ul>
+<li class="">Собери обе схемы одновременно на разных пинах (D2 и D3).</li>
+<li class="">Заметишь ли разницу в поведении?</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Измерь напряжение на пине D2:</strong></p>
+<ul>
+<li class="">Используй мультиметр.</li>
+<li class="">Кнопка не нажата: должно быть ~5 В.</li>
+<li class="">Кнопка нажата: должно быть ~0 В.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Добавь Serial-вывод:</strong></p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Serial</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">begin</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">9600</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonState </span><span class="token operator" style="color:#393A34">==</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  Serial</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">println</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&quot;Кнопка нажата&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+</li>
+<li class="">
+<p><strong>Эксперимент с множественными кнопками:</strong></p>
+<ul>
+<li class="">Подключи 4 кнопки к D2, D3, D4, D5 (все с <code>INPUT_PULLUP</code>).</li>
+<li class="">Каждая кнопка управляет своим светодиодом.</li>
+<li class="">Убедись, что не нужно ни одного внешнего резистора.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проект-223-две-кнопки-с-разной-логикой">Проект 2.2.3. Две кнопки с разной логикой<a href="#проект-223-две-кнопки-с-разной-логикой" class="hash-link" aria-label="Прямая ссылка на Проект 2.2.3. Две кнопки с разной логикой" title="Прямая ссылка на Проект 2.2.3. Две кнопки с разной логикой" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идея-проекта-2">Идея проекта<a href="#идея-проекта-2" class="hash-link" aria-label="Прямая ссылка на Идея проекта" title="Прямая ссылка на Идея проекта" translate="no">​</a></h3>
+<p>Собрать схему, где <strong>две кнопки</strong> управляют одним светодиодом, но используют <strong>разные способы подключения</strong>:</p>
+<ol>
+<li class=""><strong>Кнопка 1</strong> с внешним <strong>pull-down</strong> резистором (прямая логика: нажата → HIGH).</li>
+<li class=""><strong>Кнопка 2</strong> с встроенным <strong>INPUT_PULLUP</strong> (инверсная логика: нажата → LOW).</li>
+</ol>
+<p>Светодиод загорается, если <strong>любая из кнопок</strong> нажата. Этот проект демонстрирует, как комбинировать разные схемы подключения в одном устройстве и правильно обрабатывать их в коде.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="чему-учит-этот-проект-2">Чему учит этот проект<a href="#чему-учит-этот-проект-2" class="hash-link" aria-label="Прямая ссылка на Чему учит этот проект" title="Прямая ссылка на Чему учит этот проект" translate="no">​</a></h3>
+<ul>
+<li class="">Работать с несколькими кнопками одновременно.</li>
+<li class="">Комбинировать прямую и инверсную логику в одной программе.</li>
+<li class="">Реализовать логическую операцию OR для двух входов с разной полярностью.</li>
+<li class="">Понимать, что выбор pull-up или pull-down — это инженерное решение, зависящее от контекста.</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-понадобится-2">Что понадобится<a href="#что-понадобится-2" class="hash-link" aria-label="Прямая ссылка на Что понадобится" title="Прямая ссылка на Что понадобится" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Компонент</th><th>Количество</th><th>Примечание</th></tr></thead><tbody><tr><td>Arduino Mega 2560 R3</td><td>1</td><td>Подключен к ПК через USB</td></tr><tr><td>Макетная плата</td><td>1</td><td>Breadboard</td></tr><tr><td>Кнопка (tactile switch)</td><td>2</td><td>Нормально разомкнутые</td></tr><tr><td>Светодиод</td><td>1</td><td>Любой цвет</td></tr><tr><td>Резистор 220 Ом</td><td>1</td><td>Для светодиода</td></tr><tr><td>Резистор 10 кОм</td><td>1</td><td>Pull-down для кнопки 1</td></tr><tr><td>Провода папа-папа</td><td>8-10</td><td>Для соединений</td></tr></tbody></table>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="схема-подключения-2">Схема подключения<a href="#схема-подключения-2" class="hash-link" aria-label="Прямая ссылка на Схема подключения" title="Прямая ссылка на Схема подключения" translate="no">​</a></h3>
+<p><strong>Кнопка 1 (с внешним pull-down, прямая логика):</strong></p>
+<ul>
+<li class="">Один контакт кнопки → <code>VCC (5V)</code>.</li>
+<li class="">Другой контакт кнопки → пин <code>D2</code>.</li>
+<li class="">Резистор 10 кОм: один вывод к <code>D2</code>, другой к <code>GND</code>.</li>
+</ul>
+<p>Логика: не нажата → LOW, нажата → HIGH.</p>
+<p><strong>Кнопка 2 (с встроенным pull-up, инверсная логика):</strong></p>
+<ul>
+<li class="">Один контакт кнопки → пин <code>D3</code>.</li>
+<li class="">Другой контакт кнопки → <code>GND</code>.</li>
+</ul>
+<p>Логика: не нажата → HIGH, нажата → LOW.</p>
+<p><strong>Светодиод:</strong></p>
+<ul>
+<li class="">Анод → резистор 220 Ом → пин <code>D13</code>.</li>
+<li class="">Катод → <code>GND</code>.</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="таблица-соединений-2">Таблица соединений<a href="#таблица-соединений-2" class="hash-link" aria-label="Прямая ссылка на Таблица соединений" title="Прямая ссылка на Таблица соединений" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Компонент</th><th>Вывод/контакт</th><th>Точка на breadboard</th><th>Куда идёт</th><th>Комментарий</th></tr></thead><tbody><tr><td><strong>Кнопка 1 (pull-down)</strong></td><td></td><td></td><td></td><td></td></tr><tr><td>Кнопка 1</td><td>Контакт 1</td><td>e10</td><td>Провод к VCC (5V)</td><td>Подаёт HIGH при нажатии</td></tr><tr><td>Кнопка 1</td><td>Контакт 2</td><td>e12</td><td>Провод к D2</td><td>Пин ввода</td></tr><tr><td>Резистор 10 кОм</td><td>Вывод 1</td><td>a12</td><td>Та же линия, что контакт 2 кнопки</td><td>Pull-down</td></tr><tr><td>Резистор 10 кОм</td><td>Вывод 2</td><td>a8</td><td>Провод к GND</td><td>Подтягивает к LOW</td></tr><tr><td><strong>Кнопка 2 (pull-up)</strong></td><td></td><td></td><td></td><td></td></tr><tr><td>Кнопка 2</td><td>Контакт 1</td><td>e20</td><td>Провод к D3</td><td>Пин ввода</td></tr><tr><td>Кнопка 2</td><td>Контакт 2</td><td>e22</td><td>Провод к GND</td><td>Тянет в LOW при нажатии</td></tr><tr><td><strong>Светодиод</strong></td><td></td><td></td><td></td><td></td></tr><tr><td>Светодиод</td><td>Анод (+)</td><td>f30</td><td>Через резистор к D13</td><td>Длинная ножка</td></tr><tr><td>Резистор 220 Ом</td><td>Вывод 1</td><td>f30</td><td>Та же линия, что анод</td><td>Токоограничивающий</td></tr><tr><td>Резистор 220 Ом</td><td>Вывод 2</td><td>j30</td><td>Провод к D13</td><td>Ограничивает ток</td></tr><tr><td>Светодиод</td><td>Катод (-)</td><td>f31</td><td>Провод к GND</td><td>Короткая ножка</td></tr></tbody></table>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="код-проекта-2">Код проекта<a href="#код-проекта-2" class="hash-link" aria-label="Прямая ссылка на Код проекта" title="Прямая ссылка на Код проекта" translate="no">​</a></h3>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic">// Проект 2.2.3: Две кнопки с разной логикой</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> button1Pin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">2</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Кнопка 1: pull-down (прямая логика)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> button2Pin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">3</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Кнопка 2: pull-up (инверсная логика)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">const</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> ledPin </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">13</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">setup</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">button1Pin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> INPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">         </span><span class="token comment" style="color:#999988;font-style:italic">// Внешний pull-down резистор</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">button2Pin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> INPUT_PULLUP</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Встроенный pull-up</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> OUTPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  Serial</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">begin</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">9600</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Для отладки</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Читаем состояния кнопок</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> button1State </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">digitalRead</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">button1Pin</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">int</span><span class="token plain"> button2State </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">digitalRead</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">button2Pin</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Приводим к единой логике</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">bool</span><span class="token plain"> button1Pressed </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">button1State </span><span class="token operator" style="color:#393A34">==</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Pull-down: HIGH = нажата</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">bool</span><span class="token plain"> button2Pressed </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">button2State </span><span class="token operator" style="color:#393A34">==</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">   </span><span class="token comment" style="color:#999988;font-style:italic">// Pull-up: LOW = нажата</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Светодиод горит, если ЛЮБАЯ кнопка нажата (логическое OR)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">button1Pressed </span><span class="token operator" style="color:#393A34">||</span><span class="token plain"> button2Pressed</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token comment" style="color:#999988;font-style:italic">// Отладочный вывод</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">button1Pressed</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> Serial</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">println</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&quot;Кнопка 1 нажата (pull-down)&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">button2Pressed</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> Serial</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">println</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&quot;Кнопка 2 нажата (pull-up)&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"> </span><span class="token keyword" style="color:#00009f">else</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">delay</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">50</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Небольшая задержка для стабильности Serial</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-коде-2">Что происходит в коде<a href="#что-происходит-в-коде-2" class="hash-link" aria-label="Прямая ссылка на Что происходит в коде" title="Прямая ссылка на Что происходит в коде" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>Разные режимы pinMode():</strong></p>
+<ul>
+<li class=""><code>button1Pin</code> — <code>INPUT</code> (используется внешний pull-down резистор).</li>
+<li class=""><code>button2Pin</code> — <code>INPUT_PULLUP</code> (используется встроенный pull-up резистор).</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Приведение логики к единому виду:</strong></p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">bool</span><span class="token plain"> button1Pressed </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">button1State </span><span class="token operator" style="color:#393A34">==</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Прямая логика</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">bool</span><span class="token plain"> button2Pressed </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">button2State </span><span class="token operator" style="color:#393A34">==</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">   </span><span class="token comment" style="color:#999988;font-style:italic">// Инверсная логика</span><br></div></code></pre></div></div>
+<p>Теперь обе переменные <code>button1Pressed</code> и <code>button2Pressed</code> имеют значение <code>true</code>, когда соответствующая кнопка <strong>нажата</strong>, независимо от электрической схемы подключения.</p>
+</li>
+<li class="">
+<p><strong>Логическое OR:</strong></p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">button1Pressed </span><span class="token operator" style="color:#393A34">||</span><span class="token plain"> button2Pressed</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p>Светодиод загорается, если <strong>хотя бы одна</strong> кнопка нажата.</p>
+</li>
+<li class="">
+<p><strong>Serial-вывод для диагностики:</strong></p>
+<ul>
+<li class="">Открой Serial Monitor (Ctrl+Shift+M) с baudrate 9600.</li>
+<li class="">При нажатии кнопки увидишь, какая именно кнопка сработала.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-происходит-в-схеме-2">Что происходит в схеме<a href="#что-происходит-в-схеме-2" class="hash-link" aria-label="Прямая ссылка на Что происходит в схеме" title="Прямая ссылка на Что происходит в схеме" translate="no">​</a></h3>
+<p><strong>Кнопка 1 (pull-down):</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">VCC (5V) ──── Кнопка 1 ──── D2 ──── [Резистор 10 кОм] ──── GND</span><br></div></code></pre></div></div>
+<ul>
+<li class="">Не нажата: D2 подтянут к GND через резистор → LOW.</li>
+<li class="">Нажата: D2 соединён с VCC → HIGH.</li>
+</ul>
+<p><strong>Кнопка 2 (pull-up):</strong></p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">VCC (внутренний) ──── [Встроенный резистор ~20 кОм] ──── D3 ──── Кнопка 2 ──── GND</span><br></div></code></pre></div></div>
+<ul>
+<li class="">Не нажата: D3 подтянут к VCC встроенным резистором → HIGH.</li>
+<li class="">Нажата: D3 соединён с GND → LOW.</li>
+</ul>
+<p><strong>Светодиод:</strong></p>
+<p>Загорается, когда <strong>любая</strong> из кнопок замыкает свою цепь.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-проверить-работу-2">Как проверить работу<a href="#как-проверить-работу-2" class="hash-link" aria-label="Прямая ссылка на Как проверить работу" title="Прямая ссылка на Как проверить работу" translate="no">​</a></h3>
+<ol>
+<li class="">Загрузи код в Arduino.</li>
+<li class="">Открой Serial Monitor (9600 baud).</li>
+<li class="">Проверь:
+<ul>
+<li class="">Обе кнопки не нажаты → светодиод погашен.</li>
+<li class="">Нажми <strong>кнопку 1</strong> → светодиод горит, в Serial Monitor: &quot;Кнопка 1 нажата (pull-down)&quot;.</li>
+<li class="">Отпусти кнопку 1, нажми <strong>кнопку 2</strong> → светодиод горит, в Serial Monitor: &quot;Кнопка 2 нажата (pull-up)&quot;.</li>
+<li class="">Нажми <strong>обе кнопки</strong> одновременно → светодиод горит, в Serial Monitor выводятся обе строки.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="если-не-работает-2">Если не работает<a href="#если-не-работает-2" class="hash-link" aria-label="Прямая ссылка на Если не работает" title="Прямая ссылка на Если не работает" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Проблема</th><th>Возможная причина</th><th>Решение</th></tr></thead><tbody><tr><td>Кнопка 1 не работает</td><td>Резистор 10 кОм не подключён или подключён к VCC вместо GND</td><td>Проверь pull-down резистор</td></tr><tr><td>Кнопка 2 не работает</td><td>В коде написано <code>INPUT</code> вместо <code>INPUT_PULLUP</code></td><td>Исправь на <code>INPUT_PULLUP</code></td></tr><tr><td>Светодиод горит всегда</td><td>Логика перепутана</td><td>Проверь условия: <code>button1State == HIGH</code> и <code>button2State == LOW</code></td></tr><tr><td>Serial Monitor пустой</td><td>Неправильный baudrate</td><td>Установи 9600 в выпадающем меню Serial Monitor</td></tr><tr><td>Обе кнопки дают одинаковые сообщения</td><td>Перепутаны пины D2 и D3</td><td>Поменяй провода</td></tr></tbody></table>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="идеи-для-развития-2">Идеи для развития<a href="#идеи-для-развития-2" class="hash-link" aria-label="Прямая ссылка на Идеи для развития" title="Прямая ссылка на Идеи для развития" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>Реализуй логическое AND:</strong></p>
+<ul>
+<li class="">Светодиод загорается только если <strong>обе</strong> кнопки нажаты одновременно.</li>
+</ul>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">button1Pressed </span><span class="token operator" style="color:#393A34">&amp;&amp;</span><span class="token plain"> button2Pressed</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+</li>
+<li class="">
+<p><strong>Реализуй логическое XOR:</strong></p>
+<ul>
+<li class="">Светодиод горит, если нажата <strong>ровно одна</strong> кнопка (но не обе).</li>
+</ul>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">button1Pressed </span><span class="token operator" style="color:#393A34">^</span><span class="token plain"> button2Pressed</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Оператор XOR в C++</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+</li>
+<li class="">
+<p><strong>Добавь третью кнопку:</strong></p>
+<ul>
+<li class="">Подключи с встроенным pull-up на D4.</li>
+<li class="">Реализуй &quot;мажоритарную&quot; логику: светодиод горит, если нажаты минимум 2 из 3 кнопок.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Сравни скорость реакции:</strong></p>
+<ul>
+<li class="">Измерь время между нажатием кнопки и изменением <code>digitalRead()</code> для pull-down (10 кОм) и pull-up (20 кОм встроенный).</li>
+<li class="">Подсказка: используй <code>micros()</code> для точного измерения.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="эксперименты">Эксперименты<a href="#эксперименты" class="hash-link" aria-label="Прямая ссылка на Эксперименты" title="Прямая ссылка на Эксперименты" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="эксперимент-1-измерение-тока-через-pull-up-резистор">Эксперимент 1: Измерение тока через pull-up резистор<a href="#эксперимент-1-измерение-тока-через-pull-up-резистор" class="hash-link" aria-label="Прямая ссылка на Эксперимент 1: Измерение тока через pull-up резистор" title="Прямая ссылка на Эксперимент 1: Измерение тока через pull-up резистор" translate="no">​</a></h3>
+<p><strong>Цель:</strong> Убедиться, что ток через подтягивающий резистор действительно мал и безопасен.</p>
+<p><strong>Что понадобится:</strong></p>
+<ul>
+<li class="">Схема из проекта 2.2.1 (внешний pull-up резистор 10 кОм).</li>
+<li class="">Мультиметр в режиме измерения тока (диапазон мА).</li>
+</ul>
+<p><strong>Порядок действий:</strong></p>
+<ol>
+<li class="">Собери схему проекта 2.2.1.</li>
+<li class="">Разомкни цепь между резистором 10 кОм и GND.</li>
+<li class="">Подключи мультиметр <strong>последовательно</strong> в разрыв (красный щуп к резистору, чёрный к GND).</li>
+<li class="">Нажми кнопку и удерживай.</li>
+<li class="">Считай показания мультиметра.</li>
+</ol>
+<p><strong>Ожидаемый результат:</strong></p>
+<p>Ток должен быть около <strong>0.5 мА</strong> (при резисторе 10 кОм и VCC = 5 В):</p>
+<p>[
+I = \frac{V_{CC}}{R} = \frac{5,\text{В}}{10,000,\text{Ом}} = 0.0005,\text{А} = 0.5,\text{мА}
+]</p>
+<p><strong>Что это даёт:</strong></p>
+<ul>
+<li class="">Убеждаешься, что pull-up резистор не создаёт значительной нагрузки на источник питания.</li>
+<li class="">Понимаешь, почему можно подключать десятки кнопок одновременно без риска перегрузки Arduino.</li>
+</ul>
+<blockquote>
+<p><strong>Эксперимент</strong></p>
+<p>Повтори измерение для встроенного pull-up резистора (проект 2.2.2). Ток будет ещё меньше — около <strong>0.25 мА</strong>, потому что встроенный резистор имеет номинал ~20 кОм.</p>
+</blockquote>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="эксперимент-2-что-произойдёт-без-подтягивающего-резистора">Эксперимент 2: Что произойдёт без подтягивающего резистора?<a href="#эксперимент-2-что-произойдёт-без-подтягивающего-резистора" class="hash-link" aria-label="Прямая ссылка на Эксперимент 2: Что произойдёт без подтягивающего резистора?" title="Прямая ссылка на Эксперимент 2: Что произойдёт без подтягивающего резистора?" translate="no">​</a></h3>
+<p><strong>Цель:</strong> Наглядно увидеть проблему <strong>floating input</strong>.</p>
+<p><strong>Порядок действий:</strong></p>
+<ol>
+<li class="">Подключи кнопку между D2 и GND (как в проекте 2.2.2).</li>
+<li class="">Загрузи код:
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">pinMode</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">2</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> INPUT</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// БЕЗ INPUT_PULLUP!</span><br></div></code></pre></div></div>
+</li>
+<li class="">Открой Serial Monitor и выводи состояние D2:
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Serial</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">println</span><span class="token punctuation" style="color:#393A34">(</span><span class="token function" style="color:#d73a49">digitalRead</span><span class="token punctuation" style="color:#393A34">(</span><span class="token number" style="color:#36acaa">2</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><br></div></code></pre></div></div>
+</li>
+<li class=""><strong>Не трогай кнопку.</strong> Просто наблюдай Serial Monitor.</li>
+</ol>
+<p><strong>Ожидаемый результат:</strong></p>
+<p>Вход будет <strong>хаотично переключаться</strong> между HIGH и LOW без нажатия кнопки. Если поднесёшь руку к проводам или пошевелишь breadboard, показания изменятся.</p>
+<p><strong>Почему это происходит:</strong></p>
+<p>Без подтягивающего резистора вход &quot;плавает&quot; (floating). Он улавливает электромагнитные помехи:</p>
+<ul>
+<li class="">Наводки от сети 50 Гц (электропроводка в стенах).</li>
+<li class="">Статическое электричество от твоего тела.</li>
+<li class="">Радиочастотные помехи от WiFi, Bluetooth, мобильных телефонов.</li>
+</ul>
+<p>Вход ведёт себя как <strong>антенна</strong>, и микроконтроллер интерпретирует шум как реальные сигналы.</p>
+<blockquote>
+<p><strong>Физика: входная ёмкость как конденсатор</strong></p>
+<p>Пин микроконтроллера имеет входную ёмкость ~10 пФ. Когда вход не подключён к определённому потенциалу (VCC или GND), эта ёмкость <strong>заряжается и разряжается</strong> от случайных электрических полей вокруг. Это создаёт колебания напряжения, которые пересекают порог переключения (VIH/VIL), и микроконтроллер &quot;видит&quot; случайные HIGH/LOW.</p>
+</blockquote>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="эксперимент-3-сравнение-скорости-переключения-при-разных-номиналах">Эксперимент 3: Сравнение скорости переключения при разных номиналах<a href="#эксперимент-3-сравнение-скорости-переключения-при-разных-номиналах" class="hash-link" aria-label="Прямая ссылка на Эксперимент 3: Сравнение скорости переключения при разных номиналах" title="Прямая ссылка на Эксперимент 3: Сравнение скорости переключения при разных номиналах" translate="no">​</a></h3>
+<p><strong>Цель:</strong> Понять, как номинал резистора влияет на скорость изменения состояния входа.</p>
+<p><strong>Что понадобится:</strong></p>
+<ul>
+<li class="">Осциллограф (если доступен) или логический анализатор.</li>
+<li class="">Резисторы: 1 кОм, 10 кОм, 100 кОм.</li>
+</ul>
+<p><strong>Порядок действий:</strong></p>
+<ol>
+<li class="">Собери схему с pull-up резистором.</li>
+<li class="">Подключи осциллограф к пину D2.</li>
+<li class="">Нажми кнопку и наблюдай переход HIGH → LOW на экране осциллографа.</li>
+<li class="">Повтори для разных номиналов резистора.</li>
+</ol>
+<p><strong>Ожидаемый результат:</strong></p>
+<ul>
+<li class=""><strong>1 кОм:</strong> Переход практически мгновенный (фронт &lt; 1 мкс).</li>
+<li class=""><strong>10 кОм:</strong> Переход быстрый (фронт ~5–10 мкс).</li>
+<li class=""><strong>100 кОм:</strong> Переход медленный (фронт может быть &gt;100 мкс), на экране виден &quot;наклонный&quot; фронт.</li>
+</ul>
+<p><strong>Почему это происходит:</strong></p>
+<p>Паразитная ёмкость (провода, пин, макетная плата) вместе с резистором образует RC-цепь. Постоянная времени:</p>
+<p>[
+\tau = R \times C
+]</p>
+<p>Чем больше (R), тем медленнее заряжается/разряжается ёмкость, и тем &quot;растянутее&quot; фронт сигнала.</p>
+<blockquote>
+<p><strong>Инженерная заметка</strong></p>
+<p>Для цифровых входов микроконтроллера &quot;медленный&quot; фронт обычно не проблема, потому что частота опроса в <code>loop()</code> — порядка кГц, а фронт даже при 100 кОм — десятки мкс. Но если ты работаешь с высокоскоростными интерфейсами (SPI, I²C на высоких частотах), слишком большой резистор может создать проблемы.</p>
+</blockquote>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="частые-ошибки-главы">Частые ошибки главы<a href="#частые-ошибки-главы" class="hash-link" aria-label="Прямая ссылка на Частые ошибки главы" title="Прямая ссылка на Частые ошибки главы" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-1-использование-input-вместо-input_pullup">Ошибка 1: Использование INPUT вместо INPUT_PULLUP<a href="#ошибка-1-использование-input-вместо-input_pullup" class="hash-link" aria-label="Прямая ссылка на Ошибка 1: Использование INPUT вместо INPUT_PULLUP" title="Прямая ссылка на Ошибка 1: Использование INPUT вместо INPUT_PULLUP" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Кнопка работает нестабильно, светодиод мигает случайно.</p>
+<p><strong>Причина:</strong> В коде написано <code>pinMode(buttonPin, INPUT)</code>, но внешний pull-up/pull-down резистор не подключён.</p>
+<p><strong>Решение:</strong></p>
+<ul>
+<li class="">Либо добавь внешний резистор (10 кОм).</li>
+<li class="">Либо измени код на <code>pinMode(buttonPin, INPUT_PULLUP)</code>.</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-2-перепутана-логика-нажатия">Ошибка 2: Перепутана логика нажатия<a href="#ошибка-2-перепутана-логика-нажатия" class="hash-link" aria-label="Прямая ссылка на Ошибка 2: Перепутана логика нажатия" title="Прямая ссылка на Ошибка 2: Перепутана логика нажатия" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Светодиод горит, когда кнопка <strong>не нажата</strong>, и гаснет при нажатии.</p>
+<p><strong>Причина:</strong> В коде проверяется <code>buttonState == HIGH</code>, но используется pull-up (встроенный или внешний), где нажатие даёт LOW.</p>
+<p><strong>Решение:</strong>
+Инвертируй логику:</p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token function" style="color:#d73a49">digitalRead</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonPin</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">==</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Для pull-up</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Кнопка нажата</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-3-pull-up-резистор-подключён-к-gnd-вместо-vcc">Ошибка 3: Pull-up резистор подключён к GND вместо VCC<a href="#ошибка-3-pull-up-резистор-подключён-к-gnd-вместо-vcc" class="hash-link" aria-label="Прямая ссылка на Ошибка 3: Pull-up резистор подключён к GND вместо VCC" title="Прямая ссылка на Ошибка 3: Pull-up резистор подключён к GND вместо VCC" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Светодиод не реагирует на кнопку или ведёт себя непредсказуемо.</p>
+<p><strong>Причина:</strong> Резистор подключён неправильно — вместо подтягивания к VCC подтягивает к GND (фактически превратился в pull-down).</p>
+<p><strong>Решение:</strong>
+Проверь схему: один вывод резистора должен идти к <strong>VCC (5V)</strong>, второй — к пину Arduino.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-4-кнопка-подключена-к-vcc-вместо-gnd-при-использовании-input_pullup">Ошибка 4: Кнопка подключена к VCC вместо GND при использовании INPUT_PULLUP<a href="#ошибка-4-кнопка-подключена-к-vcc-вместо-gnd-при-использовании-input_pullup" class="hash-link" aria-label="Прямая ссылка на Ошибка 4: Кнопка подключена к VCC вместо GND при использовании INPUT_PULLUP" title="Прямая ссылка на Ошибка 4: Кнопка подключена к VCC вместо GND при использовании INPUT_PULLUP" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Светодиод горит постоянно, нажатие на кнопку не влияет.</p>
+<p><strong>Причина:</strong> При <code>INPUT_PULLUP</code> кнопка должна соединять пин с <strong>GND</strong>, а не с VCC. Если кнопка подключена к VCC, пин всегда остаётся в HIGH.</p>
+<p><strong>Решение:</strong>
+Переподключи кнопку: один контакт к пину Arduino, второй к GND.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ошибка-5-слишком-малый-номинал-резистора">Ошибка 5: Слишком малый номинал резистора<a href="#ошибка-5-слишком-малый-номинал-резистора" class="hash-link" aria-label="Прямая ссылка на Ошибка 5: Слишком малый номинал резистора" title="Прямая ссылка на Ошибка 5: Слишком малый номинал резистора" translate="no">​</a></h3>
+<p><strong>Симптом:</strong> Резистор нагревается, плата Arduino потребляет больше тока, чем ожидалось.</p>
+<p><strong>Причина:</strong> Используется резистор меньше 1 кОм (например, 220 Ом). При нажатии кнопки через резистор течёт большой ток:</p>
+<p>[
+I = \frac{5,\text{В}}{220,\text{Ом}} \approx 23,\text{мА}
+]</p>
+<p>Это не критично для одной кнопки, но неэффективно.</p>
+<p><strong>Решение:</strong>
+Используй резистор 4.7–47 кОм (чаще всего 10 кОм).</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="проверь-себя">Проверь себя<a href="#проверь-себя" class="hash-link" aria-label="Прямая ссылка на Проверь себя" title="Прямая ссылка на Проверь себя" translate="no">​</a></h2>
+<ol>
+<li class="">
+<p><strong>Чем отличается pull-up резистор от pull-down?</strong></p>
+<ul>
+<li class="">Подсказка: к чему подтягивается вход в состоянии покоя?</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Что происходит с логикой кнопки при использовании pull-up резистора?</strong></p>
+<ul>
+<li class="">Подсказка: какое состояние соответствует нажатию — HIGH или LOW?</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Какой номинал имеет встроенный pull-up резистор ATmega2560?</strong></p>
+<ul>
+<li class="">Подсказка: диапазон 20–50 кОм, типично 20 кОм.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Почему режим INPUT_PULLUP популярнее, чем внешний pull-down резистор?</strong></p>
+<ul>
+<li class="">Подсказка: подумай о количестве компонентов и удобстве сборки.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Что такое floating input и почему это проблема?</strong></p>
+<ul>
+<li class="">Подсказка: что улавливает вход без подтягивающего резистора?</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Можно ли использовать резистор 1 МОм в качестве pull-up?</strong></p>
+<ul>
+<li class="">Подсказка: подумай о паразитной ёмкости и помехах.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Как в коде привести инверсную логику pull-up к прямой логике?</strong></p>
+<ul>
+<li class="">Подсказка: оператор NOT (<code>!</code>) или явное сравнение с LOW.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Что произойдёт, если подключить кнопку к VCC при использовании INPUT_PULLUP?</strong></p>
+<ul>
+<li class="">Подсказка: пин будет всегда в HIGH или всегда в LOW?</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проекты">Мини-проекты<a href="#мини-проекты" class="hash-link" aria-label="Прямая ссылка на Мини-проекты" title="Прямая ссылка на Мини-проекты" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проект-1-трёхкнопочное-меню">Мини-проект 1: Трёхкнопочное меню<a href="#мини-проект-1-трёхкнопочное-меню" class="hash-link" aria-label="Прямая ссылка на Мини-проект 1: Трёхкнопочное меню" title="Прямая ссылка на Мини-проект 1: Трёхкнопочное меню" translate="no">​</a></h3>
+<p><strong>Задача:</strong> Используй три кнопки с <code>INPUT_PULLUP</code> для навигации по виртуальному меню:</p>
+<ul>
+<li class="">Кнопка 1: &quot;Вверх&quot; (увеличить номер пункта меню).</li>
+<li class="">Кнопка 2: &quot;Вниз&quot; (уменьшить номер пункта меню).</li>
+<li class="">Кнопка 3: &quot;Выбрать&quot; (вывести в Serial номер выбранного пункта).</li>
+</ul>
+<p>Используй переменную <code>menuIndex</code> для хранения текущего пункта (диапазон 0–4).</p>
+<p><strong>Усложнение:</strong> Добавь циклическую навигацию (после пункта 4 идёт пункт 0, и наоборот).</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проект-2-секретный-код">Мини-проект 2: Секретный код<a href="#мини-проект-2-секретный-код" class="hash-link" aria-label="Прямая ссылка на Мини-проект 2: Секретный код" title="Прямая ссылка на Мини-проект 2: Секретный код" translate="no">​</a></h3>
+<p><strong>Задача:</strong> Используй две кнопки с разной логикой (pull-down и pull-up). Светодиод загорается только при <strong>определённой последовательности</strong> нажатий: кнопка 1 → кнопка 2 → кнопка 1.</p>
+<p>Подсказка: используй массив или переменную-счётчик для отслеживания последовательности.</p>
+<p><strong>Усложнение:</strong> Если последовательность нарушена (например, кнопка 2 нажата дважды подряд), сбрасывай счётчик и требуй начать заново.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проект-3-таймер-нажатия">Мини-проект 3: Таймер нажатия<a href="#мини-проект-3-таймер-нажатия" class="hash-link" aria-label="Прямая ссылка на Мини-проект 3: Таймер нажатия" title="Прямая ссылка на Мини-проект 3: Таймер нажатия" translate="no">​</a></h3>
+<p><strong>Задача:</strong> Светодиод загорается только если кнопка удерживается <strong>больше 2 секунд</strong>. Используй <code>millis()</code> для измерения длительности нажатия.</p>
+<p>Подсказка:</p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonPressed </span><span class="token operator" style="color:#393A34">&amp;&amp;</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">!</span><span class="token plain">wasPressed</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  pressStartTime </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">millis</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Запомнили момент нажатия</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonPressed </span><span class="token operator" style="color:#393A34">&amp;&amp;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token function" style="color:#d73a49">millis</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">-</span><span class="token plain"> pressStartTime </span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">2000</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Удерживается &gt;2 сек</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p><strong>Усложнение:</strong> Добавь разные действия для короткого (&lt; 500 мс), среднего (500–2000 мс) и длинного (&gt; 2000 мс) нажатия.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="мини-проект-4-кнопка-переключатель-toggle">Мини-проект 4: Кнопка-переключатель (toggle)<a href="#мини-проект-4-кнопка-переключатель-toggle" class="hash-link" aria-label="Прямая ссылка на Мини-проект 4: Кнопка-переключатель (toggle)" title="Прямая ссылка на Мини-проект 4: Кнопка-переключатель (toggle)" translate="no">​</a></h3>
+<p><strong>Задача:</strong> Реализуй поведение &quot;переключателя&quot;: каждое нажатие кнопки <strong>меняет</strong> состояние светодиода (вкл ↔ выкл).</p>
+<p>Подсказка: используй edge detection из главы 2.1 + переменную <code>ledState</code>.</p>
+<div class="language-cpp codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-cpp codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">bool</span><span class="token plain"> ledState </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">false</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">bool</span><span class="token plain"> lastButtonState </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> HIGH</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">void</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">loop</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">bool</span><span class="token plain"> currentButtonState </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">digitalRead</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">buttonPin</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Обнаружение falling edge (для INPUT_PULLUP: HIGH → LOW)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">lastButtonState </span><span class="token operator" style="color:#393A34">==</span><span class="token plain"> HIGH </span><span class="token operator" style="color:#393A34">&amp;&amp;</span><span class="token plain"> currentButtonState </span><span class="token operator" style="color:#393A34">==</span><span class="token plain"> LOW</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    ledState </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">!</span><span class="token plain">ledState</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain">  </span><span class="token comment" style="color:#999988;font-style:italic">// Инвертируем состояние</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token function" style="color:#d73a49">digitalWrite</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">ledPin</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> ledState</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  lastButtonState </span><span class="token operator" style="color:#393A34">=</span><span class="token plain"> currentButtonState</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p><strong>Усложнение:</strong> Добавь debounce (глава 2.3, можешь попробовать реализовать самостоятельно через <code>delay(50)</code>).</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="что-мы-теперь-умеем">Что мы теперь умеем<a href="#что-мы-теперь-умеем" class="hash-link" aria-label="Прямая ссылка на Что мы теперь умеем" title="Прямая ссылка на Что мы теперь умеем" translate="no">​</a></h2>
+<p>К концу этой главы ты:</p>
+<ol>
+<li class="">
+<p><strong>Понимаешь разницу между pull-up и pull-down резисторами:</strong></p>
+<ul>
+<li class="">Pull-down подтягивает вход к GND → не нажата = LOW, нажата = HIGH.</li>
+<li class="">Pull-up подтягивает вход к VCC → не нажата = HIGH, нажата = LOW.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Умеешь использовать встроенные pull-up резисторы микроконтроллера:</strong></p>
+<ul>
+<li class="">Режим <code>INPUT_PULLUP</code> активирует внутренний резистор ~20 кОм.</li>
+<li class="">Это упрощает схему: кнопка + 2 провода, без внешнего резистора.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Работаешь с инверсной логикой:</strong></p>
+<ul>
+<li class="">Понимаешь, что pull-up делает логику &quot;перевёрнутой&quot;.</li>
+<li class="">Умеешь приводить инверсную логику к прямой через оператор NOT или явные проверки.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Знаешь физику подтягивающих резисторов:</strong></p>
+<ul>
+<li class="">Понимаешь, почему нужен резистор 4.7–47 кОм.</li>
+<li class="">Видел проблему floating input на практике.</li>
+<li class="">Можешь рассчитать ток через pull-up/pull-down резистор.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Можешь комбинировать разные схемы подключения:</strong></p>
+<ul>
+<li class="">Умеешь собрать устройство, где одни кнопки используют pull-down, другие — pull-up.</li>
+<li class="">Понимаешь, как обрабатывать разнополярные входы в одной программе.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Понимаешь устройство микроконтроллера на более глубоком уровне:</strong></p>
+<ul>
+<li class="">Знаешь, что внутри ATmega2560 есть программно управляемые резисторы.</li>
+<li class="">Понимаешь связь между <code>pinMode()</code>, регистрами DDRx и PORTx.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="как-это-пригодится-дальше">Как это пригодится дальше<a href="#как-это-пригодится-дальше" class="hash-link" aria-label="Прямая ссылка на Как это пригодится дальше" title="Прямая ссылка на Как это пригодится дальше" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="глава-23-дребезг-контактов-debounce">Глава 2.3: Дребезг контактов (Debounce)<a href="#глава-23-дребезг-контактов-debounce" class="hash-link" aria-label="Прямая ссылка на Глава 2.3: Дребезг контактов (Debounce)" title="Прямая ссылка на Глава 2.3: Дребезг контактов (Debounce)" translate="no">​</a></h3>
+<p>Все схемы из этой главы имеют общую проблему: <strong>дребезг контактов</strong>. При нажатии кнопки контакты слегка &quot;отскакивают&quot;, создавая серию быстрых импульсов вместо одного чистого сигнала. Микроконтроллер может интерпретировать одно нажатие как несколько.</p>
+<p>В следующей главе мы научимся <strong>программно фильтровать</strong> дребезг, используя временные задержки и алгоритмы на базе <code>millis()</code>.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="глава-24-конечные-автоматы-fsm">Глава 2.4: Конечные автоматы (FSM)<a href="#глава-24-конечные-автоматы-fsm" class="hash-link" aria-label="Прямая ссылка на Глава 2.4: Конечные автоматы (FSM)" title="Прямая ссылка на Глава 2.4: Конечные автоматы (FSM)" translate="no">​</a></h3>
+<p>Кнопки — это <strong>источники событий</strong>. Finite State Machine (FSM) — это паттерн проектирования, который позволяет управлять сложным поведением устройства на основе последовательности событий.</p>
+<p>Ты будешь использовать кнопки с pull-up для переключения между состояниями (например, режимы светофора, меню, игровые состояния).</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="раздел-3-неблокирующее-время-и-многозадачность">Раздел 3: Неблокирующее время и многозадачность<a href="#раздел-3-неблокирующее-время-и-многозадачность" class="hash-link" aria-label="Прямая ссылка на Раздел 3: Неблокирующее время и многозадачность" title="Прямая ссылка на Раздел 3: Неблокирующее время и многозадачность" translate="no">​</a></h3>
+<p><code>delay()</code> блокирует выполнение программы. Если у тебя несколько кнопок, светодиодов и датчиков, блокирующие задержки сделают устройство &quot;тупым&quot;.</p>
+<p>Ты научишься использовать <code>millis()</code> для <strong>одновременного</strong> опроса кнопок, мигания светодиодов и работы с другими задачами.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="раздел-7-клавиатуры-джойстики-и-энкодеры">Раздел 7: Клавиатуры, джойстики и энкодеры<a href="#раздел-7-клавиатуры-джойстики-и-энкодеры" class="hash-link" aria-label="Прямая ссылка на Раздел 7: Клавиатуры, джойстики и энкодеры" title="Прямая ссылка на Раздел 7: Клавиатуры, джойстики и энкодеры" translate="no">​</a></h3>
+<p>Keypad 4×4 — это матрица из 16 кнопок. Каждая кнопка подключена к пересечению строки и столбца. Для их опроса используются <strong>те же принципы pull-up</strong>, что ты освоил в этой главе.</p>
+<p>Энкодеры (rotary encoder) выдают два сигнала с фазовым сдвигом. Для их чтения тоже используются цифровые входы с pull-up.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="раздел-14-прерывания-interrupts">Раздел 14: Прерывания (Interrupts)<a href="#раздел-14-прерывания-interrupts" class="hash-link" aria-label="Прямая ссылка на Раздел 14: Прерывания (Interrupts)" title="Прямая ссылка на Раздел 14: Прерывания (Interrupts)" translate="no">​</a></h3>
+<p>Прерывания — это <strong>аппаратный механизм</strong> реакции на изменение состояния пина. Вместо постоянного опроса в <code>loop()</code>, микроконтроллер автоматически вызывает функцию при изменении входа.</p>
+<p>Для надёжной работы прерываний нужны <strong>стабильные входы с подтягивающими резисторами</strong> — именно то, что ты настроил в этой главе.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="раздел-16-интеграция-с-реальными-устройствами">Раздел 16: Интеграция с реальными устройствами<a href="#раздел-16-интеграция-с-реальными-устройствами" class="hash-link" aria-label="Прямая ссылка на Раздел 16: Интеграция с реальными устройствами" title="Прямая ссылка на Раздел 16: Интеграция с реальными устройствами" translate="no">​</a></h3>
+<p>В реальных проектах (умный дом, робототехника, промышленные контроллеры) кнопки могут находиться на расстоянии нескольких метров от микроконтроллера. Правильный выбор pull-up/pull-down и экранирование проводов становятся критичными для надёжности.</p>
+<p>Ты уже понимаешь физику этих схем и сможешь диагностировать проблемы с помехами и плавающими входами.</p>
+<hr>
+<p><strong>Следующая глава:</strong> 2.3 — Дребезг контактов: как программно фильтровать нестабильность механических кнопок.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/maksimkh34/arduino/tree/main/../chapters/02-02-pull-up-pull-down.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Отредактировать эту страницу</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Страница документа"><a class="pagination-nav__link pagination-nav__link--prev" href="/arduino/02-01-button-digital-input"><div class="pagination-nav__sublabel">Предыдущая страница</div><div class="pagination-nav__label">Кнопка как цифровой вход: первое чтение состояния</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#зачем-нужна-эта-глава" class="table-of-contents__link toc-highlight">Зачем нужна эта глава</a></li><li><a href="#что-мы-соберем-к-концу-главы" class="table-of-contents__link toc-highlight">Что мы соберем к концу главы</a></li><li><a href="#что-ты-узнаешь-и-чему-научишься" class="table-of-contents__link toc-highlight">Что ты узнаешь и чему научишься</a><ul><li><a href="#узнаешь" class="table-of-contents__link toc-highlight">Узнаешь</a></li><li><a href="#научишься" class="table-of-contents__link toc-highlight">Научишься</a></li></ul></li><li><a href="#карта-путешествия" class="table-of-contents__link toc-highlight">Карта путешествия</a></li><li><a href="#ключевые-термины" class="table-of-contents__link toc-highlight">Ключевые термины</a></li><li><a href="#практическая-задача-главы" class="table-of-contents__link toc-highlight">Практическая задача главы</a></li><li><a href="#pull-up-резистор-подтягивание-входа-к-vcc" class="table-of-contents__link toc-highlight">Pull-up резистор: подтягивание входа к VCC</a><ul><li><a href="#зачем-нужен-pull-up-резистор" class="table-of-contents__link toc-highlight">Зачем нужен pull-up резистор</a></li><li><a href="#почему-инвертируется-логика" class="table-of-contents__link toc-highlight">Почему инвертируется логика</a></li><li><a href="#почему-pull-up-популярнее-pull-down" class="table-of-contents__link toc-highlight">Почему pull-up популярнее pull-down</a></li><li><a href="#номинал-резистора-и-выбор-значения" class="table-of-contents__link toc-highlight">Номинал резистора и выбор значения</a></li></ul></li><li><a href="#встроенные-pull-up-резисторы-atmega2560" class="table-of-contents__link toc-highlight">Встроенные pull-up резисторы ATmega2560</a><ul><li><a href="#как-это-работает-на-уровне-микроконтроллера" class="table-of-contents__link toc-highlight">Как это работает на уровне микроконтроллера</a></li><li><a href="#преимущества-и-ограничения-встроенного-pull-up" class="table-of-contents__link toc-highlight">Преимущества и ограничения встроенного pull-up</a></li></ul></li><li><a href="#выбор-между-pull-up-и-pull-down-когда-что-использовать" class="table-of-contents__link toc-highlight">Выбор между pull-up и pull-down: когда что использовать</a><ul><li><a href="#технические-соображения" class="table-of-contents__link toc-highlight">Технические соображения</a></li><li><a href="#инверсия-логики-в-коде-как-с-этим-работать" class="table-of-contents__link toc-highlight">Инверсия логики в коде: как с этим работать</a></li></ul></li><li><a href="#проект-221-кнопка-с-внешним-pull-up-резистором" class="table-of-contents__link toc-highlight">Проект 2.2.1. Кнопка с внешним pull-up резистором</a><ul><li><a href="#идея-проекта" class="table-of-contents__link toc-highlight">Идея проекта</a></li><li><a href="#чему-учит-этот-проект" class="table-of-contents__link toc-highlight">Чему учит этот проект</a></li><li><a href="#что-понадобится" class="table-of-contents__link toc-highlight">Что понадобится</a></li><li><a href="#схема-подключения" class="table-of-contents__link toc-highlight">Схема подключения</a></li><li><a href="#таблица-соединений" class="table-of-contents__link toc-highlight">Таблица соединений</a></li><li><a href="#код-проекта" class="table-of-contents__link toc-highlight">Код проекта</a></li><li><a href="#что-происходит-в-коде" class="table-of-contents__link toc-highlight">Что происходит в коде</a></li><li><a href="#что-происходит-в-схеме" class="table-of-contents__link toc-highlight">Что происходит в схеме</a></li><li><a href="#как-проверить-работу" class="table-of-contents__link toc-highlight">Как проверить работу</a></li><li><a href="#если-не-работает" class="table-of-contents__link toc-highlight">Если не работает</a></li><li><a href="#идеи-для-развития" class="table-of-contents__link toc-highlight">Идеи для развития</a></li></ul></li><li><a href="#проект-222-кнопка-с-встроенным-input_pullup" class="table-of-contents__link toc-highlight">Проект 2.2.2. Кнопка с встроенным INPUT_PULLUP</a><ul><li><a href="#идея-проекта-1" class="table-of-contents__link toc-highlight">Идея проекта</a></li><li><a href="#чему-учит-этот-проект-1" class="table-of-contents__link toc-highlight">Чему учит этот проект</a></li><li><a href="#что-понадобится-1" class="table-of-contents__link toc-highlight">Что понадобится</a></li><li><a href="#схема-подключения-1" class="table-of-contents__link toc-highlight">Схема подключения</a></li><li><a href="#таблица-соединений-1" class="table-of-contents__link toc-highlight">Таблица соединений</a></li><li><a href="#код-проекта-1" class="table-of-contents__link toc-highlight">Код проекта</a></li><li><a href="#что-происходит-в-коде-1" class="table-of-contents__link toc-highlight">Что происходит в коде</a></li><li><a href="#что-происходит-в-схеме-1" class="table-of-contents__link toc-highlight">Что происходит в схеме</a></li><li><a href="#как-проверить-работу-1" class="table-of-contents__link toc-highlight">Как проверить работу</a></li><li><a href="#если-не-работает-1" class="table-of-contents__link toc-highlight">Если не работает</a></li><li><a href="#идеи-для-развития-1" class="table-of-contents__link toc-highlight">Идеи для развития</a></li></ul></li><li><a href="#проект-223-две-кнопки-с-разной-логикой" class="table-of-contents__link toc-highlight">Проект 2.2.3. Две кнопки с разной логикой</a><ul><li><a href="#идея-проекта-2" class="table-of-contents__link toc-highlight">Идея проекта</a></li><li><a href="#чему-учит-этот-проект-2" class="table-of-contents__link toc-highlight">Чему учит этот проект</a></li><li><a href="#что-понадобится-2" class="table-of-contents__link toc-highlight">Что понадобится</a></li><li><a href="#схема-подключения-2" class="table-of-contents__link toc-highlight">Схема подключения</a></li><li><a href="#таблица-соединений-2" class="table-of-contents__link toc-highlight">Таблица соединений</a></li><li><a href="#код-проекта-2" class="table-of-contents__link toc-highlight">Код проекта</a></li><li><a href="#что-происходит-в-коде-2" class="table-of-contents__link toc-highlight">Что происходит в коде</a></li><li><a href="#что-происходит-в-схеме-2" class="table-of-contents__link toc-highlight">Что происходит в схеме</a></li><li><a href="#как-проверить-работу-2" class="table-of-contents__link toc-highlight">Как проверить работу</a></li><li><a href="#если-не-работает-2" class="table-of-contents__link toc-highlight">Если не работает</a></li><li><a href="#идеи-для-развития-2" class="table-of-contents__link toc-highlight">Идеи для развития</a></li></ul></li><li><a href="#эксперименты" class="table-of-contents__link toc-highlight">Эксперименты</a><ul><li><a href="#эксперимент-1-измерение-тока-через-pull-up-резистор" class="table-of-contents__link toc-highlight">Эксперимент 1: Измерение тока через pull-up резистор</a></li><li><a href="#эксперимент-2-что-произойдёт-без-подтягивающего-резистора" class="table-of-contents__link toc-highlight">Эксперимент 2: Что произойдёт без подтягивающего резистора?</a></li><li><a href="#эксперимент-3-сравнение-скорости-переключения-при-разных-номиналах" class="table-of-contents__link toc-highlight">Эксперимент 3: Сравнение скорости переключения при разных номиналах</a></li></ul></li><li><a href="#частые-ошибки-главы" class="table-of-contents__link toc-highlight">Частые ошибки главы</a><ul><li><a href="#ошибка-1-использование-input-вместо-input_pullup" class="table-of-contents__link toc-highlight">Ошибка 1: Использование INPUT вместо INPUT_PULLUP</a></li><li><a href="#ошибка-2-перепутана-логика-нажатия" class="table-of-contents__link toc-highlight">Ошибка 2: Перепутана логика нажатия</a></li><li><a href="#ошибка-3-pull-up-резистор-подключён-к-gnd-вместо-vcc" class="table-of-contents__link toc-highlight">Ошибка 3: Pull-up резистор подключён к GND вместо VCC</a></li><li><a href="#ошибка-4-кнопка-подключена-к-vcc-вместо-gnd-при-использовании-input_pullup" class="table-of-contents__link toc-highlight">Ошибка 4: Кнопка подключена к VCC вместо GND при использовании INPUT_PULLUP</a></li><li><a href="#ошибка-5-слишком-малый-номинал-резистора" class="table-of-contents__link toc-highlight">Ошибка 5: Слишком малый номинал резистора</a></li></ul></li><li><a href="#проверь-себя" class="table-of-contents__link toc-highlight">Проверь себя</a></li><li><a href="#мини-проекты" class="table-of-contents__link toc-highlight">Мини-проекты</a><ul><li><a href="#мини-проект-1-трёхкнопочное-меню" class="table-of-contents__link toc-highlight">Мини-проект 1: Трёхкнопочное меню</a></li><li><a href="#мини-проект-2-секретный-код" class="table-of-contents__link toc-highlight">Мини-проект 2: Секретный код</a></li><li><a href="#мини-проект-3-таймер-нажатия" class="table-of-contents__link toc-highlight">Мини-проект 3: Таймер нажатия</a></li><li><a href="#мини-проект-4-кнопка-переключатель-toggle" class="table-of-contents__link toc-highlight">Мини-проект 4: Кнопка-переключатель (toggle)</a></li></ul></li><li><a href="#что-мы-теперь-умеем" class="table-of-contents__link toc-highlight">Что мы теперь умеем</a></li><li><a href="#как-это-пригодится-дальше" class="table-of-contents__link toc-highlight">Как это пригодится дальше</a><ul><li><a href="#глава-23-дребезг-контактов-debounce" class="table-of-contents__link toc-highlight">Глава 2.3: Дребезг контактов (Debounce)</a></li><li><a href="#глава-24-конечные-автоматы-fsm" class="table-of-contents__link toc-highlight">Глава 2.4: Конечные автоматы (FSM)</a></li><li><a href="#раздел-3-неблокирующее-время-и-многозадачность" class="table-of-contents__link toc-highlight">Раздел 3: Неблокирующее время и многозадачность</a></li><li><a href="#раздел-7-клавиатуры-джойстики-и-энкодеры" class="table-of-contents__link toc-highlight">Раздел 7: Клавиатуры, джойстики и энкодеры</a></li><li><a href="#раздел-14-прерывания-interrupts" class="table-of-contents__link toc-highlight">Раздел 14: Прерывания (Interrupts)</a></li><li><a href="#раздел-16-интеграция-с-реальными-устройствами" class="table-of-contents__link toc-highlight">Раздел 16: Интеграция с реальными устройствами</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Контент</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/arduino/">Учебник</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Ссылки</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/maksimkh34/arduino" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Arduino Textbook. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
