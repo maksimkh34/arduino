@@ -40,9 +40,15 @@
 4. **Обнови GLOSSARY.md (если нужно):**
    - Добавь новые термины, введенные в главе.
 
+4.5. **Обнови содержание (chapters/00-01-table-of-contents.md):**
+   - Раскрой название главы в подробное описание.
+   - Перечисли проекты главы.
+   - Укажи ключевые термины.
+   - Не удаляй главы, которые еще не написаны.
+
 5. **Git commit и push:**
    ```bash
-   git add chapters/NN-MM-title.md STATE.md GLOSSARY.md
+   git add chapters/NN-MM-title.md chapters/00-01-table-of-contents.md STATE.md GLOSSARY.md
    git commit -m "Добавлена глава N.M: Название главы"
    git push
    ```
